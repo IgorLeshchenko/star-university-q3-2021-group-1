@@ -26,36 +26,30 @@ jobs:
       - run: npm run format
       - run: npm run lint
 
+    # steps:
+    #   - checkout
+    #   - restore_cache:
+    #       keys:
+    #         - v1-dependencies-{{ checksum "package.json" }}
+    #         - v1-dependencies-
 
-  deploy:
-    docker:
-      - image: circleci/node:12
+    #   - run: npm install
 
-    working_directory: ~/star-university-q3-2021-group-1
+    #   - save_cache:
+    #       paths:
+    #         - node_modules
+    #       key: v1-dependencies-{{ checksum "package.json" }}
 
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: npm run build
-      - run: npm run deploy
+    #   - run: npm run test
+    #   - run: npm run format
+    #   - run: npm run lint
 
   # deploy:
   #   docker:
   #     - image: circleci/node:12
 
   #     steps:
-  #     - checkout
+  #       - checkout
       # - run: npm run build
       # - run: npm run deploy
       
