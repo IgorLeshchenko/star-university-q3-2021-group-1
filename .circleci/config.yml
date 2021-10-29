@@ -2,7 +2,7 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/node:12
 
@@ -23,8 +23,15 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: npm run test
-      # - run: npm run format
-      # - run: npm run lint
-      # - run: npm run build
-      # - run: npm run deploy
+      - run: npm run format
+      - run: npm run lint
+
+  deploy:
+    docker:
+      - image: circleci/node:12
+
+      steps:
+      - checkout
+      - run: npm run build
+      - run: npm run deploy
       
