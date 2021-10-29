@@ -1,8 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import App from './App';
+
+test('render hello world', ()=>{
+    render(<App />);
+    const helloWorldElement = screen.getByText('Hello World')
+    expect(helloWorldElement).toBeInTheDocument()
+})
+
+
+
 
 // test('renders learn react link', () => {
 //   const { getByText } = render(
