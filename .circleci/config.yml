@@ -1,54 +1,57 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
-version: 2.1
 jobs:
-  build:
-    docker:
-      - image: circleci/node:12
-  test:
-    working_directory: ~/star-university-q3-2021-group-1
-
+  stage:
+    executor: heroku/default
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-  
-      - run: npm install
+      - heroku/install
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_STAGING_APP_NAME
 
+  test:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - run:
+          name: Update NPM
+          command: "sudo npm install -g npm@5"
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install Dependencies
+          command: npm install
       - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ./node_modules
       - run:
           name: Run tests
           command: npm run test
-        
       - run:
           name: Run prittier check
           command: npm run format
-
       - run:
           name: Run lint check
           command: npm run lint
-      - run:
-          name: Build project
-          command: npm run build
+
   deploy:
+    executor: heroku/default
     steps:
-      - run:
-          name: Deploy project
-          command: npm run deploy --require-approval
-
-
-  workflows:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_PRODUCTION_APP_NAME
+orbs:
+  heroku: circleci/heroku@0.0.10
+version: 2.1
+workflows:
   stage_test_approve_deploy:
     jobs:
-      - build
+      - stage
       - test:
           requires:
-            -build
+            - stage
       - hold:
           type: approval
           requires:
@@ -56,40 +59,3 @@ jobs:
       - deploy:
           requires:
             - hold
-
-
-
-#  workflows:
-#    test-workflow:
-#      jobs:
-#       - test
-#       - format
-#       - lint
-#       - build
-#       - deploy
-    # steps:
-    #   - checkout
-    #   - restore_cache:
-    #       keys:
-    #         - v1-dependencies-{{ checksum "package.json" }}
-    #         - v1-dependencies-
-
-    #   - run: npm install
-
-    #   - save_cache:
-    #       paths:
-    #         - node_modules
-    #       key: v1-dependencies-{{ checksum "package.json" }}
-
-    #   - run: npm run test
-    #   - run: npm run format
-    #   - run: npm run lint
-
-  # deploy:
-  #   docker:
-  #     - image: circleci/node:12
-
-  #     steps:
-  #       - checkout
-  # - run: npm run build
-  # - run: npm run deploy
