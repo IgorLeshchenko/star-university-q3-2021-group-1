@@ -25,8 +25,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build",
-    "lint": "eslint \"src\\**\\*.{ts,tsx}\"",
-    "format": "prettier --write \"src\\**\\*.tsx\""
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"src/**/*.tsx\""
   },
   "eslintConfig": {
     "extends": "react-app"
