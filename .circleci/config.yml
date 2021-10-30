@@ -35,7 +35,12 @@ jobs:
       - run:
           name: Build project
           command: npm run build
-
+      - run:
+          name: Set user email
+          command: git config --global user.email "ileshchenko@star.global"
+      - run:
+          name: Set user name
+          command: git config --global user.name "Igor Leshchenko"
       - run:
           name: Deploy project
           command: npm run deploy
