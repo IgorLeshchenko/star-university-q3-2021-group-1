@@ -5,7 +5,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:12
-
+  test:
     working_directory: ~/star-university-q3-2021-group-1
 
     steps:
@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Run tests
           command: npm run test
-
+        
       - run:
           name: Run prittier check
           command: npm run format
@@ -35,9 +35,29 @@ jobs:
       - run:
           name: Build project
           command: npm run build
+  deploy:
+    steps:
       - run:
           name: Deploy project
           command: npm run deploy --require-approval
+
+
+  workflows:
+  stage_test_approve_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            -build
+      - hold:
+          type: approval
+          requires:
+            - test
+      - deploy:
+          requires:
+            - hold
+
+
 
 #  workflows:
 #    test-workflow:
