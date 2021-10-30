@@ -32,23 +32,27 @@ jobs:
           name: Run lint check
           command: npm run lint
   deploy:
+    docker:
+      - image: circleci/node:12
+
+    working_directory: ~/star-university-q3-2021-group-1
     steps:
       - run:
           name: Build project
           command: npm run build
       - run:
           name: Deploy project
-          command: npm run deploy --require-approval
+          command: npm run deploy
 
 workflows:
   stage_test_approve_deploy:
     jobs:
-      - test:
-      - hold:
+    - test
+    - hold:
           type: approval
           requires:
             - test
-      - deploy:
+    - deploy:
           requires:
             - hold
 
