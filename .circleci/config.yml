@@ -22,25 +22,34 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: 
+      - run:
           name: Run tests
           command: npm run test
 
-      - run: 
+      - run:
           name: Run prittier check
           command: npm run format
 
-      - run: 
+      - run:
           name: Run lint check
           command: npm run lint
 
-      - run: 
+      - run:
           name: Build project
           command: npm run build
 
-      - run: 
+      - run:
           name: Deploy project
           command: npm run deploy
+
+ workflows:
+   test-workflow:
+     jobs:
+      - test
+      - format
+      - lint
+      - build
+      - deploy
     # steps:
     #   - checkout
     #   - restore_cache:
@@ -65,6 +74,5 @@ jobs:
 
   #     steps:
   #       - checkout
-      # - run: npm run build
-      # - run: npm run deploy
-      
+  # - run: npm run build
+  # - run: npm run deploy
