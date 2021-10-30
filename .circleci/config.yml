@@ -21,9 +21,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-  test:
-    description: |
-      run test
     steps:
       - run:
           name: Run tests
@@ -36,9 +33,6 @@ jobs:
       - run:
           name: Run lint check
           command: npm run lint
-  deploy:
-    description: |
-      deploy app
     steps:
       - run:
           name: Build project
