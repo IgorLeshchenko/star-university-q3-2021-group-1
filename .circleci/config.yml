@@ -14,14 +14,17 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-
+  
       - run: npm install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
+  test:
+    description: |
+      run test
+    steps:
       - run:
           name: Run tests
           command: npm run test
@@ -33,7 +36,10 @@ jobs:
       - run:
           name: Run lint check
           command: npm run lint
-
+  deploy:
+    description: |
+      deploy app
+    steps:
       - run:
           name: Build project
           command: npm run build
@@ -42,14 +48,14 @@ jobs:
           name: Deploy project
           command: npm run deploy
 
- workflows:
-   test-workflow:
-     jobs:
-      - test
-      - format
-      - lint
-      - build
-      - deploy
+#  workflows:
+#    test-workflow:
+#      jobs:
+#       - test
+#       - format
+#       - lint
+#       - build
+#       - deploy
     # steps:
     #   - checkout
     #   - restore_cache:
