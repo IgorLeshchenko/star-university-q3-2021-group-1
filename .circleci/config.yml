@@ -2,12 +2,11 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/node:12
-  test:
-    working_directory: ~/star-university-q3-2021-group-1
 
+    working_directory: ~/star-university-q3-2021-group-1
     steps:
       - checkout
       - restore_cache:
@@ -24,7 +23,7 @@ jobs:
       - run:
           name: Run tests
           command: npm run test
-        
+
       - run:
           name: Run prittier check
           command: npm run format
@@ -32,23 +31,19 @@ jobs:
       - run:
           name: Run lint check
           command: npm run lint
+  deploy:
+    steps:
       - run:
           name: Build project
           command: npm run build
-  deploy:
-    steps:
       - run:
           name: Deploy project
           command: npm run deploy --require-approval
 
-
-  workflows:
+workflows:
   stage_test_approve_deploy:
     jobs:
-      - build
       - test:
-          requires:
-            -build
       - hold:
           type: approval
           requires:
@@ -56,7 +51,6 @@ jobs:
       - deploy:
           requires:
             - hold
-
 
 
 #  workflows:
@@ -93,3 +87,20 @@ jobs:
   #       - checkout
   # - run: npm run build
   # - run: npm run deploy
+
+
+
+  # workflows:
+  # stage_test_approve_deploy:
+  #   jobs:
+  #     - stage
+  #     - test:
+  #         requires:
+  #           - stage
+  #     - hold:
+  #         type: approval
+  #         requires:
+  #           - test
+  #     - deploy:
+  #         requires:
+  #           - hold
