@@ -50,9 +50,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
-          name: Build project
-          command: npm run build
-      - run:
           name: Add name
           command: git config --global user.name "Pavel Levchenko"
       - run:
@@ -62,6 +59,9 @@ jobs:
           fingerprints:
             - "8f:61:25:e5:5b:c7:8a:e1:86:24:c0:8d:1c:e8:50:91"
       - run:
+          name: Build project
+          command: npm run build
+      - run:
           name: Deploy project
           command: npm run deploy
 
@@ -69,16 +69,10 @@ workflows:
   stage_test_approve_deploy:
     jobs:
     - test
-    - hold:
-          type: approval
-          requires:
-            - test
     - deploy:
-          requires:
-            - hold
-          # filters:
-          #   branches:
-          #     only: main
+          filters:
+            branches:
+              only: main
 
 
 #  workflows:
