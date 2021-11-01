@@ -60,7 +60,7 @@ jobs:
           command: git config --global user.name "plevchenko@star.global"
       - add_ssh_keys:
           fingerprints:
-            - "a6:15:a2:aa:61:a2:8f:38:88:18:05:48:c1:dd:5e:83"
+            - "8f:61:25:e5:5b:c7:8a:e1:86:24:c0:8d:1c:e8:50:91"
       - run:
           name: Deploy project
           command: npm run deploy
