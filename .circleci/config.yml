@@ -54,7 +54,7 @@ jobs:
           command: npm run build
       - run:
           name: Deploy project
-          command: npm run deploy     
+          command: npm run deploy
 
 workflows:
   stage_test_approve_deploy:
