@@ -76,9 +76,9 @@ workflows:
     - deploy:
           requires:
             - hold
-          filters:
-            branches:
-              only: main
+          # filters:
+          #   branches:
+          #     only: main
 
 
 #  workflows:
