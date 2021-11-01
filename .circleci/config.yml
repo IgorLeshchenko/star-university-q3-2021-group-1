@@ -69,7 +69,7 @@ workflows:
   stage_test_approve_deploy:
     jobs:
     - test
-    - deploy
+    - deploy:
           filters:
             branches:
               only: main
