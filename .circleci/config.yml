@@ -54,10 +54,10 @@ jobs:
           command: npm run build
       - run:
           name: Add name
-          command: git config --global user.name "Pavel Levchenko"
+          command: git config --global user.name "Igor Leshchenko"
       - run:
           name: Add email
-          command: git config --global user.name "plevchenko@star.global"
+          command: git config --global user.name "igor.leshchenko.mail@gmail.com"
       - run:
           name: Deploy project
           command: npm run deploy
