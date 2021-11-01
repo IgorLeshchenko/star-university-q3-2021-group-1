@@ -54,10 +54,13 @@ jobs:
           command: npm run build
       - run:
           name: Add name
-          command: git config --global user.name "Igor Leshchenko"
+          command: git config --global user.name "Pavel Levchenko"
       - run:
           name: Add email
-          command: git config --global user.name "igor.leshchenko.mail@gmail.com"
+          command: git config --global user.name "plevchenko@star.global"
+      - add_ssh_keys:
+          fingerprints:
+            - "a6:15:a2:aa:61:a2:8f:38:88:18:05:48:c1:dd:5e:83"
       - run:
           name: Deploy project
           command: npm run deploy
@@ -73,6 +76,9 @@ workflows:
     - deploy:
           requires:
             - hold
+          filters:
+            branches:
+              only: main
 
 
 #  workflows:
