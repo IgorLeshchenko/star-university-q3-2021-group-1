@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   AppBar,
   Toolbar,
@@ -6,13 +6,13 @@ import {
   Button,
   useScrollTrigger,
   Slide,
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 type Props = {
-  children: JSX.Element
-}
+  children: JSX.Element;
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,60 +21,60 @@ const useStyles = makeStyles((theme) => ({
 
   homeButton: {
     marginRight: theme.spacing(2),
-    backgroundColor: '#F48023',
-    color: '#FFF',
+    backgroundColor: "#F48023",
+    color: "#FFF",
 
-    '&:hover': {
-      backgroundColor: '#b45100',
-      borderColor: '#b45100',
-      boxShadow: 'none',
+    "&:hover": {
+      backgroundColor: "#b45100",
+      borderColor: "#b45100",
+      boxShadow: "none",
     },
-    '&:active': {
-      boxShadow: 'none',
-      backgroundColor: '#b45100',
-      borderColor: '#b45100',
+    "&:active": {
+      boxShadow: "none",
+      backgroundColor: "#b45100",
+      borderColor: "#b45100",
     },
-    '&:focus': {
-      boxShadow: '0 0 0 0.2rem #b451008f',
+    "&:focus": {
+      boxShadow: "0 0 0 0.2rem #b451008f",
     },
   },
 
   loginButton: {
-    backgroundColor: '#EAEAEA',
-    color: '#1682FD',
+    backgroundColor: "#EAEAEA",
+    color: "#1682FD",
 
-    '&:hover': {
-      backgroundColor: '#cbe3ff',
-      borderColor: '#cbe3ff',
-      boxShadow: 'none',
+    "&:hover": {
+      backgroundColor: "#cbe3ff",
+      borderColor: "#cbe3ff",
+      boxShadow: "none",
     },
-    '&:active': {
-      boxShadow: 'none',
-      backgroundColor: '#cbe3ff',
-      borderColor: '#cbe3ff',
+    "&:active": {
+      boxShadow: "none",
+      backgroundColor: "#cbe3ff",
+      borderColor: "#cbe3ff",
     },
-    '&:focus': {
-      boxShadow: '0 0 0 0.2rem #cbe3ff84',
+    "&:focus": {
+      boxShadow: "0 0 0 0.2rem #cbe3ff84",
     },
   },
 
   title: {
     flexGrow: 1,
   },
-}))
+}));
 
 const HideOnScroll = ({ children }: Props) => {
-  const trigger = useScrollTrigger()
+  const trigger = useScrollTrigger();
 
   return (
-    <Slide appear={false} direction={'down'} in={!trigger}>
+    <Slide appear={false} direction={"down"} in={!trigger}>
       {children}
     </Slide>
-  )
-}
+  );
+};
 
 const Navbar: React.FC = (props) => {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
@@ -82,9 +82,9 @@ const Navbar: React.FC = (props) => {
         <AppBar>
           <Toolbar>
             <Typography
-              variant='h5'
-              component='p'
-              color='textSecondary'
+              variant="h5"
+              component="p"
+              color="textSecondary"
               className={classes.title}
             >
               Reditlone
@@ -92,27 +92,27 @@ const Navbar: React.FC = (props) => {
 
             <>
               <Button
-                variant='contained'
+                variant="contained"
                 className={classes.homeButton}
                 component={Link}
-                to='/'
+                to="/"
               >
-                <Typography variant='button'>Home</Typography>
+                <Typography variant="button">Home</Typography>
               </Button>
               <Button
-                variant='contained'
+                variant="contained"
                 className={classes.loginButton}
                 component={Link}
-                to='/login'
+                to="/login"
               >
-                <Typography variant='button'>Login</Typography>
+                <Typography variant="button">Login</Typography>
               </Button>
             </>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
