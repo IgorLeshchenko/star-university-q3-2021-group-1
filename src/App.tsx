@@ -1,17 +1,21 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import LoginScreen from './screens/LoginScreen'
+import MainScreen from './screens/MainScreen'
+import Layout from './components/Layout'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <p>Hello World from group 1!!!</p>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Switch>
+        <Layout>
+          <Route path='/' exact component={MainScreen} />
+          <Route path='/login' component={LoginScreen} />
+        </Layout>
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
