@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://igorleshchenko.github.io/star-university-q3-2021-group-1/",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
