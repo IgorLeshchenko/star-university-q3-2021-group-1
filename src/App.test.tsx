@@ -2,11 +2,11 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 // import { Provider } from 'react-redux';
 // import { store } from './app/store';
-import App from "./App";
+import Forum from './components/forum/Forum'
 
 test("render hello world", () => {
-  render(<App />);
-  const helloWorldElement = screen.getByText("Hello World from group 1!!!");
+  render(<Forum />);
+  const helloWorldElement = screen.getByText("sort by:");
   expect(helloWorldElement).toBeInTheDocument();
 });
 
