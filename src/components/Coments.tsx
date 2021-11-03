@@ -4,27 +4,29 @@ import AddCommentTwoToneIcon from '@mui/icons-material/AddCommentTwoTone';
 import './Coments.css'
 import React, { useEffect, useState } from 'react';
 
-
 const Coments: React.FC<{ message: any }> = (props) => {
     const [newMessage, setNewMessage] = useState('')
     const [isEmpty, setIsEmpty] = useState(true)
     const [isToughc, setIsToughc] = useState(false)
-
-    let messege: boolean = isEmpty
+    const showError: boolean = isEmpty && isToughc
+    let isEmptyCopy: boolean = isEmpty
+    let touch: boolean = isToughc
+    let messageCopy: string = newMessage
 
     function changeHandler(event: any) {
         setNewMessage(event.target.value)
-        if (newMessage.trim.length > 0) {
-            messege = false
-            setIsEmpty(messege)
-        }
+        touch = true
+        setIsToughc(touch)
+        isEmptyCopy = false
+        setIsEmpty(isEmptyCopy)
+
     }
 
     function blurHandler() {
         setIsToughc(true)
         if (newMessage.trim.length > 0) {
-            messege = false
-            setIsEmpty(messege)
+            isEmptyCopy = false
+            setIsEmpty(isEmptyCopy)
         }
     }
 
@@ -32,22 +34,37 @@ const Coments: React.FC<{ message: any }> = (props) => {
         setIsToughc(true)
         if (newMessage) {
             props.message(newMessage)
-            setIsEmpty(false)
-            // setNewMessage('')  Не відображає зміну для користувача, хоча поле вже пусте
+            isEmptyCopy = false
+            setIsEmpty(isEmptyCopy)
+            messageCopy = ''
+            setNewMessage(messageCopy)
         }
 
     }
 
-    useEffect(() => {//Проблема с тем что окно ошибки всегда появляется при первом клике
+    useEffect(() => {
 
-    }, [newMessage, isEmpty, isToughc])
-
-    const showError: boolean = isEmpty && isToughc
+    }, [touch, isEmptyCopy, messageCopy])
 
     return <div className='wrapper'>
-        <TextField multiline rows='4' onBlur={blurHandler} onChange={changeHandler} margin='dense' variant='outlined' placeholder='Your message' />
+        <TextField
+            multiline rows='4'
+            onBlur={blurHandler}
+            onChange={changeHandler}
+            margin='dense'
+            variant='outlined'
+            placeholder='Your message'
+            value={messageCopy}
+        />
         {showError && <p className='errorMsg'>field is empty</p>}
-        <Button className='addComentBtn' onClick={clickHandler} variant='contained' size='small' endIcon={<AddCommentTwoToneIcon />}>Add coment</Button>
+        <Button
+            className='addComentBtn'
+            onClick={clickHandler}
+            variant='contained'
+            size='small'
+            endIcon={<AddCommentTwoToneIcon />}>
+            Add coment
+        </Button>
     </div>
 }
 export default Coments

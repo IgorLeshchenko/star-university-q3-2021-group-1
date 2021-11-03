@@ -3,7 +3,6 @@ import './Coment.css'
 import { TextField } from '@material-ui/core'
 import { deepOrange } from "@mui/material/colors"
 
-
 const Coment: React.FC<{ items: string[] }> = (props) => {
     return <div className='wrapperComent'>
         <div className='comentMessage'>
