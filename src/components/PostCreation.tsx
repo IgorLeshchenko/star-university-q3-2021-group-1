@@ -1,5 +1,3 @@
-// import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
 import {
   Grid,
   TextField,
@@ -11,13 +9,9 @@ import Card from "@mui/material/Card";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import classes from "./PostCreation.module.css";
 
-function PostCreation(props: any) {
-  function submitHandler(event: React.FormEvent) {
-    event.preventDefault();
-  }
-
+function PostCreation() {
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
+    <form className={classes.form}>
       <Card>
         <Grid
           container
@@ -37,7 +31,6 @@ function PostCreation(props: any) {
             variant="outlined"
             label="Title"
             style={{ marginBottom: "2em" }}
-            onChange={props.savePostTitleToState}
           />
 
           <TextareaAutosize
@@ -45,7 +38,6 @@ function PostCreation(props: any) {
             aria-label="empty textarea"
             placeholder="Your Post..."
             style={{ width: 380, height: 180, marginBottom: "2em" }}
-            onChange={props.savePostContentToState}
           />
 
           <CardActions>

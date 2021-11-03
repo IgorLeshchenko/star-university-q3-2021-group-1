@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import DisplayAllPost from "./components/DisplayAllPost";
+import PostCreation from "./components/PostCreation";
 
 function App() {
   return (
     <div>
-      <DisplayAllPost />
+      <PostCreation />
     </div>
   );
 }
