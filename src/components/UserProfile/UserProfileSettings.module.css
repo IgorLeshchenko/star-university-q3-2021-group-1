@@ -1,0 +1,19 @@
+.user_settings_btn_wrap {
+  /* border: 1px solid green; */
+  text-align: right;
+  align-self: end;
+}
+.user_settings_btn {
+  width: 53px;
+  background: transparent;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  color: #625d5d;
+  transition: 1s;
+}
+
+.user_settings_btn:hover {
+  color: #0c0c0c;
+  transition: 1s;
+}

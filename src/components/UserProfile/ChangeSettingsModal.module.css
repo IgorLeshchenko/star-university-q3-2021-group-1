@@ -1,0 +1,36 @@
+.change_settings_modal_wrap {
+  /* border: 1px solid red; */
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* width: 80%; */
+  z-index: 100;
+  overflow: hidden;
+
+  /* display: none; */
+}
+
+.change_settings_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #bfafaf;
+  opacity: 0.9;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.change_settings_form input {
+  margin: 20px 0;
+}
+
+.change_settings_form button {
+  width: 250px;
+  padding: 12px 30px;
+  background: orange;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
