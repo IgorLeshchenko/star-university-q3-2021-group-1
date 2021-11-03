@@ -22,7 +22,7 @@ export const theme = createMuiTheme({
 
 export const useStyles = makeStyles({
   frame: {
-    width: "40%",
+    width: "80%",
     height: "100%",
     display: "flex",
     flexDirection: "column",
@@ -57,8 +57,11 @@ export const useStyles = makeStyles({
     fontWeight: "bold",
     marginTop: "20px",
   },
-  png: {
-    height: "100%",
-    width: "100%",
+  wrapper: {
+    backgroundImage: 'url(star-university-q3-2021-group-1/static/media/loginPic.f4fbabf2.jpg)',
+    height: '100%',
+    width: '100%',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
   },
 });

@@ -6,7 +6,6 @@ import {
   ThemeProvider,
   Button,
 } from "@material-ui/core";
-import loginPic from "../login/pictures/loginPic.png";
 
 const LoginPage = () => {
   const classes = useStyles();
@@ -42,8 +41,7 @@ const LoginPage = () => {
           </Button>
         </form>
       </div>
-      <div>
-        <img src={loginPic} alt="PC" className={classes.png} />
+      <div className={classes.wrapper}>
       </div>
     </ThemeProvider>
   );
