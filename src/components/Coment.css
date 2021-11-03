@@ -1,0 +1,11 @@
+.userAvatar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-32px, 16px);
+}
+
+.nickname {
+    transform: translate(5px, 0px);
+}

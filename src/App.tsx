@@ -1,15 +1,27 @@
-import React from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
+import Coments from "./components/Coments";
+import Coment from "./components/Coment";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [comentArr, setComentArr] = useState<string[]>([])//Fetch с сервера
+
+const itemList:string[]=[...comentArr]
+
+  function addNewMessege(message: string): void {
+    itemList.push(message)
+    setComentArr(itemList)
+  }
+
+  useEffect(() => {
+    //Post запрос на сервер
+  }, [itemList])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <p>Hello World from group 1!!!</p>
-      </header>
+      <Coments message={addNewMessege} />
+      <Coment items={comentArr} />
     </div>
   );
 }
