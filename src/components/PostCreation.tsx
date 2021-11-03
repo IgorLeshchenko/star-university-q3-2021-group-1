@@ -12,22 +12,8 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 import classes from "./PostCreation.module.css";
 
 function PostCreation(props: any) {
-  // const [title, setTitle] = useState("");
-  // const [body, setBody] = useState("");
-  // const history = useHistory();
-
   function submitHandler(event: React.FormEvent) {
     event.preventDefault();
-    // const blog = { title, body };
-
-    // fetch("http://localhost:3000", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(blog),
-    // }).then(() => {
-    // setIsPending(false);
-    // history.push("/");
-    // });
   }
 
   return (
@@ -69,23 +55,6 @@ function PostCreation(props: any) {
           </CardActions>
         </Grid>
       </Card>
-
-      <CardActions>
-        <Grid
-          container
-          justifyContent="space-around"
-          alignItems="center"
-          direction="row"
-          spacing={0}
-        >
-          <Button size="large" variant="contained" color="primary">
-            All Posts
-          </Button>
-          <Button size="large" variant="contained" color="primary">
-            My Profile
-          </Button>
-        </Grid>
-      </CardActions>
     </form>
   );
 }
