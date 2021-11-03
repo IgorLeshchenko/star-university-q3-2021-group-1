@@ -1,21 +1,32 @@
-import React from "react";
+
+import React from 'react'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 import { render, screen } from "@testing-library/react";
-// import { Provider } from 'react-redux';
-// import { store } from './app/store';
-import Forum from './components/forum/Forum'
+import '@testing-library/jest-dom'
 
-test("render hello world", () => {
-  render(<Forum />);
-  const helloWorldElement = screen.getByText("sort by:");
-  expect(helloWorldElement).toBeInTheDocument();
-});
+import App from './App'
 
-// test('renders learn react link', () => {
-//   const { getByText } = render(
-//     <Provider store={store}>
-//       <App />
-//     </Provider>
-//   );
+test('full app rendering/navigating', () => {
+  const history = createMemoryHistory()
 
-//   expect(getByText(/learn/i)).toBeInTheDocument();
-// });
+  render(
+    <Router history={history}>
+      <App />
+    </Router>
+  )
+  expect(history.location.pathname).toBe('/')
+})
+
+test('Rendering a page login', () => {
+  const history = createMemoryHistory()
+
+  history.push('/login')
+  render(
+    <Router history={history}>
+      <App />
+    </Router>
+  )
+
+  expect(history.location.pathname).toBe('/login')
+})

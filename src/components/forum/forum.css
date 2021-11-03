@@ -1,6 +1,7 @@
 .forum{
     margin: 0 auto;
     max-width: 1000px;
+    padding-top: 100px;
 }
 .forum__sort{
     display: flex;
