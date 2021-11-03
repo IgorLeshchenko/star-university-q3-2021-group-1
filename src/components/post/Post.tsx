@@ -9,12 +9,15 @@ import {
   faArrowDown,
   faComment,
 } from "@fortawesome/free-solid-svg-icons";
+import { usePostStyles } from "./postStyle";
 
 export default function Post({ post }: any) {
-  console.log(post);
+  
+  const classes = usePostStyles();
+
   return (
     <div className="post">
-      <Card>
+      <Card className={classes.post}>
         <CardContent>
           <div className="post__top">
             <div className="post__user">
@@ -36,10 +39,12 @@ export default function Post({ post }: any) {
             </div>
             <p className="forum__bodyText">{post.body}</p>
           </div>
-          <div className="forum__comments">
+          <div className="forum__comments" >
+            <div className='forum__comments_blocks'>
             <FontAwesomeIcon icon={faComment} className='forum__commentIcon comment'/>
             <span>0</span>
             <span>Comments</span>
+            </div>
           </div>
         </CardContent>
       </Card>

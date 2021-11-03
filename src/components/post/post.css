@@ -33,14 +33,33 @@
   padding-left: 40px;
 }
 .forum__comments {
-  display: flex;
-  column-gap: 10px;
-  align-items: center;
-  text-align: start;
   padding-left: 85px;
 }
+
+.forum__comments_blocks{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 15px;
+  width: 150px;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+.forum__comments_blocks:hover{
+  background-color: #EAEEF3;
+}
+
 .arrow {
   color: #bdbdbd;
+  transition: 0.3s;
+}
+
+.forum__upArrow:hover{
+  color: red;
+}
+.forum__downArrow:hover{
+  color: blue;
 }
 .comment {
   color: #bdbdbd;
