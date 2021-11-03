@@ -2,26 +2,7 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
   
-    newButton: {
-      backgroundColor: "#F48023",
-      color: "#FFF",
-  
-      "&:hover": {
-        backgroundColor: "#b45100",
-        borderColor: "#b45100",
-        boxShadow: "none",
-      },
-      "&:active": {
-        boxShadow: "none",
-        backgroundColor: "#b45100",
-        borderColor: "#b45100",
-      },
-      "&:focus": {
-        boxShadow: "0 0 0 0.2rem #b451008f",
-      },
-    },
-  
-    addNewPostButton: {
+    Button: {
       backgroundColor: "#42a5f5",
       color: "#fff",
   
@@ -40,9 +21,6 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   
-    title: {
-      flexGrow: 1,
-    },
   }));
 
   export {useStyles}

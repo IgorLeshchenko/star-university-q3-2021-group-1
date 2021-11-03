@@ -5,7 +5,7 @@ import Forum from "./components/forum/Forum";
 function App() {
   return (
     <div className="App">
-     <Forum/>
+      <Forum />
     </div>
   );
 }

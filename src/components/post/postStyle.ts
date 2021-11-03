@@ -4,6 +4,7 @@ const usePostStyles = makeStyles(() => ({
   
     post: {
       cursor: "pointer",
+      marginTop: '20px',
   
       "&:hover": {
         borderColor: "#b45100",
