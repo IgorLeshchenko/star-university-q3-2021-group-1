@@ -25,7 +25,7 @@ export default function Post({ post }: any) {
           <div>data</div>
         </div>
 
-        <div className="forum__bodyAndVote">
+        <div className="post__bodyAndVote">
           <div className="post__raiting">
             <p>
               <ArrowUpward className={classes.arrowUp}/>
@@ -35,13 +35,13 @@ export default function Post({ post }: any) {
               <ArrowDownward className={classes.arrowDown}/>
             </p>
           </div>
-          <div className='forum__bodyAndTitle'>
-            <h3>{post.title}</h3>
-            <p className="forum__bodyText">{post.body}</p>
+          <div className='post__bodyAndTitle'>
+            <h3 className='post__title'>{post.title}</h3>
+            <p className="post__bodyText">{post.body}</p>
           </div>
         </div>
-        <div className="forum__comments">
-          <div className="forum__comments_blocks">
+        <div className="post__comments">
+          <div className="post__comments_blocks">
             <Comment className={classes.comments}/>
             <span>0</span>
             <span>Comments</span>
