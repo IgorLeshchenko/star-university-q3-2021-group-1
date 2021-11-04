@@ -3,13 +3,10 @@ import { Card } from "@material-ui/core";
 import { CardContent } from "@material-ui/core";
 import { Avatar } from "@material-ui/core";
 import "./post.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUp,
-  faArrowDown,
-  faComment,
-} from "@fortawesome/free-solid-svg-icons";
+
 import { usePostStyles } from "./postStyle";
+// import { ArrowUpward } from "@mui/icons-material";
+import { ArrowUpward, ArrowDownward, Comment } from "@material-ui/icons";
 
 export default function Post({ post }: any) {
   const classes = usePostStyles();
@@ -27,31 +24,25 @@ export default function Post({ post }: any) {
           </div>
           <div>data</div>
         </div>
-        <h3>{post.title}</h3>
+
         <div className="forum__bodyAndVote">
           <div className="post__raiting">
             <p>
-              <FontAwesomeIcon
-                icon={faArrowUp}
-                className="forum__upArrow arrow"
-              />
+              <ArrowUpward className={classes.arrowUp}/>
             </p>
             <div>0</div>
             <p>
-              <FontAwesomeIcon
-                icon={faArrowDown}
-                className="forum__downArrow arrow"
-              />
+              <ArrowDownward className={classes.arrowDown}/>
             </p>
           </div>
-          <p className="forum__bodyText">{post.body}</p>
+          <div className='forum__bodyAndTitle'>
+            <h3>{post.title}</h3>
+            <p className="forum__bodyText">{post.body}</p>
+          </div>
         </div>
         <div className="forum__comments">
           <div className="forum__comments_blocks">
-            <FontAwesomeIcon
-              icon={faComment}
-              className="forum__commentIcon comment"
-            />
+            <Comment className={classes.comments}/>
             <span>0</span>
             <span>Comments</span>
           </div>

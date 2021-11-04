@@ -29,3 +29,10 @@
 .forum__addPostBtn{
     background-color: #42a5f5;
 }
+
+.forum__bodyAndTitle{
+    text-align: center;
+}
+.forum__bodyText{
+    text-align: start;
+}
