@@ -22,9 +22,9 @@ export const theme = createMuiTheme({
 
 export const useStyles = makeStyles({
   root: {
-    height: '980px',
-    display: 'flex',
-    flexDirection: 'row',
+    height: "980px",
+    display: "flex",
+    flexDirection: "row",
   },
   frame: {
     width: "40%",
@@ -63,20 +63,20 @@ export const useStyles = makeStyles({
     marginTop: "20px",
   },
   wrapper: {
-    height: '100%',
-    width: '60%'
+    height: "100%",
+    width: "60%",
   },
   signIn: {
-    display: 'flex',
-    flexDirection: 'row',
-    margin: '100px',
-    justifyContent: 'center'
+    display: "flex",
+    flexDirection: "row",
+    margin: "100px",
+    justifyContent: "center",
   },
   buttonSignIn: {
-    height: '30px',
-    fontSize: '17px',
+    height: "30px",
+    fontSize: "17px",
     fontWeight: "bold",
-    margin: '0px 0px 0px 20px',
-    width: '170px'
-  }
+    margin: "0px 0px 0px 20px",
+    width: "170px",
+  },
 });
