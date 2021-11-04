@@ -3,13 +3,21 @@ import classes from './UserProfileSettings.module.css';
 import ChangeSettingsModal from './ChangeSettingsModal';
 // import onButtunClickHandler from './UserProfilePage';
 
-const UserProfileSettings = (props) => {
+const UserProfileSettings = () => {
   const [isActive, setIsActive] = useState(false);
 
   const onButtunClickHandler = () => {
     console.log('clicked');
+
     setIsActive(true);
   };
+
+  const active = (change: boolean) => {
+    if (change) {
+      setIsActive(false);
+    }
+  };
+
   return (
     <div className={classes.user_settings_btn_wrap}>
       <button
@@ -33,7 +41,7 @@ const UserProfileSettings = (props) => {
         </svg>
       </button>
 
-      {isActive && <ChangeSettingsModal active={isActive} />}
+      {isActive && <ChangeSettingsModal active={active} />}
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 // import logo from './logo.svg';
-import './App.css';
-import UserProfilePage from './components/UserProfile/UserProfilePage';
+import "./App.css";
+import UserProfilePage from "./components/UserProfile/UserProfilePage";
 
 function App() {
   return <UserProfilePage />;

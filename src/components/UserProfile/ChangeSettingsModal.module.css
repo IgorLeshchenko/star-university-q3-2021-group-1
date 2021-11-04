@@ -1,14 +1,17 @@
 .change_settings_modal_wrap {
-  /* border: 1px solid red; */
   text-align: center;
   position: fixed;
   top: 0;
   left: 0;
-  /* width: 80%; */
   z-index: 100;
   overflow: hidden;
-
-  /* display: none; */
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* transition: 2s; */
 }
 
 .change_settings_form {
@@ -16,10 +19,15 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: #bfafaf;
-  opacity: 0.9;
-  padding: 20px;
+  background: #fff7df;
+  /* opacity: 0.9; */
+  padding: 40px;
   border-radius: 15px;
+  width: 400px;
+}
+
+.change_settings_title {
+  margin: 0;
 }
 
 .change_settings_form input {
@@ -27,10 +35,18 @@
 }
 
 .change_settings_form button {
-  width: 250px;
+  width: 150px;
   padding: 12px 30px;
   background: orange;
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.change_settings_btns_wrap {
+  display: flex;
+}
+
+.cancel_btn {
+  margin-left: 15px;
 }
