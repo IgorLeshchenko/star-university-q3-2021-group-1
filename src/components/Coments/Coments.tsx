@@ -24,7 +24,7 @@ const Coments: React.FC<{ message: any }> = (props) => {
 
     function blurHandler() {
         setIsToughc(true)
-        if (newMessage.trim.length > 0) {
+        if (newMessage.trim().length > 0) {
             isEmptyCopy = false
             setIsEmpty(isEmptyCopy)
         }
