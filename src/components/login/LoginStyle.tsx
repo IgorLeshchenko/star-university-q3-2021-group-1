@@ -21,8 +21,13 @@ export const theme = createMuiTheme({
 });
 
 export const useStyles = makeStyles({
+  root: {
+    height: '980px',
+    display: 'flex',
+    flexDirection: 'row',
+  },
   frame: {
-    width: "80%",
+    width: "40%",
     height: "100%",
     display: "flex",
     flexDirection: "column",
@@ -53,15 +58,25 @@ export const useStyles = makeStyles({
     marginTop: "20px",
     marginBottom: "20px",
   },
-  button: {
+  buttonLogIn: {
     fontWeight: "bold",
     marginTop: "20px",
   },
   wrapper: {
-    backgroundImage: 'url(star-university-q3-2021-group-1/static/media/loginPic.f4fbabf2.jpg)',
     height: '100%',
-    width: '100%',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
+    width: '60%'
   },
+  signIn: {
+    display: 'flex',
+    flexDirection: 'row',
+    margin: '100px',
+    justifyContent: 'center'
+  },
+  buttonSignIn: {
+    height: '30px',
+    fontSize: '17px',
+    fontWeight: "bold",
+    margin: '0px 0px 0px 20px',
+    width: '170px'
+  }
 });
