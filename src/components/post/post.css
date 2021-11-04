@@ -11,11 +11,11 @@
   margin-bottom: 20px;
 }
 
-.forum__bodyAndVote {
+.post__bodyAndVote {
   display: flex;
 }
 
-.forum__bodyAndVote {
+.post__bodyAndVote {
   text-align: start;
 }
 .post__raiting {
@@ -25,15 +25,18 @@
   /* width: 150px; */
   padding-left: 14px;
 }
+.post__title{
+  text-align: center;
+}
 
-.forum__bodyText {
+.post__bodyText {
   padding-left: 40px;
 }
-.forum__comments {
+.post__comments {
   padding-left: 85px;
 }
 
-.forum__comments_blocks{
+.post__comments_blocks{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,21 +46,10 @@
   border-radius: 10px;
   transition: 0.5s;
 }
-.forum__comments_blocks:hover{
+.post__comments_blocks:hover{
   background-color: #EAEEF3;
 }
 
-.arrow {
-  color: #bdbdbd;
-  transition: 0.3s;
-}
-
-.forum__upArrow:hover{
-  color: red;
-}
-.forum__downArrow:hover{
-  color: blue;
-}
 .comment {
   color: #bdbdbd;
 }
