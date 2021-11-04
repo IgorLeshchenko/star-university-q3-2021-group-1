@@ -5,7 +5,6 @@ import { Avatar } from "@material-ui/core";
 import "./post.css";
 
 import { usePostStyles } from "./postStyle";
-// import { ArrowUpward } from "@mui/icons-material";
 import { ArrowUpward, ArrowDownward, Comment } from "@material-ui/icons";
 
 export default function Post({ post }: any) {
@@ -28,21 +27,21 @@ export default function Post({ post }: any) {
         <div className="post__bodyAndVote">
           <div className="post__raiting">
             <p>
-              <ArrowUpward className={classes.arrowUp}/>
+              <ArrowUpward className={classes.arrowUp} />
             </p>
             <div>0</div>
             <p>
-              <ArrowDownward className={classes.arrowDown}/>
+              <ArrowDownward className={classes.arrowDown} />
             </p>
           </div>
-          <div className='post__bodyAndTitle'>
-            <h3 className='post__title'>{post.title}</h3>
+          <div className="post__bodyAndTitle">
+            <h3 className="post__title">{post.title}</h3>
             <p className="post__bodyText">{post.body}</p>
           </div>
         </div>
         <div className="post__comments">
           <div className="post__comments_blocks">
-            <Comment className={classes.comments}/>
+            <Comment className={classes.comments} />
             <span>0</span>
             <span>Comments</span>
           </div>

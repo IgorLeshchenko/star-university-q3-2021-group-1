@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Forum from "./components/forum/Forum";
 
 import LoginScreen from "./screens/LoginScreen";
-import MainScreen from "./screens/MainScreen";
+// import MainScreen from "./screens/MainScreen";
 import Layout from "./components/Layout";
 
 function App() {
