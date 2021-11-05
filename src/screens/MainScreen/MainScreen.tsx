@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, TextField } from "@material-ui/core";
 
-import Posts from "../../components/Posts";
+import Posts from "../../components/posts";
 import Layout from "../../components/Layout";
 import { useStyles } from "./style";
 
