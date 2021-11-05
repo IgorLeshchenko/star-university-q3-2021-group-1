@@ -1,7 +1,7 @@
-import React from 'react';
-import UserProfile from './UserProfile';
-import UserProfileSettings from './UserProfileSettings';
-import { useStyles } from './UserProfilePageStyles';
+import React from "react";
+import UserProfile from "./UserProfile";
+import UserProfileSettings from "./UserProfileSettings";
+import { useStyles } from "./UserProfilePageStyles";
 
 const UserProfilePage = () => {
   const classes = useStyles();

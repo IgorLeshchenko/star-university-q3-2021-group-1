@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import ChangeSettingsModal from './ChangeSettingsModal';
-import { useStyles } from './UserProfileSettingsStyles';
+import React, { useState } from "react";
+import ChangeSettingsModal from "./ChangeSettingsModal";
+import { useStyles } from "./UserProfileSettingsStyles";
 // import { IconButton } from '@material-ui/core';
 // import SettingsIcon from '@material-ui/icons/Settings';
 
@@ -10,7 +10,7 @@ const UserProfileSettings = () => {
   const [isActive, setIsActive] = useState(false);
 
   const onButtunClickHandler = () => {
-    console.log('clicked');
+    console.log("clicked");
 
     setIsActive(true);
   };

@@ -1,8 +1,8 @@
-import React from 'react';
-import UserAvatar from './assets/user-avatar.webp';
+import React from "react";
+import UserAvatar from "./assets/user-avatar.webp";
 // import classes from './UserProfile.module.css';
 // import { Avatar } from '@material-ui/core';
-import { useStyles } from './UserProfileStyle';
+import { useStyles } from "./UserProfileStyle";
 // import Badge from '@material-ui/core/Badge';
 // import Avatar from '@material-ui/core/Avatar';
 // import Stack from '@material-ui/core/Stack';

@@ -1,8 +1,8 @@
-import React from 'react';
-import { useStyles } from './ChangeSettingsModalStyles';
-import { theme } from './ChangeSettingsModalStyles';
-import { Button } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core';
+import React from "react";
+import { useStyles } from "./ChangeSettingsModalStyles";
+import { theme } from "./ChangeSettingsModalStyles";
+import { Button } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core";
 
 interface Props {
   active(change: boolean): void;
@@ -53,7 +53,7 @@ const ChangeSettingsModal: React.FC<Props> = (props: Props) => {
               type="button"
               variant="contained"
               className={
-                classes.cancel_btn + ' ' + classes.change_settings_form_btns
+                classes.cancel_btn + " " + classes.change_settings_form_btns
               }
             >
               Cancel
