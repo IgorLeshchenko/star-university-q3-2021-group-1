@@ -32,24 +32,17 @@ const LoginForm: React.FC<Props> = ({ show }) => {
           color="secondary"
           required={true}
         />
-        <Button
-          color="secondary"
-          variant="contained"
-          className={classes.buttonLogIn}
-        >
+        <Button color="secondary" variant="contained" className={classes.buttonLogIn}>
           Log In
         </Button>
       </form>
       <div className={classes.signIn}>
-        <Typography className={classes.paragraph}>
-          New to Redditlone?
-        </Typography>
+        <Typography className={classes.paragraph}>New to Redditlone?</Typography>
         <Button
           color="secondary"
           variant="contained"
           className={classes.buttonSignIn}
-          onClick={signInHandler}
-        >
+          onClick={signInHandler}>
           Sign Up
         </Button>
       </div>

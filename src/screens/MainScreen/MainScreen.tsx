@@ -6,8 +6,7 @@ import Layout from "../../components/Layout";
 import { useStyles } from "./style";
 
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post } =
-    useStyles();
+  const { button, sort, sortText, topNav, searchAndNewPost, post } = useStyles();
 
   return (
     <Layout>

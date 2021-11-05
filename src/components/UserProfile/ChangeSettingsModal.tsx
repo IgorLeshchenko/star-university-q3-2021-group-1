@@ -18,22 +18,14 @@ const ChangeSettingsModal: React.FC<Props> = (props: Props) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div
-        onClick={onHideModalHandler}
-        className={classes.change_settings_modal_wrap}
-      >
-        <form
-          action=""
-          onClick={(e) => e.stopPropagation()}
-          className={classes.change_settings_form}
-        >
+      <div onClick={onHideModalHandler} className={classes.change_settings_modal_wrap}>
+        <form action="" onClick={e => e.stopPropagation()} className={classes.change_settings_form}>
           <h2 className={classes.change_settings_title}>Upload user avatar</h2>
 
           <Button
             variant="contained"
             component="label"
-            className={classes.change_settings_form_input}
-          >
+            className={classes.change_settings_form_input}>
             Сhoose new avatar
             <input type="file" hidden />
           </Button>
@@ -43,8 +35,7 @@ const ChangeSettingsModal: React.FC<Props> = (props: Props) => {
               color="secondary"
               className={classes.change_settings_form_btns}
               type="submit"
-              variant="contained"
-            >
+              variant="contained">
               Change avatar
             </Button>
 
@@ -52,10 +43,7 @@ const ChangeSettingsModal: React.FC<Props> = (props: Props) => {
               onClick={onHideModalHandler}
               type="button"
               variant="contained"
-              className={
-                classes.cancel_btn + " " + classes.change_settings_form_btns
-              }
-            >
+              className={classes.cancel_btn + " " + classes.change_settings_form_btns}>
               Cancel
             </Button>
           </div>
