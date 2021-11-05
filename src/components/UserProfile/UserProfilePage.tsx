@@ -1,9 +1,10 @@
 import React from 'react';
 import UserProfile from './UserProfile';
 import UserProfileSettings from './UserProfileSettings';
-import classes from './UserProfilePage.module.css';
+import { useStyles } from './UserProfilePageStyles';
 
 const UserProfilePage = () => {
+  const classes = useStyles();
   return (
     <div className={classes.container}>
       <UserProfileSettings />
