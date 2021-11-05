@@ -33,7 +33,7 @@
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "format": "prettier --write \"src/**/*.tsx\""
+    "format": "prettier --write \"src/**/*.{ts,tsx}\""
   },
   "eslintConfig": {
     "extends": "react-app"
