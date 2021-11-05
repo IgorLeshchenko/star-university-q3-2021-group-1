@@ -6,7 +6,7 @@ interface Props {
   show(change: boolean): void;
 }
 
-const SignUpForm: React.FC<Props> = ({show}) => {
+const SignUpForm: React.FC<Props> = ({ show }) => {
   const classes = useStyles();
 
   const logInHandler = () => show(false);
@@ -34,24 +34,17 @@ const SignUpForm: React.FC<Props> = ({show}) => {
           color="secondary"
           required={true}
         />
-        <Button
-          color="secondary"
-          variant="contained"
-          className={classes.buttonLogIn}
-        >
+        <Button color="secondary" variant="contained" className={classes.buttonLogIn}>
           Sign Up
         </Button>
       </form>
       <div className={classes.signIn}>
-        <Typography className={classes.paragraph}>
-          Already a Redditloner?
-        </Typography>
+        <Typography className={classes.paragraph}>Already a Redditloner?</Typography>
         <Button
           color="secondary"
           variant="contained"
           className={classes.buttonSignIn}
-          onClick={logInHandler}
-        >
+          onClick={logInHandler}>
           Log In
         </Button>
       </div>
