@@ -34,54 +34,53 @@ const usePostStyles = makeStyles(() => ({
   },
 
   Post__Top: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    marginBottom: '20px'
+    display: "flex",
+    justifyContent: "space-between",
+    marginBottom: "20px",
   },
 
   Post__User: {
-    display: 'flex',
-    alignItems: 'center',
-    columnGap: '10px' 
+    display: "flex",
+    alignItems: "center",
+    columnGap: "10px",
   },
 
   Post__BodyAndVote: {
-    display: 'flex'
+    display: "flex",
   },
 
   Post__Raiting: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    paddingLeft: '14px'
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    paddingLeft: "14px",
   },
 
-  Post__Title:{
-    textAlign: 'center'
+  Post__Title: {
+    textAlign: "center",
   },
 
   Post__BodyText: {
-    paddingLeft: '40px'
+    paddingLeft: "40px",
   },
-  
+
   Post__Comments: {
-    paddingLeft: '85px' 
+    paddingLeft: "85px",
   },
 
   Post__CommentsBlocks: {
-    display: 'flex', 
-    alignItems: 'center',
-    justifyContent: 'center',
-    columnGap: '15px',
-    width: '150px',
-    padding: '5px',
-    borderRadius: '10px',
-    transition: '0.5s',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    columnGap: "15px",
+    width: "150px",
+    padding: "5px",
+    borderRadius: "10px",
+    transition: "0.5s",
     "&:hover": {
-      backgroundColor: '#EAEEF3'
+      backgroundColor: "#EAEEF3",
     },
-  }
-
+  },
 }));
 
 export { usePostStyles };

@@ -1,14 +1,13 @@
 import { makeStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles((theme) => ({
-
+const useStyles = makeStyles(theme => ({
   Button: {
     backgroundColor: "#42a5f5",
     color: "#fff",
 
     "&:hover": {
       backgroundColor: "#1976d2",
-      borderColor: "#fff", 
+      borderColor: "#fff",
       boxShadow: "none",
     },
     "&:active": {
@@ -17,41 +16,40 @@ const useStyles = makeStyles((theme) => ({
       borderColor: "#fff",
     },
     "&:focus": {
-      boxShadow: "0 0 0 0.2rem #cbe3ff84", 
+      boxShadow: "0 0 0 0.2rem #cbe3ff84",
     },
   },
 
   Forum: {
-    margin: '0 auto',
-    maxWidth: '1000px',
-    paddingTop: '100px'
+    margin: "0 auto",
+    maxWidth: "1000px",
+    paddingTop: "100px",
   },
 
   Forum__TopNav: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end'
-},
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+  },
 
   Forum__Sort: {
-    display: 'flex',
-    alignItems: 'center',
-    columnGap: '10px'
-},
+    display: "flex",
+    alignItems: "center",
+    columnGap: "10px",
+  },
 
   Forum__SortText: {
-  fontSize: '20px'
-},
+    fontSize: "20px",
+  },
 
- Forum__SearchAndNewPost: {
-  display: 'flex',
-  flexDirection: 'column',
-  rowGap: '20px'
-},
- Forum__Post: {
-  marginTop: '25px'
-}
-
+  Forum__SearchAndNewPost: {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "20px",
+  },
+  Forum__Post: {
+    marginTop: "25px",
+  },
 }));
 
-export { useStyles }
+export { useStyles };

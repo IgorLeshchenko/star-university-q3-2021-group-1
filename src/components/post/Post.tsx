@@ -9,10 +9,10 @@ export default function Post({ post }: any) {
   const classes = usePostStyles();
 
   return (
-    <Card className={classes.Post}> 
+    <Card className={classes.Post}>
       <CardContent>
         <div className={classes.Post__Top}>
-          <div className={classes.Post__User}> 
+          <div className={classes.Post__User}>
             <Avatar
               alt="User img"
               src="https://www.kino-teatr.ru/movie/kadr/137719/pv_878912.jpg"
@@ -23,9 +23,9 @@ export default function Post({ post }: any) {
         </div>
 
         <div className={classes.Post__BodyAndVote}>
-          <div className={classes.Post__Raiting}> 
+          <div className={classes.Post__Raiting}>
             <p>
-              <ArrowUpward className={classes.ArrowUp} /> 
+              <ArrowUpward className={classes.ArrowUp} />
             </p>
             <div>0</div>
             <p>

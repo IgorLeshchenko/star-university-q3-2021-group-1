@@ -5,8 +5,8 @@ import Posts from "../posts/Posts";
 export default function Forum() {
   const classes = useStyles();
 
-  return ( 
-    <div className={classes.Forum}> 
+  return (
+    <div className={classes.Forum}>
       <div className={classes.Forum__TopNav}>
         <div className={classes.Forum__Sort}>
           <span className={classes.Forum__SortText}>sort by:</span>
