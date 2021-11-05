@@ -1,14 +1,16 @@
-// import { Card, CardContent } from "@mui/material";
-import { Card } from "@material-ui/core";
-import { CardContent } from "@material-ui/core";
-import { Avatar } from "@material-ui/core";
-import "./post.css";
-
-import { usePostStyles } from "./postStyle";
-// import { ArrowUpward } from "@mui/icons-material";
+import React from "react";
+import { Card, CardContent, Avatar } from "@material-ui/core";
 import { ArrowUpward, ArrowDownward, Comment } from "@material-ui/icons";
 
-export default function Post({ post }: any) {
+import { IPost } from "./types";
+import { usePostStyles } from "./style";
+import "./post.css";
+
+type Props = {
+  post: IPost;
+};
+
+const Post: React.FC<Props> = ({ post }) => {
   const classes = usePostStyles();
 
   return (
@@ -50,4 +52,6 @@ export default function Post({ post }: any) {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default Post;
