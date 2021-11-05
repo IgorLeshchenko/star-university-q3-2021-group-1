@@ -1,52 +1,52 @@
-import React from 'react'
-import { AppBar, Toolbar, Typography, Button } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
-import HideOnScroll from '../HideOnScroll'
-import logoPng from './assets/logo.png'
-import { useStyles } from './style'
+import HideOnScroll from "../HideOnScroll";
+import logoPng from "./assets/logo.png";
+import { useStyles } from "./style";
 
 const Navbar: React.FC = (props) => {
-  const { root, logoBtn, logo, homeButton, loginButton } = useStyles()
+  const { root, logoBtn, logo, homeButton, loginButton } = useStyles();
 
   return (
     <React.Fragment>
       <HideOnScroll {...props}>
         <AppBar>
           <Toolbar className={root}>
-            <Button className={logoBtn} component={Link} to='/'>
+            <Button className={logoBtn} component={Link} to="/">
               <img
                 src={logoPng}
                 className={logo}
-                alt='Reditlone logo'
-                loading='lazy'
+                alt="Reditlone logo"
+                loading="lazy"
               />
             </Button>
             <div>
               <Button
-                variant='contained'
+                variant="contained"
                 className={homeButton}
                 component={Link}
-                data-testid='homeRoute'
-                to='/'
+                data-testid="homeRoute"
+                to="/"
               >
-                <Typography variant='button'>Home</Typography>
+                <Typography variant="button">Home</Typography>
               </Button>
               <Button
-                variant='contained'
+                variant="contained"
                 className={loginButton}
                 component={Link}
-                data-testid='loginRoute'
-                to='/login'
+                data-testid="loginRoute"
+                to="/login"
               >
-                <Typography variant='button'>Login</Typography>
+                <Typography variant="button">Login</Typography>
               </Button>
             </div>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
