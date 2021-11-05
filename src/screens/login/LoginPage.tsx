@@ -5,6 +5,7 @@ import loginPic from "../login/pictures/loginPic.jpg";
 import LoginForm from "./LoginForm";
 import { useState } from "react";
 import SignUpForm from "./SignUpForm";
+
 const LoginPage = () => {
   const classes = useStyles();
   const [showLogin, setShowLogin] = useState(true);
