@@ -6,7 +6,7 @@ interface Props {
   show(change: boolean): void;
 }
 
-const SignUpForm: React.FC<Props> = ({show}) => {
+const SignUpForm: React.FC<Props> = ({ show }) => {
   const classes = useStyles();
 
   const logInHandler = () => show(false);
