@@ -46,6 +46,7 @@ export const useStyles = makeStyles({
     letterSpacing: "0.05em",
     textTransform: "capitalize",
     margin: "20px 0px",
+    fontFamily: "Roboto, sans-serif",
   },
   paragraph: {
     fontFamily: "Roboto, sans-serif",
