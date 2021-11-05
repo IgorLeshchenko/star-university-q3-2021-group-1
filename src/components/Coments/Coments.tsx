@@ -1,10 +1,11 @@
 import Button from '@mui/material/Button'
 import { TextField } from '@material-ui/core'
 import AddCommentTwoToneIcon from '@mui/icons-material/AddCommentTwoTone';
-import './Coments.css'
 import React, { useEffect, useState } from 'react';
+import { useStyles } from './ComentsStyle';
 
 const Coments: React.FC<{ message: any }> = (props) => {
+    const classes=useStyles()
     const [newMessage, setNewMessage] = useState('')
     const [isEmpty, setIsEmpty] = useState(true)
     const [isToughc, setIsToughc] = useState(false)
@@ -13,8 +14,8 @@ const Coments: React.FC<{ message: any }> = (props) => {
     let touch: boolean = isToughc
     let messageCopy: string = newMessage
 
-    function changeHandler(event: any) {
-        setNewMessage(event.target.value)
+    function changeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+        setNewMessage(event.currentTarget.value)
         touch = true
         setIsToughc(touch)
         isEmptyCopy = false
@@ -46,7 +47,7 @@ const Coments: React.FC<{ message: any }> = (props) => {
 
     }, [touch, isEmptyCopy, messageCopy])
 
-    return <div className='wrapper'>
+    return <div className={classes.wrapper}>
         <TextField
             multiline rows='4'
             onBlur={blurHandler}
@@ -56,7 +57,7 @@ const Coments: React.FC<{ message: any }> = (props) => {
             placeholder='Your message'
             value={messageCopy}
         />
-        {showError && <p className='errorMsg'>field is empty</p>}
+        {showError && <p className={classes.errorMsg}>field is empty</p>}
         <Button
             className='addComentBtn'
             onClick={clickHandler}
