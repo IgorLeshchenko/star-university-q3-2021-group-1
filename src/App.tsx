@@ -1,10 +1,23 @@
 import React from "react";
-// import logo from './logo.svg';
-import "./App.css";
-import UserProfilePage from "./components/UserProfile/UserProfilePage";
+import LoginPage from "../src/screens/login/LoginPage";
+
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Forum from "./components/forum/Forum";
+
+import MainScreen from "./screens/MainScreen";
+import Layout from "./components/Layout";
 
 function App() {
-  return <UserProfilePage />;
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Layout>
+          <Route path="/" exact component={Forum} />
+          <Route path="/login" component={LoginPage} />
+        </Layout>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;
