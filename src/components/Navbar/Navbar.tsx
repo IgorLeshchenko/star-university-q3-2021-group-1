@@ -91,8 +91,7 @@ const Navbar: React.FC = props => {
                 className={classes.homeButton}
                 component={Link}
                 data-testid="homeRoute"
-                to="/"
-              >
+                to="/">
                 <Typography variant="button">Home</Typography>
               </Button>
               <Button
@@ -100,8 +99,7 @@ const Navbar: React.FC = props => {
                 className={classes.loginButton}
                 component={Link}
                 data-testid="loginRoute"
-                to="/login"
-              >
+                to="/login">
                 <Typography variant="button">Login</Typography>
               </Button>
             </div>
