@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>Hello World from group 1!!!</p>
-        <ComentsTotal/>
+        <ComentsTotal />
       </header>
     </div>
   );
