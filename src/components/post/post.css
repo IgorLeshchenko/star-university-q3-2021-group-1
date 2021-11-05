@@ -1,4 +1,3 @@
-
 .post__user {
   display: flex;
   align-items: center;
@@ -25,7 +24,7 @@
   /* width: 150px; */
   padding-left: 14px;
 }
-.post__title{
+.post__title {
   text-align: center;
 }
 
@@ -36,7 +35,7 @@
   padding-left: 85px;
 }
 
-.post__comments_blocks{
+.post__comments_blocks {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,8 +45,8 @@
   border-radius: 10px;
   transition: 0.5s;
 }
-.post__comments_blocks:hover{
-  background-color: #EAEEF3;
+.post__comments_blocks:hover {
+  background-color: #eaeef3;
 }
 
 .comment {

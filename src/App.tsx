@@ -1,23 +1,18 @@
-import React from "react";
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Forum from "./components/forum/Forum";
-
-import LoginScreen from "./screens/LoginScreen";
-import MainScreen from "./screens/MainScreen";
-import Layout from "./components/Layout";
+import LoginScreen from './screens/LoginScreen'
+import MainScreen from './screens/MainScreen'
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Layout>
-          <Route path="/" exact component={Forum} />
-          <Route path="/login" component={LoginScreen} />
-        </Layout>
+        <Route path='/' exact component={MainScreen} />
+        <Route path='/login' component={LoginScreen} />
       </Switch>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App

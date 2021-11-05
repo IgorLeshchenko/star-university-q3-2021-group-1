@@ -1,29 +1,24 @@
-import { useEffect, useState } from "react";
-import Post from "../post/Post";
+import { useEffect, useState } from 'react'
 
-export default function Posts() {
-const [posts, setPosts] = useState([])
+import { IPost } from '../Post/types'
+import Post from '../Post'
 
-interface IPost{
-    userId: number,
-    id: number,
-    title: string,
-    body: string
-}
-
+const Posts: React.FC = () => {
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch('https://jsonplaceholder.typicode.com/posts')
       .then((response) => response.json())
-      .then((json) => setPosts(json));
-  }, []);
-  console.log(posts)
+      .then((json) => setPosts(json))
+  }, [])
 
   return (
     <div>
-      {
-          posts.map(post => <Post post={post} key={post}/>)
-      }
+      {posts.map((post: IPost) => (
+        <Post post={post} key={post.id} />
+      ))}
     </div>
-  );
+  )
 }
+
+export default Posts
