@@ -8,8 +8,8 @@ const Posts: React.FC = () => {
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((json) => setPosts(json));
+      .then(response => response.json())
+      .then(json => setPosts(json));
   }, []);
 
   return (

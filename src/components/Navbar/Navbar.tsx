@@ -6,7 +6,7 @@ import HideOnScroll from "../HideOnScroll";
 import logoPng from "./assets/logo.png";
 import { useStyles } from "./style";
 
-const Navbar: React.FC = (props) => {
+const Navbar: React.FC = props => {
   const { root, logoBtn, logo, homeButton, loginButton } = useStyles();
 
   return (
@@ -15,12 +15,7 @@ const Navbar: React.FC = (props) => {
         <AppBar>
           <Toolbar className={root}>
             <Button className={logoBtn} component={Link} to="/">
-              <img
-                src={logoPng}
-                className={logo}
-                alt="Reditlone logo"
-                loading="lazy"
-              />
+              <img src={logoPng} className={logo} alt="Reditlone logo" loading="lazy" />
             </Button>
             <div>
               <Button
@@ -28,8 +23,7 @@ const Navbar: React.FC = (props) => {
                 className={homeButton}
                 component={Link}
                 data-testid="homeRoute"
-                to="/"
-              >
+                to="/">
                 <Typography variant="button">Home</Typography>
               </Button>
               <Button
@@ -37,8 +31,7 @@ const Navbar: React.FC = (props) => {
                 className={loginButton}
                 component={Link}
                 data-testid="loginRoute"
-                to="/login"
-              >
+                to="/login">
                 <Typography variant="button">Login</Typography>
               </Button>
             </div>

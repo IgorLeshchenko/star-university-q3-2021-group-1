@@ -12,7 +12,7 @@ test("full app rendering/navigating", () => {
   render(
     <Router history={history}>
       <App />
-    </Router>
+    </Router>,
   );
   expect(history.location.pathname).toBe("/");
 });
@@ -24,7 +24,7 @@ test("Rendering a page login", () => {
   render(
     <Router history={history}>
       <App />
-    </Router>
+    </Router>,
   );
 
   expect(history.location.pathname).toBe("/login");
