@@ -45,6 +45,11 @@ export const useStyles = makeStyles({
     avatar:{
         width: '20px', 
         height: '20px',
+    },
+    comentItem:{
+      display:'flex',
+      flexDirection:'column',
+      alignItems:'center'
     }
 
 });
