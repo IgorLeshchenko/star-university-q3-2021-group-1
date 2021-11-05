@@ -50,6 +50,15 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
+          name: Add name
+          command: git config --global user.name "Pavel Levchenko"
+      - run:
+          name: Add email
+          command: git config --global user.name "plevchenko@star.global"
+      - add_ssh_keys:
+          fingerprints:
+            - "8f:61:25:e5:5b:c7:8a:e1:86:24:c0:8d:1c:e8:50:91"
+      - run:
           name: Build project
           command: npm run build
       - run:
@@ -60,63 +69,7 @@ workflows:
   stage_test_approve_deploy:
     jobs:
     - test
-    - hold:
-          type: approval
-          requires:
-            - test
     - deploy:
-          requires:
-            - hold
-
-
-#  workflows:
-#    test-workflow:
-#      jobs:
-#       - test
-#       - format
-#       - lint
-#       - build
-#       - deploy
-    # steps:
-    #   - checkout
-    #   - restore_cache:
-    #       keys:
-    #         - v1-dependencies-{{ checksum "package.json" }}
-    #         - v1-dependencies-
-
-    #   - run: npm install
-
-    #   - save_cache:
-    #       paths:
-    #         - node_modules
-    #       key: v1-dependencies-{{ checksum "package.json" }}
-
-    #   - run: npm run test
-    #   - run: npm run format
-    #   - run: npm run lint
-
-  # deploy:
-  #   docker:
-  #     - image: circleci/node:12
-
-  #     steps:
-  #       - checkout
-  # - run: npm run build
-  # - run: npm run deploy
-
-
-
-  # workflows:
-  # stage_test_approve_deploy:
-  #   jobs:
-  #     - stage
-  #     - test:
-  #         requires:
-  #           - stage
-  #     - hold:
-  #         type: approval
-  #         requires:
-  #           - test
-  #     - deploy:
-  #         requires:
-  #           - hold
+          filters:
+            branches:
+              only: main
