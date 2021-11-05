@@ -1,6 +1,5 @@
-import { Avatar } from "@mui/material"
+import { Avatar } from "@material-ui/core"
 import { TextField } from '@material-ui/core'
-import { deepOrange } from "@mui/material/colors"
 import { useStyles } from './ComentsStyle';
 
 interface Props {
@@ -12,8 +11,9 @@ const Comment: React.FC<Props> = ({ items }) => {
         <div className='comentMessage'>
             {items.map((item, id) => (
             <div className='comentItem' key={item} >
-                <div className='userAvatar'>
-                    <Avatar src='' alt={classes.userAvatar} sx={{ width: 20, height: 20, bgcolor: deepOrange[500] }} />
+                <div className={classes.userAvatar}>
+                    <Avatar  src='' alt='userAvatar' className={classes.avatar}  />
+                    
                     <p className={classes.nickname}>User nickname</p>
                 </div>
                 <TextField multiline margin='dense' disabled variant='outlined' defaultValue={item} ></TextField>

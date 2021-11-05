@@ -1,6 +1,5 @@
-import Button from '@mui/material/Button'
+import Button from '@material-ui/core/Button'
 import { TextField } from '@material-ui/core'
-import AddCommentTwoToneIcon from '@mui/icons-material/AddCommentTwoTone';
 import React, { useEffect, useState } from 'react';
 import { useStyles } from './ComentsStyle';
 
@@ -62,8 +61,7 @@ const Coments: React.FC<{ message: any }> = (props) => {
             className='addComentBtn'
             onClick={clickHandler}
             variant='contained'
-            size='small'
-            endIcon={<AddCommentTwoToneIcon />}>
+            size='small'>
             Add coment
         </Button>
     </div>

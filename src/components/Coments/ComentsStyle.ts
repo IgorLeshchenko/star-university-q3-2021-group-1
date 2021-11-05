@@ -41,5 +41,10 @@ export const useStyles = makeStyles({
     
     nickname: {
         transform: "translate(5px, 0px)"
+    },
+    avatar:{
+        width: '20px', 
+        height: '20px',
     }
+
 });
