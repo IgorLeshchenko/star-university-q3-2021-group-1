@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { IPost } from "../Post/types";
-import Post from "../Post";
+import { IPost } from "../post/types";
+import Post from "../post";
 
 const Posts: React.FC = () => {
   const [posts, setPosts] = useState([]);
