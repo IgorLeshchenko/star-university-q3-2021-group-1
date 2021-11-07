@@ -1,51 +1,35 @@
-import {
-  Grid,
-  TextField,
-  Button,
-  CardActions,
-  Typography,
-} from "@material-ui/core";
+import { TextField, Button, Typography } from "@material-ui/core";
 import Card from "@mui/material/Card";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import classes from "./PostCreation.module.css";
+import { useStyles } from "./PostCreationStyles";
 
 function PostCreation() {
+  const classes = useStyles();
   return (
     <form className={classes.form}>
-      <Card>
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          direction="column"
-          style={{ minHeight: "70vh" }}
-          spacing={5}
-        >
-          <Grid item>
-            <Typography variant="h5" color="primary">
-              Create a New Post
-            </Typography>
-          </Grid>
+      <Card className={classes.card}>
+        <div className={classes.pageform}>
+          <Typography className={classes.text}>Create a New Post</Typography>
+
           <TextField
+            className={classes.textfield}
             required
             variant="outlined"
             label="Title"
-            style={{ marginBottom: "2em" }}
           />
 
           <TextareaAutosize
+            className={classes.textarea}
             id="outlined-textarea"
             aria-label="empty textarea"
             placeholder="Your Post..."
-            style={{ width: 380, height: 180, marginBottom: "2em" }}
+            minRows={8}
           />
 
-          <CardActions>
-            <Button size="large" variant="contained" color="primary">
-              Puplish a New Post
-            </Button>
-          </CardActions>
-        </Grid>
+          <Button size="large" variant="contained" className={classes.Button}>
+            Puplish a New Post
+          </Button>
+        </div>
       </Card>
     </form>
   );
