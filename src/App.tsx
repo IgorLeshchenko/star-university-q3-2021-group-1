@@ -10,7 +10,7 @@ import PostCreation from "./components/postcreation/PostCreation";
 function App() {
   return (
     <BrowserRouter>
-      <PostCreation />
+      {/* <PostCreation /> */}
       <Switch>
         <Layout>
           <Route path="/" exact component={Forum} />
