@@ -11,12 +11,7 @@ function PostCreation() {
         <div className={classes.pageform}>
           <Typography className={classes.text}>Create a New Post</Typography>
 
-          <TextField
-            className={classes.textfield}
-            required
-            variant="outlined"
-            label="Title"
-          />
+          <TextField className={classes.textfield} required variant="outlined" label="Title" />
 
           <TextareaAutosize
             className={classes.textarea}

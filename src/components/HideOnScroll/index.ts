@@ -1,3 +1,3 @@
-import HideOnScroll from './HideOnScroll'
+import HideOnScroll from "./HideOnScroll";
 
-export default HideOnScroll
+export default HideOnScroll;

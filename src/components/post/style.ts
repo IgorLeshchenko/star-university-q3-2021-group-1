@@ -10,7 +10,7 @@ const usePostStyles = makeStyles(() => ({
       boxShadow: "4px 11px 28px 0px rgba(34, 60, 80, 0.2)",
     },
   },
-  ArrowUp: { 
+  ArrowUp: {
     color: "#696969",
     transition: "0.3s",
 
