@@ -8,11 +8,11 @@ const links = [
   { testid: "loginRoute", location: "/login" },
 ];
 
-test.each(links)("Check if Nav Bar have links.", (link) => {
+test.each(links)("Check if Nav Bar have links.", link => {
   render(
     <BrowserRouter>
       <NavBar />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
   const linkDom = screen.getByTestId(link.testid);
 
@@ -24,7 +24,7 @@ test("Check if have logo and link to home page", () => {
   render(
     <BrowserRouter>
       <NavBar />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
   const logoDom = screen.getByAltText(/Reditlone logo/);
 
