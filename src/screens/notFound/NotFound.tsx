@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Typography } from "@material-ui/core";
 
-import { useImageOnLoad } from "../../hooks";
+import { useImageOnLoad } from "../../app/hooks";
 import imgNotFound from "./assets/notFound.jpg";
 import { useStyles } from "./style";
 

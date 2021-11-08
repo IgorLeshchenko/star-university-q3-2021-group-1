@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core";
 
-import { useImageOnLoad } from "../../hooks";
+import { useImageOnLoad } from "../../app/hooks";
 import LoginForm from "./components/loginForm";
 import SignUpForm from "./components/signUpForm";
 import loginPic from "../login/pictures/loginPic.jpg";
