@@ -1,13 +1,13 @@
 import { makeStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   text: {
     color: "#42a5f5",
     fontFamily: "#42a5f5",
     fontSize: "1.6rem",
   },
 
-  Button: {
+  button: {
     backgroundColor: "#42a5f5",
     color: "#fff",
 

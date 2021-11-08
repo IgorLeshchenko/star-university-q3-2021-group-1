@@ -31,6 +31,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#EAEAEA",
     color: "#1682FD",
 
+    "& .MuiButton-label": {
+      color: "#1682FD",
+    },
+
     "&:hover": {
       backgroundColor: "#cbe3ff",
       borderColor: "#cbe3ff",

@@ -1,6 +1,8 @@
+import React from "react";
 import { Avatar } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
-import { useStyles } from "./ComentsStyle";
+
+import { useStyles } from "./style";
 
 interface Props {
   items: string[];

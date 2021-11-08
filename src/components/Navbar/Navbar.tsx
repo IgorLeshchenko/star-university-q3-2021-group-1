@@ -2,7 +2,7 @@ import React from "react";
 import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-import HideOnScroll from "../HideOnScroll";
+import HideOnScroll from "../hideOnScroll";
 import logoPng from "./assets/logo.png";
 import { useStyles } from "./style";
 
@@ -12,7 +12,7 @@ const Navbar: React.FC = props => {
   return (
     <React.Fragment>
       <HideOnScroll {...props}>
-        <AppBar>
+        <AppBar color="transparent">
           <Toolbar className={root}>
             <Button className={logoBtn} component={Link} to="/">
               <img src={logoPng} className={logo} alt="Reditlone logo" loading="lazy" />

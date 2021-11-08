@@ -1,7 +1,7 @@
-import { makeStyles, createMuiTheme } from "@material-ui/core";
+import { makeStyles, createTheme } from "@material-ui/core";
 import { orange } from "@material-ui/core/colors";
 
-export const theme = createMuiTheme({
+export const theme = createTheme({
   palette: {
     primary: {
       main: "#FFF",
@@ -22,7 +22,7 @@ export const theme = createMuiTheme({
 
 export const useStyles = makeStyles({
   root: {
-    height: "980px",
+    height: "100vh",
     display: "flex",
     flexDirection: "row",
   },
@@ -51,6 +51,7 @@ export const useStyles = makeStyles({
   paragraph: {
     fontFamily: "Roboto, sans-serif",
     fontSize: "20px",
+    textAlign: "center",
     letterSpacing: "0.05em",
   },
   input: {

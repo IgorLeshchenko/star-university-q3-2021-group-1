@@ -1,13 +1,20 @@
+import React, { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import { TextField } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
-import { useStyles } from "./ComentsStyle";
 
-const Coments: React.FC<{ message: any }> = props => {
+import { useStyles } from "./style";
+
+type Props = {
+  message: any;
+};
+
+const Coments: React.FC<Props> = ({ message }) => {
   const classes = useStyles();
+
   const [newMessage, setNewMessage] = useState("");
   const [isEmpty, setIsEmpty] = useState(true);
   const [isToughc, setIsToughc] = useState(false);
+
   const showError: boolean = isEmpty && isToughc;
   let isEmptyCopy: boolean = isEmpty;
   let touch: boolean = isToughc;
@@ -32,7 +39,7 @@ const Coments: React.FC<{ message: any }> = props => {
   function clickHandler() {
     setIsToughc(true);
     if (newMessage) {
-      props.message(newMessage);
+      message(newMessage);
       isEmptyCopy = false;
       setIsEmpty(isEmptyCopy);
       messageCopy = "";
@@ -61,4 +68,5 @@ const Coments: React.FC<{ message: any }> = props => {
     </div>
   );
 };
+
 export default Coments;

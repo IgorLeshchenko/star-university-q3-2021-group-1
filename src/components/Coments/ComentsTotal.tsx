@@ -1,3 +1,4 @@
+import React from "react";
 import Coments from "./Coments";
 import Coment from "./Coment";
 import { useEffect, useState } from "react";
