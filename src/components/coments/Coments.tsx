@@ -47,8 +47,6 @@ const Coments: React.FC<Props> = ({ message }) => {
     }
   }
 
-  useEffect(() => {}, [touch, isEmptyCopy, messageCopy]);
-
   return (
     <div className={classes.wrapper}>
       <TextField
