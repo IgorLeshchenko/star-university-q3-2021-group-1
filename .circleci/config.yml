@@ -66,7 +66,7 @@ jobs:
           command: npm run deploy
 
 workflows:
-  stage_test_approve_deploy:
+  test_approve_deploy:
     jobs:
     - test:
           filters:
