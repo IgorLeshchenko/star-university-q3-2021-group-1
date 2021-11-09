@@ -16,17 +16,23 @@ const Coments: React.FC<Props> = ({ message }) => {
   const [isToughc, setIsToughc] = useState(false);
 
   const showError: boolean = isEmpty && isToughc;
+  let isEmptyCopy: boolean = isEmpty;
+  let touch: boolean = isToughc;
+  let messageCopy: string = newMessage;
 
   function changeHandler(event: React.ChangeEvent<HTMLInputElement>) {
     setNewMessage(event.currentTarget.value);
-    setIsToughc(true);
-    setIsEmpty(false);
+    touch = true;
+    setIsToughc(touch);
+    isEmptyCopy = false;
+    setIsEmpty(isEmptyCopy);
   }
 
   function blurHandler() {
     setIsToughc(true);
     if (newMessage.trim().length > 0) {
-      setIsEmpty(false);
+      isEmptyCopy = false;
+      setIsEmpty(isEmptyCopy);
     }
   }
 
@@ -34,12 +40,14 @@ const Coments: React.FC<Props> = ({ message }) => {
     setIsToughc(true);
     if (newMessage) {
       message(newMessage);
-      setIsEmpty(false);
-      setNewMessage("");
+      isEmptyCopy = false;
+      setIsEmpty(isEmptyCopy);
+      messageCopy = "";
+      setNewMessage(messageCopy);
     }
   }
 
-  useEffect(() => {}, [isToughc, isEmpty, newMessage]);
+  // useEffect(() => {}, [touch, isEmptyCopy, messageCopy]);
 
   return (
     <div className={classes.wrapper}>
@@ -51,7 +59,7 @@ const Coments: React.FC<Props> = ({ message }) => {
         margin="dense"
         variant="outlined"
         placeholder="Your message"
-        value={newMessage}
+        value={messageCopy}
       />
       {showError && <p className={classes.errorMsg}>field is empty</p>}
       <Button className="addComentBtn" onClick={clickHandler} variant="contained" size="small">
