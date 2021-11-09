@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/styles";
 
 const usePostStyles = makeStyles(() => ({
-  Post: {
+  post: {
     cursor: "pointer",
     marginTop: "20px",
 
@@ -10,7 +10,7 @@ const usePostStyles = makeStyles(() => ({
       boxShadow: "4px 11px 28px 0px rgba(34, 60, 80, 0.2)",
     },
   },
-  ArrowUp: {
+  arrowUp: {
     color: "#696969",
     transition: "0.3s",
 
@@ -19,7 +19,7 @@ const usePostStyles = makeStyles(() => ({
     },
   },
 
-  ArrowDown: {
+  arrowDown: {
     color: "#696969",
     transition: "0.3s",
 
@@ -28,47 +28,47 @@ const usePostStyles = makeStyles(() => ({
     },
   },
 
-  Comments: {
+  comments: {
     color: "#696969",
     transition: "0.3s",
   },
 
-  Post__Top: {
+  post__Top: {
     display: "flex",
     justifyContent: "space-between",
     marginBottom: "20px",
   },
 
-  Post__User: {
+  post__User: {
     display: "flex",
     alignItems: "center",
     columnGap: "10px",
   },
 
-  Post__BodyAndVote: {
+  post__BodyAndVote: {
     display: "flex",
   },
 
-  Post__Raiting: {
+  post__Raiting: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     paddingLeft: "14px",
   },
 
-  Post__Title: {
+  post__Title: {
     textAlign: "center",
   },
 
-  Post__BodyText: {
+  post__BodyText: {
     paddingLeft: "40px",
   },
 
-  Post__Comments: {
+  post__Comments: {
     paddingLeft: "85px",
   },
 
-  Post__CommentsBlocks: {
+  post__CommentsBlocks: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

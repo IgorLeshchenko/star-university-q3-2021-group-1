@@ -13,10 +13,10 @@ const Post: React.FC<Props> = ({ post }) => {
   const classes = usePostStyles();
 
   return (
-    <Card className={classes.Post}>
+    <Card className={classes.post}>
       <CardContent>
-        <div className={classes.Post__Top}>
-          <div className={classes.Post__User}>
+        <div className={classes.post__Top}>
+          <div className={classes.post__User}>
             <Avatar
               alt="User img"
               src="https://www.kino-teatr.ru/movie/kadr/137719/pv_878912.jpg"
@@ -26,24 +26,24 @@ const Post: React.FC<Props> = ({ post }) => {
           <div>data</div>
         </div>
 
-        <div className={classes.Post__BodyAndVote}>
-          <div className={classes.Post__Raiting}>
+        <div className={classes.post__BodyAndVote}>
+          <div className={classes.post__Raiting}>
             <p>
-              <ArrowUpward className={classes.ArrowUp} />
+              <ArrowUpward className={classes.arrowUp} />
             </p>
             <div>0</div>
             <p>
-              <ArrowDownward className={classes.ArrowDown} />
+              <ArrowDownward className={classes.arrowDown} />
             </p>
           </div>
           <div>
-            <h3 className={classes.Post__Title}>{post.title}</h3>
-            <p className={classes.Post__BodyText}>{post.body}</p>
+            <h3 className={classes.post__Title}>{post.title}</h3>
+            <p className={classes.post__BodyText}>{post.body}</p>
           </div>
         </div>
-        <div className={classes.Post__Comments}>
-          <div className={classes.Post__CommentsBlocks}>
-            <Comment className={classes.Comments} />
+        <div className={classes.post__Comments}>
+          <div className={classes.post__CommentsBlocks}>
+            <Comment className={classes.comments} />
             <span>0</span>
             <span>Comments</span>
           </div>
