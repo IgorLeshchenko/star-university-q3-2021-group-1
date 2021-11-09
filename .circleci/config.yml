@@ -71,7 +71,7 @@ workflows:
     - test:
           filters:
             branches:
-            ignore: gh-pages
+              ignore: gh-pages
             
     - deploy:
           filters:
