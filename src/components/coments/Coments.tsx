@@ -17,7 +17,6 @@ const Coments: React.FC<Props> = ({ message }) => {
 
   const showError: boolean = isEmpty && isToughc;
 
-
   function changeHandler(event: React.ChangeEvent<HTMLInputElement>) {
     setNewMessage(event.currentTarget.value);
     setIsToughc(true);
@@ -36,7 +35,7 @@ const Coments: React.FC<Props> = ({ message }) => {
     if (newMessage) {
       message(newMessage);
       setIsEmpty(false);
-      setNewMessage('');
+      setNewMessage("");
     }
   }
 
