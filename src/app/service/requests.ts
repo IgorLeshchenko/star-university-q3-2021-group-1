@@ -13,9 +13,14 @@ class Requests {
        return response.data
     }
 
-    // addNewPost(title:string, body:string,parent:string){
-    //     axios.post('https://starforum.herokuapp.com/api/v1/posts', {title,body,parent})
-    // }
+    addNewPost(title:string, body:string,parent:string){
+        const header ={
+            title: title,
+            body: body,
+            parent: parent
+          }
+        axios.post('https://starforum.herokuapp.com/api/v1/posts', header)
+    }
 
     async getPostByID(id:string){
         const response =await axios.get(`https://starforum.herokuapp.com/api/v1/posts/${id}`)
@@ -28,17 +33,19 @@ class Requests {
         console.log(response.data)
     }
 
-    addUser(name:string, pass:string){//WRONG FORMAT
-        const body={
+   async addUser(name:string, pass:string){// Ошибка 400 - пользователь уже существует, из-за двойного запроса
+
+        const params={}
+        const data={
             username:name,
             password:pass
         }
      
-        axios.post('https://starforum.herokuapp.com/api/v1/users',body)
+       await axios.post('https://starforum.herokuapp.com/api/v1/users', data, params)
     }
 
-    async getToken(){//401 ERR 
-        const response =await axios.get(`https://starforum.herokuapp.com/api/v1/token`)
+    async getToken(username:string){//Ошибка 401 - неавторизирован либо обект, не уверен является ли он нужным нам токеном
+        const response =await axios.get(`https://starforum.herokuapp.com/api/v1/token/${username}`)
         console.log(response)
         return response
     }
@@ -55,12 +62,13 @@ class Requests {
         return response.data
     }
 
-    async getUserIconByUsername(username:string){
-        const response =await axios.get(`https://starforum.herokuapp.com/api/v1/users/${username}/icon`)
-        console.log(response.data)
-        return response.data
+    loginUser(name:string, pass:string){// Похоже работает, но вывести статус пользователя в консоль не получилось
+        const data={
+            username:name,
+            password:pass
+        }
+        axios.post('https://starforum.herokuapp.com/api/v1/login',data)
     }
     
-
 }
 export default Requests
