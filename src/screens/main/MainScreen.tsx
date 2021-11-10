@@ -30,7 +30,7 @@ const MainScreen: React.FC = () => {
             <Button variant="outlined" className={button}>
               New
             </Button>
-            <SortByTopButton/>
+            <SortByTopButton />
           </div>
           <div className={searchAndNewPost}>
             <TextField id="standard-basic" label="Search" variant="standard" />

@@ -2,10 +2,24 @@ import React from "react";
 import { Button } from "@material-ui/core";
 import { useStyles } from "../style";
 
+interface Post {
+  author: string,
+  body: string,
+  children: Post[],
+  date: string,
+  level: number,
+  parent: string,
+  title: string,
+  upvotes: number,
+  __v?: number,
+  _id: string,
+}
+
+
 const SortByTopButton = () => {
   const { button } = useStyles();
 
-  const dummyPosts = [
+  const dummyPosts: Post[] = [
     {
       author: "a",
       body: "test1",
@@ -128,10 +142,10 @@ const SortByTopButton = () => {
     },
   ];
 
-    const sortByTop = () => {
-        const sortedByTop = dummyPosts.sort((a: any, b: any) => b.upvotes - a.upvotes);
-        console.log(sortedByTop);
-    }
+  const sortByTop = () => {
+    const sortedByTop = dummyPosts.sort((a: Post, b: Post) => b.upvotes - a.upvotes);
+    console.log(sortedByTop);
+  };
 
   return (
     <div>
