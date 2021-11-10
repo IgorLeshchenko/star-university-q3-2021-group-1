@@ -8,7 +8,7 @@ import Post from "../../components/post";
 
 import { useStyles } from "./style";
 
-import SortByTopButton from './sort/SortByTopButton'
+import SortByTopButton from "./sort/SortByTopButton";
 
 const MainScreen: React.FC = () => {
   const { button, sort, sortText, topNav, searchAndNewPost, post } = useStyles();
