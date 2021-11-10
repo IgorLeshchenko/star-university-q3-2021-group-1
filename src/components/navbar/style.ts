@@ -5,6 +5,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     display: "flex",
     justifyContent: "space-between",
+    backgroundColor: '#fff'
   },
 
   homeButton: {
