@@ -1,8 +1,6 @@
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(() => ({
-
-  
   button: {
     backgroundColor: "#42a5f5",
     color: "#fff",
@@ -45,8 +43,6 @@ const useStyles = makeStyles(() => ({
   addPostBtn: {
     backgroundColor: "#42a5f5",
   },
- 
- 
 }));
 
 export { useStyles };
