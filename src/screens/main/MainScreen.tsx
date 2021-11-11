@@ -9,7 +9,7 @@ import Post from "../../components/post";
 import { useStyles } from "./style";
 
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post } = useStyles();
+  const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
   const history = useHistory();
   const [posts, setPosts] = useState<IPost[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -42,16 +42,16 @@ const MainScreen: React.FC = () => {
             <Button variant="outlined" className={button}>
               TOP
             </Button>
-          </div>
-          <div className={searchAndNewPost}>
             <TextField
               id="standard-basic"
               label="Search"
               variant="standard"
+              className={search}
               value={searchTerm}
               onChange={handleChange}
             />
-
+          </div>
+          <div className={searchAndNewPost}>
             <Button variant="contained" className={button} onClick={() => history.push("/addpost")}>
               Add new post
             </Button>
