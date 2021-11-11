@@ -1,7 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import postsSlice from '../store/postsSlice'
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    posts: postsSlice.reducer
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
