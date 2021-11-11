@@ -1,71 +1,75 @@
 import axios from "axios";
 class UserRequests {
-    private static instance: UserRequests;
+  private static instance: UserRequests;
 
-    private constructor() { }
+  private constructor() {}
 
-    public static getInstance(): UserRequests {
-        if (!UserRequests.instance) {
-            UserRequests.instance = new UserRequests();
-        }
-        return UserRequests.instance;
+  public static getInstance(): UserRequests {
+    if (!UserRequests.instance) {
+      UserRequests.instance = new UserRequests();
     }
-    
-    async addUser(name:string, pass:string){
+    return UserRequests.instance;
+  }
 
-        const data={
-            username:name,
-            password:pass
-        }
-     
-       await axios.post('https://starforum.herokuapp.com/api/v1/users', data)
-    }
+  async addUser(name: string, pass: string) {
+    const data = {
+      username: name,
+      password: pass,
+    };
 
-    loginUser(name:string, pass:string){
-        const data={
-            username:name,
-            password:pass
-        }
-        axios.post('https://starforum.herokuapp.com/api/v1/login',data)
-    }
+    await axios.post("https://starforum.herokuapp.com/api/v1/users", data);
+  }
 
-    async getToken(username:string){
-        const config:any ={
-            crossDomain: true,
-            xhrFields: {
-                withCredentials: true
-              }
-        }
-        const response =await axios.get(`https://starforum.herokuapp.com/api/v1/token/${username}`,config)
-        console.log(response)
-        return response
-    }
+  loginUser(name: string, pass: string) {
+    const data = {
+      username: name,
+      password: pass,
+    };
+    axios.post("https://starforum.herokuapp.com/api/v1/login", data);
+  }
 
-    logoutUser (){
-        axios.delete('https://starforum.herokuapp.com/api/v1/logout')
-    }
+  async getToken(username: string) {
+    const config: any = {
+      crossDomain: true,
+      xhrFields: {
+        withCredentials: true,
+      },
+    };
+    const response = await axios.get(
+      `https://starforum.herokuapp.com/api/v1/token/${username}`,
+      config,
+    );
+    console.log(response);
+    return response;
+  }
 
-    async getUserByUsernameReaction(username:string){
-        const response =await axios.get(`https://starforum.herokuapp.com/api/v1/users/${username}/reactions`)
-        console.log(response.data)
-        return response.data
-    }
+  logoutUser() {
+    axios.delete("https://starforum.herokuapp.com/api/v1/logout");
+  }
 
-    async getUserByUsername(username:string){
-        const response =await axios.get(`https://starforum.herokuapp.com/api/v1/users/${username}`)
-        console.log(response.data)
-        return response.data
-    }
+  async getUserByUsernameReaction(username: string) {
+    const response = await axios.get(
+      `https://starforum.herokuapp.com/api/v1/users/${username}/reactions`,
+    );
+    console.log(response.data);
+    return response.data;
+  }
 
-    addUserIcon(){
+  async getUserByUsername(username: string) {
+    const response = await axios.get(`https://starforum.herokuapp.com/api/v1/users/${username}`);
+    console.log(response.data);
+    return response.data;
+  }
 
-    }
-    
-    async getUserIcon(username:string){
-        const response =await axios.get(`https://starforum.herokuapp.com/api/v1/users/${username}/icon`)
-        console.log(response)
-        return response.data
-    }
+  addUserIcon() {}
+
+  async getUserIcon(username: string) {
+    const response = await axios.get(
+      `https://starforum.herokuapp.com/api/v1/users/${username}/icon`,
+    );
+    console.log(response);
+    return response.data;
+  }
 }
-const userRequest = UserRequests.getInstance()
- export default userRequest
+const userRequest = UserRequests.getInstance();
+export default userRequest;
