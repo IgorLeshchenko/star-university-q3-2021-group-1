@@ -21,6 +21,10 @@ const MainScreen: React.FC = () => {
       .then(json => setPosts(json));
   }, []);
 
+  const sortedPosts = (srtdPosts: []) => {
+      setPosts(srtdPosts);
+  }
+
   return (
     <Layout>
       <Box py={10}>
@@ -30,7 +34,7 @@ const MainScreen: React.FC = () => {
             <Button variant="outlined" className={button}>
               New
             </Button>
-            <SortByTopButton />
+            <SortByTopButton sortedPosts={sortedPosts} />
           </div>
           <div className={searchAndNewPost}>
             <TextField id="standard-basic" label="Search" variant="standard" />
