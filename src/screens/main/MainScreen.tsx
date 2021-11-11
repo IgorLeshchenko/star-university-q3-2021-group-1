@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Box, Button, TextField } from "@material-ui/core";
+import { useSelector, useDispatch } from "react-redux";
+import { postsAction } from "../../app/store/postsSlice";
 
 import Layout from "../../components/layout";
 import { IPost } from "../../components/post/types";
@@ -10,20 +12,28 @@ import { useStyles } from "./style";
 
 import SortByTopButton from "./sort/SortByTopButton";
 
+interface StatePosts {
+  posts: {
+    posts: [];
+  };
+}
+
 const MainScreen: React.FC = () => {
   const { button, sort, sortText, topNav, searchAndNewPost, post } = useStyles();
   const history = useHistory();
-  const [posts, setPosts] = useState([]);
+  const changeId = false;
+  const dispatch = useDispatch();
+  const posts = useSelector((state: StatePosts) => state.posts.posts);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch("https://starforum.herokuapp.com/api/v1/posts")
       .then(response => response.json())
-      .then(json => setPosts(json));
+      .then(json => dispatch(postsAction.setPosts(json)));
   }, []);
 
   const sortedPosts = (srtdPosts: []) => {
-      setPosts(srtdPosts);
-  }
+    dispatch(postsAction.setPosts(srtdPosts));
+  };
 
   return (
     <Layout>
@@ -44,8 +54,9 @@ const MainScreen: React.FC = () => {
           </div>
         </div>
         <div className={post}>
+          {console.log(posts)}
           {posts.map((post: IPost) => (
-            <Post post={post} key={post.id} />
+            <Post post={post} key={post._id} />
           ))}
         </div>
       </Box>
