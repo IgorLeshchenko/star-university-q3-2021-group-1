@@ -31,10 +31,13 @@ const MainScreen: React.FC = () => {
             <Button variant="outlined" className={button}>
               TOP
             </Button>
-            <TextField id="standard-basic" label="Search" variant="standard" className={search}/>
+            <TextField id="standard-basic" label="Search" variant="standard" className={search} />
           </div>
           <div className={searchAndNewPost}>
-            <Button variant="contained" className={button} onClick={() => history.push("/addpost")}>
+            <Button
+              variant="contained"
+              className={button}
+              onClick={() => history.push("/star-university-q3-2021-group-1/addpost")}>
               Add new post
             </Button>
           </div>
