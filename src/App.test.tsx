@@ -12,11 +12,11 @@ test("full app rendering/navigating", () => {
   const history = createMemoryHistory();
 
   render(
-      <Provider store={store}>
-        <Router history={history}>
-          <App />
-        </Router>
-      </Provider>,
+    <Provider store={store}>
+      <Router history={history}>
+        <App />
+      </Router>
+    </Provider>,
   );
   expect(history.location.pathname).toBe("/");
 });
@@ -26,11 +26,11 @@ test("Rendering a page login", () => {
 
   history.push("/login");
   render(
-      <Provider store={store}>
-        <Router history={history}>
-          <App />
-        </Router>
-      </Provider>,
+    <Provider store={store}>
+      <Router history={history}>
+        <App />
+      </Router>
+    </Provider>,
   );
 
   expect(history.location.pathname).toBe("/login");
