@@ -1,24 +1,27 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, RenderResult } from "@testing-library/react";
 
 import MainScreen from "../../screens/main/MainScreen";
-import Navbar from "../navbar";
+import { store } from "../../app/store/store";
 import Layout from "./Layout";
 
 let documentBody: RenderResult;
 
-describe("<Layout />", () => {
+describe("Layout", () => {
   const history = createMemoryHistory();
 
   beforeEach(() => {
     documentBody = render(
-      <Router history={history}>
-        <Layout>
-          <MainScreen />
-        </Layout>
-      </Router>,
+      <Provider store={store}>
+        <Router history={history}>
+          <Layout>
+            <MainScreen />
+          </Layout>
+        </Router>
+      </Provider>,
     );
   });
 

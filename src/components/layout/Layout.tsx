@@ -19,16 +19,14 @@ const theme = createTheme({
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <React.Fragment>
-      <ThemeProvider theme={theme}>
-        <Paper style={{ minHeight: "100vh" }}>
-          <Container>
-            <Navbar />
-            {children}
-          </Container>
-        </Paper>
-      </ThemeProvider>
-    </React.Fragment>
+    <ThemeProvider theme={theme}>
+      <Paper style={{ minHeight: "100vh" }}>
+        <Container>
+          <Navbar />
+          {children}
+        </Container>
+      </Paper>
+    </ThemeProvider>
   );
 };
 
