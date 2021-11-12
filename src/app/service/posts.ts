@@ -1,17 +1,22 @@
 import axios from "axios";
 
+axios.defaults.baseURL='https://starforum.herokuapp.com/api/v1'
+
 export const addNewPost = (title: string, body: string, parent: string) => {
   const datas = {
     title: title,
     body: body,
     parent: parent,
   };
-  axios.post("https://starforum.herokuapp.com/api/v1/posts", datas);
+  axios.post("/posts", datas).then(response =>{
+    console.log(response)
+    return response
+  })
 };
 
 export const getPosts = async () => {
   const response = await axios.get(
-    "https://starforum.herokuapp.com/api/v1/posts"
+    "/posts"
   );
   console.log(response.data);
   return response.data;
@@ -19,7 +24,7 @@ export const getPosts = async () => {
 
 export const getPostByID = async (id: string) => {
   const response = await axios.get(
-    `https://starforum.herokuapp.com/api/v1/posts/${id}`
+    `/posts/${id}`
   );
   console.log(response.data);
   return response.data;
@@ -27,25 +32,31 @@ export const getPostByID = async (id: string) => {
 
 export const getPostsNumber = async () => {
   const response = await axios.get(
-    "https://starforum.herokuapp.com/api/v1/posts-number"
+    "/posts-number"
   );
   console.log(response.data);
   return response.data;
 };
 
 export const upvotePost = (id: string) => {
-  axios.post(`https://starforum.herokuapp.com/api/v1/posts/${id}/upvote`);
-  return;
+  axios.post(`/posts/${id}/upvote`).then(response =>{
+    console.log(response)
+    return response
+  })
 };
 
 export const downvotePost = (id: string) => {
-  axios.post(`https://starforum.herokuapp.com/api/v1/posts/${id}/downvote`);
-  return;
+  axios.post(`/posts/${id}/downvote`).then(response =>{
+    console.log(response)
+    return response
+  })
 };
 
 export const removeReaction = (id: string) => {
   axios.post(
-    `https://starforum.herokuapp.com/api/v1/posts/${id}/remove-reaction`
-  );
-  return;
-};
+    `/posts/${id}/remove-reaction`).then(response =>{
+      console.log(response)
+      return response
+    })
+  }
+
