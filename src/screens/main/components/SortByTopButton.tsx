@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "@material-ui/core";
 import { useStyles } from "../style";
-import axios from "axios";
 import { IPost } from "../../../components/post/types";
 
 import { useSelector, useDispatch } from "react-redux";
