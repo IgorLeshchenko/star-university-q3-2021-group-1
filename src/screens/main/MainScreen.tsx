@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button, TextField, Typography } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { postsAction } from "../../app/store/postsSlice";
 
@@ -15,8 +15,21 @@ import SortByTopButton from "./components/SortByTopButton";
 const MainScreen: React.FC = () => {
   const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
   const history = useHistory();
-  const dispatch = useDispatch();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const results = !searchTerm
+    ? posts
+    : posts.filter((post: IPost) => {
+        return post.title.toLowerCase().includes(searchTerm.toLowerCase());
+      });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch("https://starforum.herokuapp.com/api/v1/posts")
@@ -38,6 +51,14 @@ const MainScreen: React.FC = () => {
               New
             </Button>
             <SortByTopButton sortedPosts={sortedPosts} />
+            <TextField
+              id="standard-basic"
+              label="Search"
+              variant="standard"
+              className={search}
+              value={searchTerm}
+              onChange={handleChange}
+            />
           </div>
           <div className={searchAndNewPost}>
             <Button
@@ -50,11 +71,12 @@ const MainScreen: React.FC = () => {
         </div>
         <div className={post}>
           {console.log(posts)}
-          {posts
+          {results
             .filter((post: IPost) => post.title !== "Comment")
             .map((post: IPost) => (
               <Post post={post} key={post._id} upvotes={post.upvotes} />
             ))}
+          {!results.length && <Typography variant="h1">No Results Found!!</Typography>}
         </div>
       </Box>
     </Layout>
