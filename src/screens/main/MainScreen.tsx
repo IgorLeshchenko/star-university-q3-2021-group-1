@@ -10,7 +10,7 @@ import Post from "../../components/post";
 
 import { useStyles } from "./style";
 
-import SortByTopButton from "./sort/SortByTopButton";
+import SortByTopButton from "./components/SortByTopButton";
 
 interface StatePosts {
   posts: {
@@ -54,9 +54,11 @@ const MainScreen: React.FC = () => {
         </div>
         <div className={post}>
           {console.log(posts)}
-          {posts.filter((post: IPost) => post.title !== 'Comment').map((post: IPost) => (
-            <Post post={post} key={post._id} />
-          ))}
+          {posts
+            .filter((post: IPost) => post.title !== "Comment")
+            .map((post: IPost) => (
+              <Post post={post} key={post._id} />
+            ))}
         </div>
       </Box>
     </Layout>
