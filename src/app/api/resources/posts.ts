@@ -2,17 +2,7 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://starforum.herokuapp.com/api/v1";
 
-export const addNewPost = (title: string, body: string, parent: string) => {
-  const datas = {
-    title: title,
-    body: body,
-    parent: parent,
-  };
-  axios.post("/posts", datas).then(response => {
-    console.log(response);
-    return response;
-  });
-};
+export const addNewPost = (data: { title: string, body: string, parent?: string }) => axios.post("/posts", data);
 
 export const getPosts = async () => {
   const response = await axios.get("/posts");
