@@ -54,7 +54,7 @@ const MainScreen: React.FC = () => {
         </div>
         <div className={post}>
           {console.log(posts)}
-          {posts.map((post: IPost) => (
+          {posts.filter((post: IPost) => post.title !== 'Comment').map((post: IPost) => (
             <Post post={post} key={post._id} />
           ))}
         </div>

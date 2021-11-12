@@ -24,8 +24,8 @@ const SortByTopButton: React.FC<Props> = ({ sortedPosts }) => {
 
   useEffect(() => {
     fetch("https://starforum.herokuapp.com/api/v1/posts")
-        .then(response => response.json())
-        .then(json => dispatch(postsAction.setPosts(json)));
+      .then(response => response.json())
+      .then(json => dispatch(postsAction.setPosts(json)));
   }, []);
 
   const sortByTop = () => {
