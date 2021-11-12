@@ -28,7 +28,7 @@ const MainScreen: React.FC = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
-    
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const MainScreen: React.FC = () => {
             <span className={sortText}>Sort by:</span>
             <Button variant="outlined" className={button}>
               New
-            </Button>            
+            </Button>
             <SortByTopButton sortedPosts={sortedPosts} />
             <TextField
               id="standard-basic"
@@ -71,9 +71,9 @@ const MainScreen: React.FC = () => {
           {results
             .filter((post: IPost) => post.title !== "Comment")
             .map((post: IPost) => (
-              <Post post={post} key={post._id} upvotes={post.upvotes}/>
+              <Post post={post} key={post._id} upvotes={post.upvotes} />
             ))}
-        {!results.length && <Typography variant="h1">No Results Found!!</Typography>}
+          {!results.length && <Typography variant="h1">No Results Found!!</Typography>}
         </div>
       </Box>
     </Layout>
