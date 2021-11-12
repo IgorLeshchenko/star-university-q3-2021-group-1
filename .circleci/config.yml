@@ -66,10 +66,15 @@ jobs:
           command: npm run deploy
 
 workflows:
-  stage_test_approve_deploy:
+  test_approve_deploy:
     jobs:
-    - test
+    - test:
+          filters:
+            branches:
+              ignore: gh-pages
+            
     - deploy:
           filters:
             branches:
               only: main
+              ignore: gh-pages
