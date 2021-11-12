@@ -30,7 +30,6 @@ const Post: React.FC<Props> = ({ post, upvotes }) => {
             <span>User Name</span>
           </div>
           <div>{dateOfPostsFromNow}</div>
-          <div>{post.date}</div>
         </div>
 
         <div className={classes.post__BodyAndVote}>
