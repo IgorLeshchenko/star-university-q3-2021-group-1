@@ -19,7 +19,7 @@ interface StatePosts {
 }
 
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post } = useStyles();
+  const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
@@ -46,7 +46,6 @@ const MainScreen: React.FC = () => {
             <SortByTopButton sortedPosts={sortedPosts} />
           </div>
           <div className={searchAndNewPost}>
-            <TextField id="standard-basic" label="Search" variant="standard" />
             <Button variant="contained" className={button} onClick={() => history.push("/addpost")}>
               Add new post
             </Button>
