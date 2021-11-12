@@ -21,7 +21,6 @@ interface StatePosts {
 const MainScreen: React.FC = () => {
   const { button, sort, sortText, topNav, searchAndNewPost, post } = useStyles();
   const history = useHistory();
-  const changeId = false;
   const dispatch = useDispatch();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
 

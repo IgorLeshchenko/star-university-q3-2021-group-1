@@ -1,31 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Button } from "@material-ui/core";
 import { useStyles } from "../style";
 import axios from "axios";
 import { IPost } from "../../../components/post/types";
 
+import { useSelector, useDispatch } from "react-redux";
+import { postsAction } from "../../../app/store/postsSlice";
+
 interface Props {
   sortedPosts(srtdPosts: []): void;
 }
 
+interface StatePosts {
+  posts: {
+    posts: [];
+  };
+}
+
 const SortByTopButton: React.FC<Props> = ({ sortedPosts }) => {
   const { button } = useStyles();
-
-  const [posts, setPosts] = useState([]);
-
-  const getPosts = async () => {
-    const response = await axios.get("https://starforum.herokuapp.com/api/v1/posts");
-    setPosts(response.data);
-  };
-
-  const sortByTop = () => {
-    getPosts();
-  };
+  const dispatch = useDispatch();
+  const posts = useSelector((state: StatePosts) => state.posts.posts);
 
   useEffect(() => {
-    const sortedByTop = posts.sort((a: IPost, b: IPost) => b.upvotes - a.upvotes);
+    fetch("https://starforum.herokuapp.com/api/v1/posts")
+        .then(response => response.json())
+        .then(json => dispatch(postsAction.setPosts(json)));
+  }, []);
+
+  const sortByTop = () => {
+    const sortedByTop = posts.slice().sort((a: IPost, b: IPost) => b.upvotes - a.upvotes);
     sortedPosts(sortedByTop as []);
-  }, [posts]);
+  };
 
   return (
     <div>
