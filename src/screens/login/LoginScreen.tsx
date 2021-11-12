@@ -26,7 +26,7 @@ const LoginScreen: React.FC = () => {
     e.preventDefault();
     console.log(`form`, e);
 
-    history.push("/");
+    history.push("/star-university-q3-2021-group-1");
   };
 
   return (

@@ -27,7 +27,7 @@ const Post: React.FC<Props> = ({ post, upvotes }) => {
               alt="User img"
               src="https://www.kino-teatr.ru/movie/kadr/137719/pv_878912.jpg"
             />
-            <span>User Name</span>
+            <span data-testid="user-name">User Name</span>
           </div>
           <div>{dateOfPostsFromNow}</div>
         </div>

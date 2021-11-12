@@ -61,7 +61,10 @@ const MainScreen: React.FC = () => {
             />
           </div>
           <div className={searchAndNewPost}>
-            <Button variant="contained" className={button} onClick={() => history.push("/addpost")}>
+            <Button
+              variant="contained"
+              className={button}
+              onClick={() => history.push("/star-university-q3-2021-group-1/addpost")}>
               Add new post
             </Button>
           </div>

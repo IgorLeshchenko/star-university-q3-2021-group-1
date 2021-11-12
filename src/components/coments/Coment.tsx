@@ -12,7 +12,7 @@ const Comment: React.FC<Props> = ({ items }) => {
   return (
     <div className="wrapperComent">
       <div className="comentMessage">
-        {items.map((item, id) => (
+        {items.map(item => (
           <div className={classes.comentItem} key={item}>
             <div className={classes.userAvatar}>
               <Avatar src="" alt="userAvatar" className={classes.avatar} />
