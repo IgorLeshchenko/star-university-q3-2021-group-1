@@ -1,6 +1,4 @@
-import AxiosRequest from './axiosConfig'
-
-AxiosRequest.defaults.baseURL = "https://starforum.herokuapp.com/api/v1";
+import AxiosRequest from "./axiosConfig";
 
 export const addUser = (name: string, pass: string) => {
   const data = {
@@ -33,7 +31,7 @@ export const getToken = async (username: string) => {
       withCredentials: true,
     },
   };
-  const response = await AxiosRequest.get(`/token/${username}`, config);
+  const response = await AxiosRequest(`/token/${username}`, config);
   console.log(response);
   return response;
 };
@@ -46,13 +44,13 @@ export const logoutUser = () => {
 };
 
 export const getUserByUsernameReaction = async (username: string) => {
-  const response = await AxiosRequest.get(`/users/${username}/reactions`);
+  const response = await AxiosRequest(`/users/${username}/reactions`);
   console.log(response.data);
   return response.data;
 };
 
 export const getUserByUsername = async (username: string) => {
-  const response = await AxiosRequest.get(`/users/${username}`);
+  const response = await AxiosRequest(`/users/${username}`);
   console.log(response.data);
   return response.data;
 };
@@ -60,7 +58,7 @@ export const getUserByUsername = async (username: string) => {
 export const addUserIcon = () => {};
 
 export const getUserIcon = async (username: string) => {
-  const response = await AxiosRequest.get(`/users/${username}/icon`);
+  const response = await AxiosRequest(`/users/${username}/icon`);
   console.log(response);
   return response.data; // img in Base64 format
 };
