@@ -10,3 +10,9 @@ export interface IPost {
   __v?: number;
   _id: string;
 }
+
+export interface StatePosts {
+  posts: {
+    posts: [];
+  };
+}

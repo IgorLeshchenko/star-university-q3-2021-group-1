@@ -5,18 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { postsAction } from "../../app/store/postsSlice";
 
 import Layout from "../../components/layout";
-import { IPost } from "../../components/post/types";
+import { IPost, StatePosts } from "../../components/post/types";
 import Post from "../../components/post";
 
 import { useStyles } from "./style";
 
 import SortByTopButton from "./components/SortByTopButton";
-
-interface StatePosts {
-  posts: {
-    posts: [];
-  };
-}
 
 const MainScreen: React.FC = () => {
   const { button, sort, sortText, topNav, searchAndNewPost, post } = useStyles();
@@ -57,7 +51,7 @@ const MainScreen: React.FC = () => {
           {posts
             .filter((post: IPost) => post.title !== "Comment")
             .map((post: IPost) => (
-              <Post post={post} key={post._id} />
+              <Post post={post} key={post._id} upvotes={post.upvotes}/>
             ))}
         </div>
       </Box>

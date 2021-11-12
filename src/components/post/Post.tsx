@@ -7,9 +7,10 @@ import { usePostStyles } from "./style";
 
 type Props = {
   post: IPost;
+  upvotes: number;
 };
 
-const Post: React.FC<Props> = ({ post }) => {
+const Post: React.FC<Props> = ({ post, upvotes }) => {
   const classes = usePostStyles();
 
   return (
@@ -31,7 +32,7 @@ const Post: React.FC<Props> = ({ post }) => {
             <p>
               <ArrowUpward className={classes.arrowUp} />
             </p>
-            <div>0</div>
+            <div>{upvotes}</div>
             <p>
               <ArrowDownward className={classes.arrowDown} />
             </p>
