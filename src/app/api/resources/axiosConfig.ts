@@ -1,14 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 const AxiosRequest = () => {
   const defaultOptions: AxiosRequestConfig = {
-    baseURL: "https://starforum.herokuapp.com/api/v1",
-    method: "get",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    baseURL: process.env.REACT_APP_BASE_URL,
   };
-  const instance = axios.create(defaultOptions);
-  return instance;
+  return axios.create(defaultOptions);
 };
 
 export default AxiosRequest();

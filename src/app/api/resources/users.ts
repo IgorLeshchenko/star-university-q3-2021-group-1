@@ -31,7 +31,7 @@ export const getToken = async (username: string) => {
       withCredentials: true,
     },
   };
-  const response = await AxiosRequest(`/token/${username}`, config);
+  const response = await AxiosRequest.get(`/token/${username}`, config);
   console.log(response);
   return response;
 };
@@ -44,13 +44,13 @@ export const logoutUser = () => {
 };
 
 export const getUserByUsernameReaction = async (username: string) => {
-  const response = await AxiosRequest(`/users/${username}/reactions`);
+  const response = await AxiosRequest.get(`/users/${username}/reactions`);
   console.log(response.data);
   return response.data;
 };
 
 export const getUserByUsername = async (username: string) => {
-  const response = await AxiosRequest(`/users/${username}`);
+  const response = await AxiosRequest.get(`/users/${username}`);
   console.log(response.data);
   return response.data;
 };
@@ -58,7 +58,7 @@ export const getUserByUsername = async (username: string) => {
 export const addUserIcon = () => {};
 
 export const getUserIcon = async (username: string) => {
-  const response = await AxiosRequest(`/users/${username}/icon`);
+  const response = await AxiosRequest.get(`/users/${username}/icon`);
   console.log(response);
   return response.data; // img in Base64 format
 };
