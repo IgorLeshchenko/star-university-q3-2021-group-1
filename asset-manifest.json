@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/star-university-q3-2021-group-1/static/js/main.141b0762.chunk.js",
-    "main.js.map": "/star-university-q3-2021-group-1/static/js/main.141b0762.chunk.js.map",
+    "main.js": "/star-university-q3-2021-group-1/static/js/main.24de1a4c.chunk.js",
+    "main.js.map": "/star-university-q3-2021-group-1/static/js/main.24de1a4c.chunk.js.map",
     "runtime-main.js": "/star-university-q3-2021-group-1/static/js/runtime-main.72e0ac6e.js",
     "runtime-main.js.map": "/star-university-q3-2021-group-1/static/js/runtime-main.72e0ac6e.js.map",
     "static/js/2.6ed499b7.chunk.js": "/star-university-q3-2021-group-1/static/js/2.6ed499b7.chunk.js",
@@ -15,6 +15,6 @@
   "entrypoints": [
     "static/js/runtime-main.72e0ac6e.js",
     "static/js/2.6ed499b7.chunk.js",
-    "static/js/main.141b0762.chunk.js"
+    "static/js/main.24de1a4c.chunk.js"
   ]
 }
