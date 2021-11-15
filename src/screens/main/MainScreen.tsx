@@ -13,7 +13,7 @@ import { useStyles } from "./style";
 import SortByTopButton from "./components/SortByTopButton";
 
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
+  const { button, sort, sortText, topNav, searchAndNewPost, post, search, pagination } = useStyles();
   const history = useHistory();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
 
@@ -40,6 +40,14 @@ const MainScreen: React.FC = () => {
   const sortedPosts = (srtdPosts: []) => {
     dispatch(postsAction.setPosts(srtdPosts));
   };
+
+  const backHandler = () => {
+
+  }
+
+  const forwardHandler = () => {
+
+  }
 
   return (
     <Layout>
@@ -77,6 +85,10 @@ const MainScreen: React.FC = () => {
               <Post post={post} key={post._id} upvotes={post.upvotes} />
             ))}
           {!results.length && <Typography variant="h1">No Results Found!!</Typography>}
+        </div>
+        <div className={pagination}>
+          <Button variant="outlined" className={button} onClick={backHandler}>Back</Button>
+          <Button variant="outlined" className={button} onClick={forwardHandler}>Forward</Button>
         </div>
       </Box>
     </Layout>
