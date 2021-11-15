@@ -8,10 +8,10 @@ const AddPost: React.FC = () => {
   const { form, card, text, textfield, textarea, button } = useStyles();
   const history = useHistory();
 
-  const handleSubmit = () => history.push("/");
+  const handleSubmit = () => history.push("/star-university-q3-2021-group-1");
 
   return (
-    <form className={form} onSubmit={handleSubmit}>
+    <form className={form} onSubmit={handleSubmit} data-testid="form-add">
       <Card className={card}>
         <Box
           sx={{
@@ -24,7 +24,13 @@ const AddPost: React.FC = () => {
           }}>
           <Typography className={text}>Create a New Post</Typography>
 
-          <TextField className={textfield} required variant="outlined" label="Title" />
+          <TextField
+            className={textfield}
+            required
+            variant="outlined"
+            label="Title"
+            data-testid="title"
+          />
 
           <TextareaAutosize
             className={textarea}
@@ -34,7 +40,12 @@ const AddPost: React.FC = () => {
             minRows={8}
           />
 
-          <Button size="large" variant="contained" className={button} type="submit">
+          <Button
+            size="large"
+            data-testid="submit-add"
+            variant="contained"
+            className={button}
+            type="submit">
             Puplish a New Post
           </Button>
         </Box>

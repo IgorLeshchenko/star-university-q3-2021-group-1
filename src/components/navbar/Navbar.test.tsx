@@ -4,8 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import NavBar from "./Navbar";
 
 const links = [
-  { testid: "homeRoute", location: "/" },
-  { testid: "loginRoute", location: "/login" },
+  { testid: "home-route", location: "/star-university-q3-2021-group-1" },
+  { testid: "login-route", location: "/star-university-q3-2021-group-1/login" },
 ];
 
 test.each(links)("Check if Nav Bar have links.", link => {

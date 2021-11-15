@@ -19,7 +19,7 @@ const NotFound: React.FC = () => {
         onLoad={handleImageOnLoad}
         style={{ ...css.fullSize }}
       />
-      <Button variant="contained" color="primary" component={Link} to="/">
+      <Button variant="contained" color="primary" data-testid="link-home" component={Link} to="/">
         <Typography variant="button">Go to home</Typography>
       </Button>
     </Container>

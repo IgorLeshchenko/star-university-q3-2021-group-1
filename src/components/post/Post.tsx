@@ -4,13 +4,19 @@ import { ArrowUpward, ArrowDownward, Comment } from "@material-ui/icons";
 
 import { IPost } from "./types";
 import { usePostStyles } from "./style";
+import formatDistance from "date-fns/formatDistance";
 
 type Props = {
   post: IPost;
+  upvotes: number;
 };
 
-const Post: React.FC<Props> = ({ post }) => {
+const Post: React.FC<Props> = ({ post, upvotes }) => {
   const classes = usePostStyles();
+
+  const dateOfPostsFromNow = formatDistance(new Date(post.date).getTime() - 7200000, new Date(), {
+    addSuffix: true,
+  });
 
   return (
     <Card className={classes.post}>
@@ -21,9 +27,9 @@ const Post: React.FC<Props> = ({ post }) => {
               alt="User img"
               src="https://www.kino-teatr.ru/movie/kadr/137719/pv_878912.jpg"
             />
-            <span>User Name</span>
+            <span data-testid="user-name">User Name</span>
           </div>
-          <div>data</div>
+          <div>{dateOfPostsFromNow}</div>
         </div>
 
         <div className={classes.post__BodyAndVote}>
@@ -31,7 +37,7 @@ const Post: React.FC<Props> = ({ post }) => {
             <p>
               <ArrowUpward className={classes.arrowUp} />
             </p>
-            <div>0</div>
+            <div>{upvotes}</div>
             <p>
               <ArrowDownward className={classes.arrowDown} />
             </p>
