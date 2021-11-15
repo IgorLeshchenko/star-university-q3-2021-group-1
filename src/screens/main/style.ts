@@ -1,4 +1,3 @@
-
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(() => ({
@@ -48,9 +47,6 @@ const useStyles = makeStyles(() => ({
   search: {
     margin: "0 0 10px 25px",
   },
-
- 
-
 }));
 
 export { useStyles };
