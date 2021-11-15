@@ -16,12 +16,14 @@ import Spinner from "./Spinner";
 
 
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post, search, pagination } = useStyles();
+  const { button, sort, sortText, topNav, searchAndNewPost, post, search, pagination } =
+    useStyles();
   const history = useHistory();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
   const { user } = useSelector(authSelector);
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = useState(1);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -59,12 +61,12 @@ const MainScreen: React.FC = () => {
   };
 
   const backHandler = () => {
-
-  }
+    setPage(page - 1);
+  };
 
   const forwardHandler = () => {
-
-  }
+    setPage(page + 1);
+  };
 
   return (
     <Layout>
@@ -107,8 +109,12 @@ const MainScreen: React.FC = () => {
           {!isLoading && !searchResults.length && <NotFoundMessage searcTerm={searchTerm} />}
         </div>
         <div className={pagination}>
-          <Button variant="outlined" className={button} onClick={backHandler}>Back</Button>
-          <Button variant="outlined" className={button} onClick={forwardHandler}>Forward</Button>
+          <Button variant="outlined" className={button} onClick={backHandler}>
+            Back
+          </Button>
+          <Button variant="outlined" className={button} onClick={forwardHandler}>
+            Forward
+          </Button>
         </div>
       </Box>
     </Layout>

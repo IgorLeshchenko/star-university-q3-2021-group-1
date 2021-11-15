@@ -48,10 +48,10 @@ const useStyles = makeStyles(() => ({
     margin: "0 0 10px 25px",
   },
   pagination: {
-    display: 'flex',
-    columnGap: '30px',
-    justifyContent: 'center'
-  }
+    display: "flex",
+    columnGap: "30px",
+    justifyContent: "center",
+  },
 }));
 
 export { useStyles };
