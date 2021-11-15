@@ -13,11 +13,13 @@ import { useStyles } from "./style";
 import SortByTopButton from "./components/SortByTopButton";
 
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post, search, pagination } = useStyles();
+  const { button, sort, sortText, topNav, searchAndNewPost, post, search, pagination } =
+    useStyles();
   const history = useHistory();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = useState(1);
 
   const results = !searchTerm
     ? posts
@@ -42,12 +44,12 @@ const MainScreen: React.FC = () => {
   };
 
   const backHandler = () => {
-
-  }
+    setPage(page - 1);
+  };
 
   const forwardHandler = () => {
-
-  }
+    setPage(page + 1);
+  };
 
   return (
     <Layout>
@@ -78,17 +80,21 @@ const MainScreen: React.FC = () => {
           </div>
         </div>
         <div className={post}>
-          {console.log(posts)}
+          {console.log(page)}
           {results
-            .filter((post: IPost) => post.title !== "Comment")
+            .filter((post: IPost) => post.title !== "Comment").slice((1 * page) - 1, 5 * page)
             .map((post: IPost) => (
               <Post post={post} key={post._id} upvotes={post.upvotes} />
             ))}
           {!results.length && <Typography variant="h1">No Results Found!!</Typography>}
         </div>
         <div className={pagination}>
-          <Button variant="outlined" className={button} onClick={backHandler}>Back</Button>
-          <Button variant="outlined" className={button} onClick={forwardHandler}>Forward</Button>
+          <Button variant="outlined" className={button} onClick={backHandler}>
+            Back
+          </Button>
+          <Button variant="outlined" className={button} onClick={forwardHandler}>
+            Forward
+          </Button>
         </div>
       </Box>
     </Layout>
