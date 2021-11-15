@@ -16,7 +16,7 @@ import Spinner from "./Spinner";
 
 
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
+  const { button, sort, sortText, topNav, searchAndNewPost, post, search, pagination } = useStyles();
   const history = useHistory();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
   const { user } = useSelector(authSelector);
@@ -58,6 +58,14 @@ const MainScreen: React.FC = () => {
     dispatch(postsAction.setPosts(srtdPosts));
   };
 
+  const backHandler = () => {
+
+  }
+
+  const forwardHandler = () => {
+
+  }
+
   return (
     <Layout>
       <Box py={10}>
@@ -97,6 +105,10 @@ const MainScreen: React.FC = () => {
           )}
 
           {!isLoading && !searchResults.length && <NotFoundMessage searcTerm={searchTerm} />}
+        </div>
+        <div className={pagination}>
+          <Button variant="outlined" className={button} onClick={backHandler}>Back</Button>
+          <Button variant="outlined" className={button} onClick={forwardHandler}>Forward</Button>
         </div>
       </Box>
     </Layout>
