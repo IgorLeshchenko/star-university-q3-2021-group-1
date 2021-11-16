@@ -25,7 +25,7 @@ test("full app rendering/navigating", () => {
 test("Rendering a page login", () => {
   const history = createMemoryHistory();
 
-  history.push("/login");
+  history.push("/star-university-q3-2021-group-1/login");
 
   render(
     <Provider store={store}>
@@ -35,5 +35,5 @@ test("Rendering a page login", () => {
     </Provider>,
   );
 
-  expect(history.location.pathname).toBe("/login");
+  expect(history.location.pathname).toBe("/star-university-q3-2021-group-1/login");
 });
