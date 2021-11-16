@@ -8,32 +8,29 @@ import "@testing-library/jest-dom";
 import { store } from "./app/store/store";
 import App from "./App";
 
-test("full app rendering/navigating", () => {
-  const history = createMemoryHistory();
+describe("App", () => {
+  beforeEach(() => {
+    const history = createMemoryHistory();
 
-  render(
-    <Provider store={store}>
-      <Router history={history}>
-        <App />
-      </Router>
-    </Provider>,
-  );
+    render(
+      <Provider store={store}>
+        <Router history={history}>
+          <App />
+        </Router>
+      </Provider>,
+    );
+  });
 
-  expect(history.location.pathname).toBe("/");
-});
+  it("full app rendering/navigating", () => {
+    const history = createMemoryHistory();
 
-test("Rendering a page login", () => {
-  const history = createMemoryHistory();
+    expect(history.location.pathname).toBe("/");
+  });
 
-  history.push("/login");
+  it("Rendering a page login", () => {
+    const history = createMemoryHistory();
+    history.push("/star-university-q3-2021-group-1/login");
 
-  render(
-    <Provider store={store}>
-      <Router history={history}>
-        <App />
-      </Router>
-    </Provider>,
-  );
-
-  expect(history.location.pathname).toBe("/login");
+    expect(history.location.pathname).toBe("/star-university-q3-2021-group-1/login");
+  });
 });

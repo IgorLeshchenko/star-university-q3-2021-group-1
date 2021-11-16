@@ -93,7 +93,7 @@ const MainScreen: React.FC = () => {
           ) : (
             searchResults
               .filter((post: IPost) => post.title !== "Comment")
-              .map((post: IPost) => <Post post={post} key={post._id} upvotes={post.upvotes} />)
+              .map((post: IPost) => <Post post={post} key={post._id} />)
           )}
 
           {!isLoading && !searchResults.length && (

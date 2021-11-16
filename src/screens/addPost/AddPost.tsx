@@ -29,6 +29,8 @@ const AddPost: React.FC = () => {
             required
             variant="outlined"
             label="Title"
+            role="textbox"
+            name="title"
             data-testid="title"
           />
 
