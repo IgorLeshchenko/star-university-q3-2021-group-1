@@ -23,7 +23,7 @@ describe("Add post", () => {
     fireEvent.click(btnSubmit);
   });
 
-  test("calls the onSubmit method", async () => {
+  it("calls the onSubmit method", async () => {
     const title = screen.getByTestId("title");
     const input = within(title).getByRole("textbox");
 

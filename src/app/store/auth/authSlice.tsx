@@ -1,14 +1,17 @@
-import { createSlice, PayloadAction, SerializedError } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import { AuthState } from "./interfaces";
 import { postUser } from "./thunks";
+
+const initialState: AuthState = {
+  loading: false,
+  error: null,
+  user: null,
+};
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    loading: false as boolean,
-    error: null as SerializedError | null,
-    user: null as string | null,
-  },
+  initialState,
 
   reducers: {
     clearError: state => {
