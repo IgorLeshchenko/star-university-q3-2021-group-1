@@ -47,6 +47,8 @@ const useStyles = makeStyles(() => ({
   search: {
     margin: "0 0 10px 25px",
   },
+
+ 
 }));
 
 export { useStyles };
