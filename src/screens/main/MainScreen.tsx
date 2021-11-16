@@ -1,23 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Box, Button, TextField } from "@material-ui/core";
+import { Box, Button, TextField, Typography } from "@material-ui/core";
+import { useSelector, useDispatch } from "react-redux";
+import { postsAction } from "../../app/store/postsSlice";
 
 import Layout from "../../components/layout";
-import { IPost } from "../../components/post/types";
+import { IPost, StatePosts } from "../../components/post/types";
 import Post from "../../components/post";
 
 import { useStyles } from "./style";
 
+import SortByTopButton from "./components/SortByTopButton";
+
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post } = useStyles();
+  const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
   const history = useHistory();
-  const [posts, setPosts] = useState([]);
+  const posts = useSelector((state: StatePosts) => state.posts.posts);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const results = !searchTerm
+    ? posts
+    : posts.filter((post: IPost) => {
+        return post.title.toLowerCase().includes(searchTerm.toLowerCase());
+      });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch("https://starforum.herokuapp.com/api/v1/posts")
       .then(response => response.json())
-      .then(json => setPosts(json));
+      .then(json => dispatch(postsAction.setPosts(json)));
   }, []);
+
+  const sortedPosts = (srtdPosts: []) => {
+    dispatch(postsAction.setPosts(srtdPosts));
+  };
 
   return (
     <Layout>
@@ -28,21 +50,32 @@ const MainScreen: React.FC = () => {
             <Button variant="outlined" className={button}>
               New
             </Button>
-            <Button variant="outlined" className={button}>
-              TOP
-            </Button>
+            <SortByTopButton sortedPosts={sortedPosts} />
+            <TextField
+              id="standard-basic"
+              label="Search"
+              variant="standard"
+              className={search}
+              value={searchTerm}
+              onChange={handleChange}
+            />
           </div>
           <div className={searchAndNewPost}>
-            <TextField id="standard-basic" label="Search" variant="standard" />
-            <Button variant="contained" className={button} onClick={() => history.push("/addpost")}>
+            <Button
+              variant="contained"
+              className={button}
+              onClick={() => history.push("/star-university-q3-2021-group-1/addpost")}>
               Add new post
             </Button>
           </div>
         </div>
         <div className={post}>
-          {posts.map((post: IPost) => (
-            <Post post={post} key={post.id} />
-          ))}
+          {results
+            .filter((post: IPost) => post.title !== "Comment")
+            .map((post: IPost) => (
+              <Post post={post} key={post._id} />
+            ))}
+          {!results.length && <Typography variant="h1">No Results Found!!</Typography>}
         </div>
       </Box>
     </Layout>

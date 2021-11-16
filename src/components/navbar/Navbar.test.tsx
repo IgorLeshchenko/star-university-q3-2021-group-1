@@ -1,32 +1,42 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { render, RenderResult, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
+
 import NavBar from "./Navbar";
+import { store } from "../../app/store/store";
 
 const links = [
-  { testid: "homeRoute", location: "/" },
-  { testid: "loginRoute", location: "/login" },
+  { testid: "home-route", location: "/star-university-q3-2021-group-1" },
+  { testid: "login-route", location: "/star-university-q3-2021-group-1/login" },
 ];
 
-test.each(links)("Check if Nav Bar have links.", link => {
-  render(
-    <BrowserRouter>
-      <NavBar />
-    </BrowserRouter>,
-  );
-  const linkDom = screen.getByTestId(link.testid);
+let documentBody: RenderResult;
 
-  expect(linkDom).toBeInTheDocument();
-  expect(linkDom).toHaveAttribute("href", link.location);
-});
+describe("NavBar", () => {
+  const history = createMemoryHistory();
 
-test("Check if have logo and link to home page", () => {
-  render(
-    <BrowserRouter>
-      <NavBar />
-    </BrowserRouter>,
-  );
-  const logoDom = screen.getByAltText(/Reditlone logo/);
+  beforeEach(() => {
+    documentBody = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <NavBar />
+        </Router>
+      </Provider>,
+    );
+  });
 
-  expect(logoDom).toBeInTheDocument();
+  test.each(links)("Check if Nav Bar have links.", link => {
+    const linkDom = screen.getByTestId(link.testid);
+
+    expect(linkDom).toBeInTheDocument();
+    expect(linkDom).toHaveAttribute("href", link.location);
+  });
+
+  it("Check if have logo and link to home page", () => {
+    const logoDom = screen.getByAltText(/Reditlone logo/);
+
+    expect(logoDom).toBeInTheDocument();
+  });
 });

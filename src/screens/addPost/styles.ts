@@ -42,13 +42,6 @@ const useStyles = makeStyles(() => ({
     margin: "auto",
   },
 
-  pageform: {
-    display: "grid",
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: "70vh",
-  },
-
   textarea: {
     width: "380",
     height: "180",
