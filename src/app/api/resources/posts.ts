@@ -1,7 +1,7 @@
-import API from "./axiosConfig";
+import axiosClient from "./axiosConfig";
 
 export const addNewPost = (data: { title: string; body: string; parent?: string }) =>
-API.post("/posts", data).then(response =>{
+axiosClient.post("/posts", data).then(response =>{
     console.log(response)
     return response
   }).catch( error => {
@@ -9,7 +9,7 @@ API.post("/posts", data).then(response =>{
   })
 
 export const getPosts = async () => {
-  await API.get("/posts").then(response =>{
+  await axiosClient.get("/posts").then(response =>{
     console.log(response)
     return response
   }).catch( error => {
@@ -19,7 +19,7 @@ export const getPosts = async () => {
 };
 
 export const getPostByID = async (id: string) => {
-   await API.get(`/posts/${id}`).then(response =>{
+   await axiosClient.get(`/posts/${id}`).then(response =>{
     console.log(response)
     return response
   }).catch( error => {
@@ -29,7 +29,7 @@ export const getPostByID = async (id: string) => {
 };
 
 export const getPostsNumber = async () => {
-   await API.get("/posts-number").then(response =>{
+   await axiosClient.get("/posts-number").then(response =>{
     console.log(response)
     return response
   }).catch( error => {
@@ -39,7 +39,7 @@ export const getPostsNumber = async () => {
 };
 
 export const upvotePost = (id: string) => {
-  API.post(`/posts/${id}/upvote`).then(response =>{
+  axiosClient.post(`/posts/${id}/upvote`).then(response =>{
     console.log(response)
     return response
   }).catch( error => {
@@ -48,7 +48,7 @@ export const upvotePost = (id: string) => {
 };
 
 export const downvotePost = (id: string) => {
-  API.post(`/posts/${id}/downvote`).then(response =>{
+  axiosClient.post(`/posts/${id}/downvote`).then(response =>{
     console.log(response)
     return response
   }).catch( error => {
@@ -57,7 +57,7 @@ export const downvotePost = (id: string) => {
 };
 
 export const removeReaction = (id: string) => {
-  API.post(`/posts/${id}/remove-reaction`).then(response =>{
+  axiosClient.post(`/posts/${id}/remove-reaction`).then(response =>{
     console.log(response)
     return response
   }).catch( error => {

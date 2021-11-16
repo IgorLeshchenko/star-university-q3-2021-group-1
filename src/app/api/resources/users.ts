@@ -1,7 +1,7 @@
-import API from "./axiosConfig";
+import axiosClient from "./axiosConfig";
 
 export const addUser = (username: string, password: string) => {
-  API.post("/users", {username,password}).then(response =>{
+  axiosClient.post("/users", {username,password}).then(response =>{
     console.log(response)
     return response
   }).catch( error => {
@@ -10,7 +10,7 @@ export const addUser = (username: string, password: string) => {
 };
 
 export const loginUser = (username: string, password: string) => {
-  API.post('/login',{username,password}).then(response =>{
+  axiosClient.post('/login',{username,password}).then(response =>{
     console.log(response.headers)
     return response.headers
   }).catch( error => {
@@ -20,13 +20,13 @@ export const loginUser = (username: string, password: string) => {
 
 export const getToken = async () => {
  
-  const response = await API.get(`/token`);
+  const response = await axiosClient.get(`/token`);
   console.log(response);
   return response;
 };
 
 export const logoutUser = () => {
-  API.delete("/logout").then(response => {
+  axiosClient.delete("/logout").then(response => {
     console.log(response);
     return response;
   }).catch( error => {
@@ -35,7 +35,7 @@ export const logoutUser = () => {
 };
 
 export const getUserByUsernameReaction = async (username: string) => {
-   await API.get(`/users/${username}/reactions`).then(response =>{
+   await axiosClient.get(`/users/${username}/reactions`).then(response =>{
     console.log(response.data)
     return response.data
   }).catch( error => {
@@ -45,7 +45,7 @@ export const getUserByUsernameReaction = async (username: string) => {
 };
 
 export const getUserByUsername = async (username: string) => {
- await API.get(`/users/${username}`).then(response =>{
+ await axiosClient.get(`/users/${username}`).then(response =>{
   console.log(response.data)
   return response.data
 }).catch( error => {
@@ -56,7 +56,7 @@ export const getUserByUsername = async (username: string) => {
 export const addUserIcon = () => {};
 
 export const getUserIcon = async (username: string) => {
-   await API.get(`/users/${username}/icon`).then(response =>{
+   await axiosClient.get(`/users/${username}/icon`).then(response =>{
     console.log(response.data)
     return response.data
   }).catch( error => {
