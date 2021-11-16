@@ -1,13 +1,18 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
+import { IPost } from "./types";
 import Post from "./Post";
 
-const post = {
-  userId: 1001,
-  id: 100101,
-  title: "Test post",
+const post: IPost = {
+  _id: "12345",
   body: "Hello world",
+  author: "author",
+  date: "2021-11-12T19:22:34.167Z",
+  level: 1,
+  parent: "",
+  title: "Test post",
+  upvotes: 30,
 };
 
 describe("Post", () => {

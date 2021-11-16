@@ -22,6 +22,6 @@ describe("Not found page", () => {
     const link = screen.getByTestId("link-home");
 
     expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute("href", "/");
+    expect(link).toHaveAttribute("href", "/star-university-q3-2021-group-1");
   });
 });

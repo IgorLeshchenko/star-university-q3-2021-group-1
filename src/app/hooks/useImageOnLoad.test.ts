@@ -8,7 +8,7 @@ describe("useImageOnLoad", () => {
     result.current.handleImageOnLoad();
   });
 
-  test("when image onload", () => {
+  it("when image onload", () => {
     expect(result.current.css).toMatchObject({
       thumbnail: {
         visibility: "hidden",

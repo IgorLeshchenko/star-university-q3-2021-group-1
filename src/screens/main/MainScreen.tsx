@@ -70,11 +70,10 @@ const MainScreen: React.FC = () => {
           </div>
         </div>
         <div className={post}>
-          {console.log(posts)}
           {results
             .filter((post: IPost) => post.title !== "Comment")
             .map((post: IPost) => (
-              <Post post={post} key={post._id} upvotes={post.upvotes} />
+              <Post post={post} key={post._id} />
             ))}
           {!results.length && <Typography variant="h1">No Results Found!!</Typography>}
         </div>
