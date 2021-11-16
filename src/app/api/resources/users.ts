@@ -1,64 +1,65 @@
-import AxiosRequest from "./axiosConfig";
+import API from "./axiosConfig";
 
-export const addUser = (name: string, pass: string) => {
-  const data = {
-    username: name,
-    password: pass,
-  };
-
-  AxiosRequest.post("/users", data);
+export const addUser = (username: string, password: string) => {
+  API.post("/users", {username,password}).then(response =>{
+    console.log(response)
+    return response
+  }).catch( error => {
+    console.log(error);
+  })
 };
 
-export const loginUser = (name: string, pass: string) => {
-  const data = {
-    username: name,
-    password: pass,
-  };
-  fetch("https://starforum.herokuapp.com/api/v1/login", {
-    method: "POST",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+export const loginUser = (username: string, password: string) => {
+  API.post('/login',{username,password}).then(response =>{
+    console.log(response.headers)
+    return response.headers
+  }).catch( error => {
+    console.log(error);
+  })
 };
 
-export const getToken = async (username: string) => {
-  const config: any = {
-    crossDomain: true,
-    xhrFields: {
-      withCredentials: true,
-    },
-  };
-  const response = await AxiosRequest.get(`/token/${username}`, config);
+export const getToken = async () => {
+ 
+  const response = await API.get(`/token`);
   console.log(response);
   return response;
 };
 
 export const logoutUser = () => {
-  AxiosRequest.delete("/logout").then(response => {
+  API.delete("/logout").then(response => {
     console.log(response);
     return response;
-  });
+  }).catch( error => {
+    console.log(error);
+  })
 };
 
 export const getUserByUsernameReaction = async (username: string) => {
-  const response = await AxiosRequest.get(`/users/${username}/reactions`);
-  console.log(response.data);
-  return response.data;
+   await API.get(`/users/${username}/reactions`).then(response =>{
+    console.log(response.data)
+    return response.data
+  }).catch( error => {
+    console.log(error);
+  })
+
 };
 
 export const getUserByUsername = async (username: string) => {
-  const response = await AxiosRequest.get(`/users/${username}`);
-  console.log(response.data);
-  return response.data;
+ await API.get(`/users/${username}`).then(response =>{
+  console.log(response.data)
+  return response.data
+}).catch( error => {
+  console.log(error);
+})
 };
 
 export const addUserIcon = () => {};
 
 export const getUserIcon = async (username: string) => {
-  const response = await AxiosRequest.get(`/users/${username}/icon`);
-  console.log(response);
-  return response.data; // img in Base64 format
+   await API.get(`/users/${username}/icon`).then(response =>{
+    console.log(response.data)
+    return response.data
+  }).catch( error => {
+    console.log(error);
+  })
 };
