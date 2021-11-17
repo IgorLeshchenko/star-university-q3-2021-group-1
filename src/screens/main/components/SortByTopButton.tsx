@@ -21,15 +21,10 @@ const SortByTopButton: React.FC<Props> = ({ sortedPosts }) => {
   const dispatch = useDispatch();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
 
-  useEffect(() => {
-    fetch("https://starforum.herokuapp.com/api/v1/posts")
-      .then(response => response.json())
-      .then(json => dispatch(postsAction.setPosts(json)));
-  }, []);
-
   const sortByTop = () => {
-    const sortedByTop = posts.slice().sort((a: IPost, b: IPost) => b.upvotes - a.upvotes);
-    sortedPosts(sortedByTop as []);
+    fetch("https://starforum.herokuapp.com/api/v1/posts?sort=most-upvotes")
+        .then(response => response.json())
+        .then(json => dispatch(postsAction.setPosts(json)));
   };
 
   return (

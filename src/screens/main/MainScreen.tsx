@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { postsAction } from "../../app/store/postsSlice";
+import _ from 'lodash'
 
 import Layout from "../../components/layout";
 import { IPost, StatePosts } from "../../components/post/types";
@@ -20,6 +21,38 @@ const MainScreen: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
+  const dispatch = useDispatch();
+
+  let scrollHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+  );
+
+  useEffect(() => {
+    fetch("https://starforum.herokuapp.com/api/v1/posts")
+        .then(response => response.json())
+        .then(json => dispatch(postsAction.setPosts(json)));
+  }, []);
+
+  const render = () => {
+    console.log(window.scrollY > scrollHeight * 0.7, window.scrollY, scrollHeight, page)
+    if (window.scrollY > scrollHeight * 0.7){
+      setPage(page + 1);
+    }else {
+      return page;
+    }
+  }
+
+  const time = 1000;
+  const delay = _.debounce(render, time);
+  window.addEventListener('scroll', delay);
+
+  useEffect(() => {
+    return () => {
+      window.removeEventListener('scroll', delay)
+    }
+  }, [])
 
   const results = !searchTerm
     ? posts
@@ -31,24 +64,8 @@ const MainScreen: React.FC = () => {
     setSearchTerm(event.target.value);
   };
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    fetch("https://starforum.herokuapp.com/api/v1/posts")
-      .then(response => response.json())
-      .then(json => dispatch(postsAction.setPosts(json)));
-  }, []);
-
   const sortedPosts = (srtdPosts: []) => {
     dispatch(postsAction.setPosts(srtdPosts));
-  };
-
-  const backHandler = () => {
-    setPage(page - 1);
-  };
-
-  const forwardHandler = () => {
-    setPage(page + 1);
   };
 
   return (
@@ -80,21 +97,12 @@ const MainScreen: React.FC = () => {
           </div>
         </div>
         <div className={post}>
-          {console.log(page)}
           {results
             .filter((post: IPost) => post.title !== "Comment").slice((1 * page) - 1, 5 * page)
             .map((post: IPost) => (
               <Post post={post} key={post._id} upvotes={post.upvotes} />
             ))}
           {!results.length && <Typography variant="h1">No Results Found!!</Typography>}
-        </div>
-        <div className={pagination}>
-          <Button variant="outlined" className={button} onClick={backHandler}>
-            Back
-          </Button>
-          <Button variant="outlined" className={button} onClick={forwardHandler}>
-            Forward
-          </Button>
         </div>
       </Box>
     </Layout>
