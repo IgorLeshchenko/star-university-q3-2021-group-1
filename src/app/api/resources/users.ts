@@ -11,10 +11,18 @@ export const addUser = (username: string, password: string) => {
 };
 
 export const loginUser = async (username: string, password: string) => {
-  const response = await axiosClient.post("/login", { username, password });
   try {
-    console.log(response.headers);
-    return response.headers;
+    const response = await axiosClient.post("/login", { username, password });
+
+    document.cookie = "accesstoken=" + response.headers.accesstoken;
+
+    const getCookie = (cookiesName: string) => {
+      let results = document.cookie.match("(^|;) ?" + cookiesName + "=([^;]*)(;|$)");
+      // console.log (`we get cookies ${results}`)
+      return results ? unescape(results[2]) : null;
+    };
+
+    return getCookie("accesstoken");// Значение accesstoken + запись его в куки файлы
   } catch (error) {
     console.log(error);
   }
