@@ -31,12 +31,6 @@ const MainScreen: React.FC = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetch("https://starforum.herokuapp.com/api/v1/posts")
-      .then(response => response.json())
-      .then(json => dispatch(postsAction.setPosts(json)));
-  }, []);
-
   const sortedPosts = (srtdPosts: []) => {
     dispatch(postsAction.setPosts(srtdPosts));
   };

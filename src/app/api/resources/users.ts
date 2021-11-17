@@ -3,7 +3,6 @@ import axiosClient from "./axiosConfig";
 export const addUser = (username: string, password: string) => {
   try {
     const response = axiosClient.post("/users", { username, password });
-    console.log(response);
     return response;
   } catch (error) {
     console.log(error);
@@ -45,7 +44,6 @@ export const logoutUser = () => {
 export const getUserByUsernameReaction = async (username: string) => {
   try {
     const response = await axiosClient.get(`/users/${username}/reactions`);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -55,7 +53,6 @@ export const getUserByUsernameReaction = async (username: string) => {
 export const getUserByUsername = async (username: string) => {
   try {
     const response = await axiosClient.get(`/users/${username}`);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -67,7 +64,6 @@ export const addUserIcon = () => {};
 export const getUserIcon = async (username: string) => {
   try {
     const response = await axiosClient.get(`/users/${username}/icon`);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
