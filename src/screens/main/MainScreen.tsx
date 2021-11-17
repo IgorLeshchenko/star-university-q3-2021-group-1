@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useDebounce from "../../app/hooks/useDebounce";
 import { useHistory } from "react-router-dom";
 import { Box, Button, TextField } from "@material-ui/core";
@@ -16,7 +16,7 @@ import Spinner from "./Spinner";
 
 
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post, search, pagination } =
+  const { button, sort, sortText, topNav, searchAndNewPost, post, search } =
     useStyles();
   const history = useHistory();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
@@ -46,8 +46,8 @@ const MainScreen: React.FC = () => {
 
   useEffect(() => {
     fetch("https://starforum.herokuapp.com/api/v1/posts")
-        .then(response => response.json())
-        .then(json => {
+      .then(response => response.json())
+      .then(json => {
         dispatch(postsAction.setPosts(json));
         setIsLoading(false);
       });
