@@ -14,14 +14,13 @@ export const loginUser = async (username: string, password: string) => {
   try {
     const response = await axiosClient.post("/login", { username, password });
 
-    if (response.data === 'OK') {
-      
+    if (response.data === "OK") {
       document.cookie = "accesstoken=" + response.headers.accesstoken;
       document.cookie = "refreshtoken=" + response.headers.refreshtoken;
       document.cookie = "username=" + username;
-    }  
+    }
 
-   return response
+    return response;
   } catch (error: any) {
     throw Error(error?.message);
   }
@@ -33,13 +32,11 @@ export const getToken = async () => {
   return response;
 };
 
-export const logoutUser =  () => {
+export const logoutUser = () => {
   try {
-
-    document.cookie = "accesstoken=''; max-age=-1;"
-    document.cookie = "username=''; max-age=-1;"
-    document.cookie = "refreshtoken=''; max-age=-1;"
-    
+    document.cookie = "accesstoken=''; max-age=-1;";
+    document.cookie = "username=''; max-age=-1;";
+    document.cookie = "refreshtoken=''; max-age=-1;";
   } catch (error) {
     console.log(error);
   }

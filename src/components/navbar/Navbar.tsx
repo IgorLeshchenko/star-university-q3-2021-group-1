@@ -12,10 +12,10 @@ import { useStyles } from "./styles";
 const Navbar: React.FC = props => {
   const { root, logoBtn, logo, homeButton, loginButton } = useStyles();
   const { user } = useSelector(authSelector);
-  const history = useHistory()
+  const history = useHistory();
   const handleLogout = () => {
     API.UserRequest.logoutUser();
-    history.push('/star-university-q3-2021-group-1/login')
+    history.push("/star-university-q3-2021-group-1/login");
   };
 
   return (
@@ -40,14 +40,14 @@ const Navbar: React.FC = props => {
               </Button>
             </div>
           ) : (
-              <Button
-                variant="contained"
-                className={loginButton}
-                component={Link}
-                data-testid="login-route"
-                to="/star-university-q3-2021-group-1/login">
-                <Typography variant="button">Login</Typography>
-              </Button>        
+            <Button
+              variant="contained"
+              className={loginButton}
+              component={Link}
+              data-testid="login-route"
+              to="/star-university-q3-2021-group-1/login">
+              <Typography variant="button">Login</Typography>
+            </Button>
           )}
         </Toolbar>
       </AppBar>
