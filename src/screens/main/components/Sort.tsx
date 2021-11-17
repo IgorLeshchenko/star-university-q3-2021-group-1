@@ -9,18 +9,27 @@ interface Props {
   sortedPosts(srtdPosts: []): void;
 }
 
-const SortByTopButton: React.FC<Props> = ({ sortedPosts }) => {
+const Sort: React.FC<Props> = ({ sortedPosts }) => {
   const { button } = useStyles();
   const dispatch = useDispatch();
 
-  const sortByTop = () => {
-    fetch("https://starforum.herokuapp.com/api/v1/posts?sort=most-upvotes")
+  const sortByNew = () => {
+    fetch("https://starforum.herokuapp.com/api/v1/posts?sort=recent")
       .then(response => response.json())
       .then(json => dispatch(postsAction.setPosts(json)));
   };
 
+  const sortByTop = () => {
+    fetch("https://starforum.herokuapp.com/api/v1/posts?sort=most-upvotes")
+        .then(response => response.json())
+        .then(json => dispatch(postsAction.setPosts(json)));
+  };
+
   return (
     <div>
+      <Button variant="outlined" className={button} onClick={sortByNew}>
+        NEW
+      </Button>
       <Button variant="outlined" className={button} onClick={sortByTop}>
         TOP
       </Button>
@@ -28,4 +37,4 @@ const SortByTopButton: React.FC<Props> = ({ sortedPosts }) => {
   );
 };
 
-export default SortByTopButton;
+export default Sort;
