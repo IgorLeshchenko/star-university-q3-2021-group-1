@@ -59,10 +59,12 @@ export const getUserByUsername = async (username: string) => {
   }
 };
 
-export const addUserIcon = (username:string) => {
+export const addUserIcon = (username: string) => {
   try {
-    axiosClient.post(`/users/${username}/icon`,'https://cdn-icons-png.flaticon.com/512/147/147144.png');
-    
+    axiosClient.post(
+      `/users/${username}/icon`,
+      "https://cdn-icons-png.flaticon.com/512/147/147144.png",
+    );
   } catch (error) {
     console.log(error);
   }
