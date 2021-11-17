@@ -24,7 +24,7 @@ const Navbar: React.FC = props => {
               variant="contained"
               className={loginButton}
               component={Link}
-              to="/star-university-q3-2021-group-1/user">
+              to="/user">
               <Typography variant="button">{user}</Typography>
             </Button>
           ) : (
@@ -34,7 +34,7 @@ const Navbar: React.FC = props => {
                 className={homeButton}
                 component={Link}
                 data-testid="home-route"
-                to="/star-university-q3-2021-group-1">
+                to="/">
                 <Typography variant="button">Home</Typography>
               </Button>
               <Button
@@ -42,7 +42,7 @@ const Navbar: React.FC = props => {
                 className={loginButton}
                 component={Link}
                 data-testid="login-route"
-                to="/star-university-q3-2021-group-1/login">
+                to="/login">
                 <Typography variant="button">Login</Typography>
               </Button>
             </div>

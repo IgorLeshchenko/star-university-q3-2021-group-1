@@ -24,7 +24,7 @@ const NotFound: React.FC = () => {
         color="primary"
         data-testid="link-home"
         component={Link}
-        to="/star-university-q3-2021-group-1">
+        to="/">
         <Typography variant="button">Go to home</Typography>
       </Button>
     </Container>

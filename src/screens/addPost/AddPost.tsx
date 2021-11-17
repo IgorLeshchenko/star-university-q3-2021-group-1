@@ -8,7 +8,7 @@ const AddPost: React.FC = () => {
   const { form, card, text, textfield, textarea, button } = useStyles();
   const history = useHistory();
 
-  const handleSubmit = () => history.push("/star-university-q3-2021-group-1");
+  const handleSubmit = () => history.push("/");
 
   return (
     <form className={form} onSubmit={handleSubmit} data-testid="form-add">

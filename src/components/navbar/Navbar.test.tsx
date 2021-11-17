@@ -8,8 +8,8 @@ import NavBar from "./Navbar";
 import { store } from "../../app/store/store";
 
 const links = [
-  { testid: "home-route", location: "/star-university-q3-2021-group-1" },
-  { testid: "login-route", location: "/star-university-q3-2021-group-1/login" },
+  { testid: "home-route", location: "/" },
+  { testid: "login-route", location: "/login" },
 ];
 
 let documentBody: RenderResult;
