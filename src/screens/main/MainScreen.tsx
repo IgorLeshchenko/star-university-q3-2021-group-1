@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { postsAction } from "../../app/store/postsSlice";
-import _ from 'lodash'
+import _ from "lodash";
 
 import Layout from "../../components/layout";
 import { IPost, StatePosts } from "../../components/post/types";
@@ -14,7 +14,7 @@ import { useStyles } from "./style";
 import SortByTopButton from "./components/SortByTopButton";
 
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post, search, pagination } =
+  const { button, sort, sortText, topNav, searchAndNewPost, post, search } =
     useStyles();
   const history = useHistory();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
@@ -24,35 +24,32 @@ const MainScreen: React.FC = () => {
   const dispatch = useDispatch();
 
   let scrollHeight = Math.max(
-      document.body.scrollHeight, document.documentElement.scrollHeight,
-      document.body.offsetHeight, document.documentElement.offsetHeight,
-      document.body.clientHeight, document.documentElement.clientHeight
+    document.documentElement.scrollHeight,
+    document.documentElement.offsetHeight,
+    document.documentElement.clientHeight,
   );
 
   useEffect(() => {
     fetch("https://starforum.herokuapp.com/api/v1/posts")
-        .then(response => response.json())
-        .then(json => dispatch(postsAction.setPosts(json)));
+      .then(response => response.json())
+      .then(json => dispatch(postsAction.setPosts(json)));
   }, []);
 
   const render = () => {
-    console.log(window.scrollY > scrollHeight * 0.7, window.scrollY, scrollHeight, page)
-    if (window.scrollY > scrollHeight * 0.7){
+    if(window.scrollY > scrollHeight * 0.7){
       setPage(page + 1);
-    }else {
-      return page;
     }
-  }
+  };
 
   const time = 1000;
   const delay = _.debounce(render, time);
-  window.addEventListener('scroll', delay);
+  window.addEventListener("scroll", delay);
 
   useEffect(() => {
     return () => {
-      window.removeEventListener('scroll', delay)
-    }
-  }, [])
+      window.removeEventListener("scroll", delay);
+    };
+  }, []);
 
   const results = !searchTerm
     ? posts
@@ -98,7 +95,8 @@ const MainScreen: React.FC = () => {
         </div>
         <div className={post}>
           {results
-            .filter((post: IPost) => post.title !== "Comment").slice((1 * page) - 1, 5 * page)
+            .filter((post: IPost) => post.title !== "Comment")
+            .slice(1 * page - 1, 5 * page)
             .map((post: IPost) => (
               <Post post={post} key={post._id} upvotes={post.upvotes} />
             ))}
