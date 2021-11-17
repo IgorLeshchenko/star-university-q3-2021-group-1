@@ -11,6 +11,7 @@ import Post from "../../components/post";
 import { useStyles } from "./style";
 
 import SortByTopButton from "./components/SortByTopButton";
+import SortByNewButton from "./components/SortByNewButton";
 
 const MainScreen: React.FC = () => {
   const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
@@ -47,9 +48,7 @@ const MainScreen: React.FC = () => {
         <div className={topNav}>
           <div className={sort}>
             <span className={sortText}>Sort by:</span>
-            <Button variant="outlined" className={button}>
-              New
-            </Button>
+            <SortByNewButton sortedPosts={sortedPosts} />
             <SortByTopButton sortedPosts={sortedPosts} />
             <TextField
               id="standard-basic"
