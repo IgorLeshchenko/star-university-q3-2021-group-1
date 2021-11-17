@@ -30,7 +30,7 @@ const LoginScreen: React.FC = () => {
     e.preventDefault();
     dispatch(
       // @ts-ignore
-      postUser({ username: e.target[0].value, password: e.target[2].value }),
+      postUser({username: e.target[0].value, password: e.target[2].value}),
     );
 
     history.push("/star-university-q3-2021-group-1");

@@ -14,32 +14,32 @@ export const loginUser = async (username: string, password: string) => {
   try {
     const response = await axiosClient.post("/login", { username, password });
 
-    document.cookie = "accesstoken=" + response.headers.accesstoken;
+    if (response.data === 'OK') {
+      
+      document.cookie = "accesstoken=" + response.headers.accesstoken;
+      document.cookie = "refreshtoken=" + response.headers.refreshtoken;
+      document.cookie = "username=" + username;
+    }  
 
-    const getCookie = (cookiesName: string) => {
-      let results = document.cookie.match("(^|;) ?" + cookiesName + "=([^;]*)(;|$)");
-      // console.log (`we get cookies ${results}`)
-      return results ? unescape(results[2]) : null;
-    };
-
-    return getCookie("accesstoken");// Значение accesstoken + запись его в куки файлы
-  } catch (error) {
-    console.log(error);
+   return response
+  } catch (error: any) {
+    throw Error(error?.message);
   }
 };
 
 export const getToken = async () => {
-  //Переделаю по надобности, есть подозрение что он не понадобится
   const response = await axiosClient.get(`/token`);
-  console.log(response);
+  document.cookie = "refreshtoken=" + response.headers.refreshtoken;
   return response;
 };
 
-export const logoutUser = async () => {
+export const logoutUser =  () => {
   try {
-    const response = await axiosClient.delete("/logout");
-    console.log(response);
-    return response;
+
+    document.cookie = "accesstoken=''; max-age=-1;"
+    document.cookie = "username=''; max-age=-1;"
+    document.cookie = "refreshtoken=''; max-age=-1;"
+    
   } catch (error) {
     console.log(error);
   }
