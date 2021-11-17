@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState } from "react";
-import debouce from "lodash.debounce";
+import React, { useEffect, useState } from "react";
+import useDebounce from "../../app/hooks/useDebounce";
 import { useHistory } from "react-router-dom";
-import { Box, Button, TextField, Card, Typography } from "@material-ui/core";
+import { Box, Button, TextField } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { postsAction } from "../../app/store/postsSlice";
 import Layout from "../../components/layout";
@@ -9,8 +9,8 @@ import { IPost, StatePosts } from "../../components/post/types";
 import Post from "../../components/post";
 import { useStyles } from "./style";
 import SortByTopButton from "./components/SortByTopButton";
-import ClipLoader from "react-spinners/ClipLoader";
-import { BiMessageSquareError } from "react-icons/bi";
+import NotFoundMessage from "./components/NotFoundMessage";
+import Spinner from "./Spinner";
 
 const MainScreen: React.FC = () => {
   const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
@@ -21,28 +21,20 @@ const MainScreen: React.FC = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const debouncedSearchTerm = useDebounce(searchTerm, 600);
+
   useEffect(() => {
-    const results = !searchTerm
+    const results = !debouncedSearchTerm
       ? posts
       : posts.filter((post: IPost) => {
-          return post.title.toLowerCase().includes(searchTerm.toLowerCase());
+          return post.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase());
         });
     setSearchResults(results);
-  }, [posts, searchTerm]);
+  }, [posts, debouncedSearchTerm]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
-
-  const debouncedResults = useMemo(() => {
-    return debouce(handleChange, 300);
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      debouncedResults.cancel();
-    };
-  });
 
   const dispatch = useDispatch();
 
@@ -74,7 +66,7 @@ const MainScreen: React.FC = () => {
               label="Search"
               variant="standard"
               className={search}
-              onChange={debouncedResults}
+              onChange={handleChange}
             />
           </div>
           <div className={searchAndNewPost}>
@@ -87,39 +79,15 @@ const MainScreen: React.FC = () => {
           </div>
         </div>
         <div className={post}>
-          {console.log(posts)}
           {isLoading ? (
-            <ClipLoader color={"#4A90E2"} loading={isLoading} size={80} />
+            <Spinner loading={isLoading} />
           ) : (
             searchResults
               .filter((post: IPost) => post.title !== "Comment")
               .map((post: IPost) => <Post post={post} key={post._id} />)
           )}
 
-          {!isLoading && !searchResults.length && (
-            <Card>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  textAlign: "center",
-                  p: 3,
-                  m: 8,
-                }}>
-                <Typography variant="h4">
-                  <BiMessageSquareError fontSize="100" />
-                </Typography>
-                <Typography variant="h5">
-                  There aren’t any search results for "{searchTerm}", does it even exist?
-                </Typography>
-                <Typography>
-                  Looks like there aren’t any results for “{searchTerm}”. Try double-checking your
-                  spelling or searching for a related post.
-                </Typography>
-              </Box>
-            </Card>
-          )}
+          {!isLoading && !searchResults.length && <NotFoundMessage searcTerm={searchTerm} />}
         </div>
       </Box>
     </Layout>
