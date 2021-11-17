@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import useDebounce from "../../app/hooks/useDebounce";
 import { useHistory } from "react-router-dom";
 import { Box, Button, TextField } from "@material-ui/core";
@@ -44,28 +44,17 @@ const MainScreen: React.FC = () => {
 
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     fetch("https://starforum.herokuapp.com/api/v1/posts")
-      .then(response => response.json())
-      .then(json => {
+        .then(response => response.json())
+        .then(json => {
         dispatch(postsAction.setPosts(json));
         setIsLoading(false);
       });
   }, []);
 
-
-
   const sortedPosts = (srtdPosts: []) => {
     dispatch(postsAction.setPosts(srtdPosts));
-  };
-
-  const backHandler = () => {
-    setPage(page - 1);
-  };
-
-  const forwardHandler = () => {
-    setPage(page + 1);
   };
 
   return (
