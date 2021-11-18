@@ -66,19 +66,20 @@ const MainScreen: React.FC = () => {
     setSearchTerm(event.target.value);
   };
 
-  const initialState = (type: string) => {
+  const getAndSort = (type: string) => {
     dispatch(postsAction.setPosts([]));
+    setIsLoading(true);
     setPage(1);
     setTypeOfSort(type);
     dispatch(fetchingAction.setFetching());
   };
 
   const sortByNew = () => {
-    initialState("recent");
+    getAndSort("recent");
   };
 
   const sortByTop = () => {
-    initialState("most-upvotes");
+    getAndSort("most-upvotes");
   };
 
   return (
