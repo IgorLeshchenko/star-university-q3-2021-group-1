@@ -10,8 +10,6 @@ import { authSelector } from "../../app/store/auth/selectors";
 import SortByTopButton from "./components/SortByTopButton";
 import Post from "../../components/post";
 import { useStyles } from "./style";
-
-import SortByTopButton from "./components/SortByTopButton";
 import NotFoundMessage from "./components/NotFoundMessage";
 import Spinner from "./Spinner";
 
