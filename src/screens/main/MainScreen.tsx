@@ -9,13 +9,11 @@ import useScroll from "../../app/hooks/useScroll";
 import Layout from "../../components/layout";
 import { IPost, StatePosts, Fetch } from "../../components/post/types";
 import { authSelector } from "../../app/store/auth/selectors";
-import SortByTopButton from "./components/SortByTopButton";
 import Post from "../../components/post";
 import { useStyles } from "./style";
 import NotFoundMessage from "./components/NotFoundMessage";
 import Spinner from "./Spinner";
-
-
+import API from "../../app/api/index";
 
 const MainScreen: React.FC = () => {
   const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
@@ -23,19 +21,18 @@ const MainScreen: React.FC = () => {
   const posts = useSelector((state: StatePosts) => state.posts.posts);
   const fetching = useSelector((state: Fetch) => state.fetching.fetching);
   const { user } = useSelector(authSelector);
-
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   useScroll();
-
+  const [typeOfSort, setTypeOfSort] = useState("default");
   const debouncedSearchTerm = useDebounce(searchTerm, 600);
+
   useEffect(() => {
     if (fetching) {
-      fetch(`https://starforum.herokuapp.com/api/v1/posts?page=${page}&number=5`)
-        .then(response => response.json())
+      API.PostsRequest.getPostsByPageSorted(page, typeOfSort)
         .then(json => {
           dispatch(postsAction.setPosts([...posts, ...json]));
           setPage(previousPageNumber => previousPageNumber + 1);
@@ -47,8 +44,8 @@ const MainScreen: React.FC = () => {
 
   useEffect(() => {
     const results = !debouncedSearchTerm
-        ? posts
-        : posts.filter((post: IPost) => {
+      ? posts
+      : posts.filter((post: IPost) => {
           return post.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase());
         });
     setSearchResults(results);
@@ -58,8 +55,19 @@ const MainScreen: React.FC = () => {
     setSearchTerm(event.target.value);
   };
 
-  const sortedPosts = (srtdPosts: []) => {
-    dispatch(postsAction.setPosts(srtdPosts));
+  const initialState = (type: string) => {
+    dispatch(postsAction.setPosts([]));
+    setPage(1);
+    setTypeOfSort(type);
+    dispatch(fetchingAction.setFetching());
+  };
+
+  const sortByNew = () => {
+    initialState("recent");
+  };
+
+  const sortByTop = () => {
+    initialState("most-upvotes");
   };
 
   return (
@@ -68,10 +76,12 @@ const MainScreen: React.FC = () => {
         <div className={topNav}>
           <div className={sort}>
             <span className={sortText}>Sort by:</span>
-            <Button variant="outlined" className={button}>
+            <Button variant="outlined" className={button} onClick={sortByNew}>
               New
             </Button>
-            <SortByTopButton sortedPosts={sortedPosts} />
+            <Button variant="outlined" className={button} onClick={sortByTop}>
+              Top
+            </Button>
             <TextField
               id="standard-basic"
               label="Search"
