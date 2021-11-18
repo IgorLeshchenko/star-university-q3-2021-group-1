@@ -22,22 +22,26 @@ const MainScreen: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
-
-  let scrollHeight = Math.max(
-    document.documentElement.scrollHeight,
-    document.documentElement.offsetHeight,
-    document.documentElement.clientHeight,
-  );
+  const [fetching, setFetching] = useState(true);
+  let scrollHeight = document.documentElement.scrollHeight;
+  let currentScrollPosition = document.documentElement.scrollTop;
+  let visibleArea = window.innerHeight;
 
   useEffect(() => {
-    fetch("https://starforum.herokuapp.com/api/v1/posts")
-      .then(response => response.json())
-      .then(json => dispatch(postsAction.setPosts(json)));
-  }, []);
+    if(fetching) {
+      fetch(`https://starforum.herokuapp.com/api/v1/posts?page=${page}&number=5`)
+          .then(response => response.json())
+          .then((json) => {
+            dispatch(postsAction.setPosts([...posts, ...json]))
+            setPage(prev => prev + 1)
+          }).finally(() => setFetching(false));
+    }
+
+  }, [fetching]);
 
   const render = () => {
-    if(window.scrollY > scrollHeight * 0.7){
-      setPage(page + 1);
+    if(scrollHeight - (currentScrollPosition + visibleArea) < 300) {
+      setFetching(true);
     }
   };
 
@@ -96,7 +100,6 @@ const MainScreen: React.FC = () => {
         <div className={post}>
           {results
             .filter((post: IPost) => post.title !== "Comment")
-            .slice(1 * page - 1, 5 * page)
             .map((post: IPost) => (
               <Post post={post} key={post._id} upvotes={post.upvotes} />
             ))}
