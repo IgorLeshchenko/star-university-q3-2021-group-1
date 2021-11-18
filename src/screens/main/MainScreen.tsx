@@ -53,6 +53,10 @@ const MainScreen: React.FC = () => {
     }
   }, [fetching]);
 
+  // useEffect(() => {
+  //   API.PostsRequest.getPosts().then(json => dispatch(postsAction.setPosts(json))); 
+  // }, [posts]);
+
   useEffect(() => {
     const results = !debouncedSearchTerm
       ? posts
@@ -81,7 +85,7 @@ const MainScreen: React.FC = () => {
   const sortByTop = () => {
     getAndSort("most-upvotes");
   };
-
+// console.log(searchResults)
   return (
     <Layout>
       <Box py={10}>
