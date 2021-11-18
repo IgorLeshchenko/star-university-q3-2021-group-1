@@ -18,14 +18,7 @@ const Post: React.FC<Props> = ({ post }) => {
     addSuffix: true,
   });
   
-    function upVote(){
-          API.PostsRequest.upvotePost(post._id)
-    }
-
-    function downVote(){
-        API.PostsRequest.downvotePost(post._id)
-    }
-
+ 
   return (
     <Card className={classes.post} >
       <CardContent>
@@ -43,11 +36,11 @@ const Post: React.FC<Props> = ({ post }) => {
         <div className={classes.post__BodyAndVote}>
           <div className={classes.post__Raiting}>
             <p>
-              <ArrowUpward className={classes.arrowUp} onClick={upVote}/>
+              <ArrowUpward className={classes.arrowUp} onClick={()=> API.PostsRequest.upvotePost(post._id)}/>
             </p>
             <div>{post.upvotes}</div>
             <p>
-              <ArrowDownward className={classes.arrowDown} onClick={downVote}/>
+              <ArrowDownward className={classes.arrowDown} onClick={()=> API.PostsRequest.downvotePost(post._id)}/>
             </p>
           </div>
           <div>
