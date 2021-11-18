@@ -26,7 +26,7 @@ const LoginScreen: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const formSubmissionHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
     dispatch(
       // @ts-ignore
@@ -41,9 +41,9 @@ const LoginScreen: React.FC = () => {
       <div className={loginPageWrapper}>
         <div className={wrapper}>
           {showLogin ? (
-            <LoginForm show={changeShowLogin} onSubmit={handleSubmit} />
+            <LoginForm show={changeShowLogin} onSubmit={formSubmissionHandler} />
           ) : (
-            <SignUpForm show={changeShowLogin} onSubmit={handleSubmit} />
+            <SignUpForm show={changeShowLogin} onSubmit={formSubmissionHandler} />
           )}
           <div className={imgWrapper}></div>
           {/* <div className={imgWrapper} onLoad={handleImageOnLoad} style={{ ...css.fullSize }} /> */}
