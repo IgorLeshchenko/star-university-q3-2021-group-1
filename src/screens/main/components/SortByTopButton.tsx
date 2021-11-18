@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Button } from "@material-ui/core";
 import { useStyles } from "../style";
-import { IPost } from "../../../components/post/types";
+import { IPost, StatePosts } from "../../../components/post/types";
 import API from "../../../app/api/index";
 import { useSelector, useDispatch } from "react-redux";
+import useScroll from "../../../app/hooks/useScroll";
 import { postsAction } from "../../../app/store/postsSlice";
 
 interface Props {
@@ -13,6 +14,8 @@ interface Props {
 const SortByTopButton: React.FC<Props> = ({ sortedPosts }) => {
   const { button } = useStyles();
   const dispatch = useDispatch();
+  const posts = useSelector((state: StatePosts) => state.posts.posts);
+  useScroll();
 
   useEffect(() => {
   API.PostsRequest.getPosts().then(json => dispatch(postsAction.setPosts(json)));

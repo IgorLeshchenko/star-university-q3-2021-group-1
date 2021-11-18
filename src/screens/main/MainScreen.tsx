@@ -39,6 +39,7 @@ const MainScreen: React.FC = () => {
         .then(json => {
           dispatch(postsAction.setPosts([...posts, ...json]));
           setPage(previousPageNumber => previousPageNumber + 1);
+          setIsLoading(false);
         })
         .finally(() => dispatch(fetchingAction.setFetching()));
     }
@@ -100,14 +101,6 @@ const MainScreen: React.FC = () => {
           )}
 
           {!isLoading && !searchResults.length && <NotFoundMessage searcTerm={searchTerm} />}
-        </div>
-        <div>
-          <Button variant="outlined" className={button} onClick={backHandler}>
-            Back
-          </Button>
-          <Button variant="outlined" className={button} onClick={forwardHandler}>
-            Forward
-          </Button>
         </div>
       </Box>
     </Layout>
