@@ -1,9 +1,11 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useStyles } from "../../style";
 import logo from "../../pictures/logo.png";
 import useInput from "../../../../app/hooks/useInput";
+import { postUser } from "../../../../app/store/auth/thunks";
 
 interface Props {
   show(change: boolean): void;
@@ -11,6 +13,8 @@ interface Props {
 }
 
 const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const {
     formWrapperFormInput,
     formWrapper,
@@ -72,12 +76,18 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
     formIsValid = true;
   }
 
-  const formSubmissionHandler = (event: React.FormEvent) => {
+  const formSubmissionHandler = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
     if (!enteredUserNameIsValid && !enteredPassword) {
       return;
     }
+
+    dispatch(
+      // @ts-ignore
+      postUser({ username: event.target[0].value, password: event.target[1].value }),
+    );
+    history.push("/star-university-q3-2021-group-1");
 
     resetUserNameInput();
     resetPasswordInput();
