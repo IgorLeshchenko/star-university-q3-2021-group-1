@@ -16,8 +16,7 @@ import Spinner from "./Spinner";
 
 
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post, search } =
-    useStyles();
+  const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
   const history = useHistory();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
   const { user } = useSelector(authSelector);
@@ -34,19 +33,19 @@ const MainScreen: React.FC = () => {
 
   const debouncedSearchTerm = useDebounce(searchTerm, 600);
   useEffect(() => {
-    if(fetching) {
+    if (fetching) {
       fetch(`https://starforum.herokuapp.com/api/v1/posts?page=${page}&number=5`)
-          .then(response => response.json())
-          .then((json) => {
-            dispatch(postsAction.setPosts([...posts, ...json]))
-            setPage(prev => prev + 1)
-          }).finally(() => setFetching(false));
+        .then(response => response.json())
+        .then(json => {
+          dispatch(postsAction.setPosts([...posts, ...json]));
+          setPage(prev => prev + 1);
+        })
+        .finally(() => setFetching(false));
     }
-
   }, [fetching]);
 
   const render = () => {
-    if(scrollHeight - (currentScrollPosition + visibleArea) < 300) {
+    if (scrollHeight - (currentScrollPosition + visibleArea) < 300) {
       setFetching(true);
     }
   };
