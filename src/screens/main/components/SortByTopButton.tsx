@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Button } from "@material-ui/core";
 import { useStyles } from "../style";
 import { IPost } from "../../../components/post/types";
-
+import API from "../../../app/api/index";
 import { useSelector, useDispatch } from "react-redux";
 import { postsAction } from "../../../app/store/postsSlice";
 
@@ -22,9 +22,7 @@ const SortByTopButton: React.FC<Props> = ({ sortedPosts }) => {
   const posts = useSelector((state: StatePosts) => state.posts.posts);
 
   useEffect(() => {
-    fetch("https://starforum.herokuapp.com/api/v1/posts")
-      .then(response => response.json())
-      .then(json => dispatch(postsAction.setPosts(json)));
+  API.PostsRequest.getPosts().then(json => dispatch(postsAction.setPosts(json)));
   }, []);
 
   const sortByTop = () => {

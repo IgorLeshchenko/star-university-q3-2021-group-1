@@ -28,7 +28,7 @@ const Layout: React.FC = ({ children }) => {
       {loading && <Loader />}
       {error && (
         <Box py={10}>
-          <Alert severity="error">{error}</Alert>
+          <Alert severity="error">{error?.message}</Alert>
         </Box>
       )}
 
