@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import { getCookie } from "../../helpers/utils";
 import { AuthState } from "./interfaces";
 import { postUser } from "./thunks";
 
 const initialState: AuthState = {
   loading: false,
   error: null,
-  user: null,
+  user: getCookie("username") || null,
 };
 
 const authSlice = createSlice({
@@ -24,13 +25,10 @@ const authSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(postUser.fulfilled, (state, action: PayloadAction<any>) => {
-      state.user = action.payload.username;
+      state.user = action.payload;
       state.loading = false;
     });
     builder.addCase(postUser.rejected, (state, action) => {
-      // fake - must remove next line
-      state.user = "user123";
-
       state.loading = false;
       state.error = action.error;
     });
