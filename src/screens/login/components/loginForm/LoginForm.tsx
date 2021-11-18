@@ -54,7 +54,7 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
     inputBlurHandler: userNameBlurHandler,
     reset: resetUserNameInput,
     //@ts-ignore
-  } = useInput((value) => value.trim().length > 1);
+  } = useInput(value => value.trim().length > 1);
 
   const {
     value: enteredPassword,
