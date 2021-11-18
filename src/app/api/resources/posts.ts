@@ -18,6 +18,15 @@ export const getPosts = async () => {
   }
 };
 
+export const getPostsByPageSorted = async (pageNumber: number, typeOfSort: string) => {
+  try {
+    const response = await axiosClient.get(`/posts?page=${pageNumber}&number=5&sort=${typeOfSort}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getPostByID = async (id: string) => {
   try {
     await axiosClient.get(`/posts/${id}`).then(response => {
