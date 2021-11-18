@@ -9,10 +9,9 @@ import "../testStyle.css";
 
 type Props = {
   post: IPost;
-  upvotes: number;
 };
 
-const Post: React.FC<Props> = ({ post, upvotes }) => {
+const Post: React.FC<Props> = ({ post }) => {
   const classes = usePostStyles();
 
   const dateOfPostsFromNow = formatDistance(new Date(post.date), new Date(), {
@@ -28,7 +27,7 @@ const Post: React.FC<Props> = ({ post, upvotes }) => {
               alt="User img"
               src="https://www.kino-teatr.ru/movie/kadr/137719/pv_878912.jpg"
             />
-            <span>User Name</span>
+            <span data-testid="user-name">User Name</span>
           </div>
           <div className={classes.post__Date}>{dateOfPostsFromNow}</div>
         </div>
@@ -38,7 +37,7 @@ const Post: React.FC<Props> = ({ post, upvotes }) => {
             <p>
               <ArrowUpward className={classes.arrowUp} />
             </p>
-            <div>{upvotes}</div>
+            <div>{post.upvotes}</div>
             <p>
               <ArrowDownward className={classes.arrowDown} />
             </p>

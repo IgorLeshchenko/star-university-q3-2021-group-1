@@ -50,6 +50,7 @@ const useStyles = makeStyles(() => ({
 
   textarea: {
     width: "100%",
+    height: "100%",
     marginBottom: "2em",
     fontFamily: "Roboto, sans-serif",
     padding: "18.5px",
