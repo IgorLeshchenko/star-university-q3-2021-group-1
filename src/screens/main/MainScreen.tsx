@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { postsAction } from "../../app/store/postsSlice";
-import _ from "lodash";
-
+import { fetchingAction } from "../../app/store/fetchingSlice";
+import useScroll from "../../app/hooks/useScroll";
 import Layout from "../../components/layout";
-import { IPost, StatePosts } from "../../components/post/types";
+import { IPost, StatePosts, Fetch } from "../../components/post/types";
 import Post from "../../components/post";
 
 import { useStyles } from "./style";
@@ -17,14 +17,11 @@ const MainScreen: React.FC = () => {
   const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
   const history = useHistory();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
-
+  const fetching = useSelector((state: Fetch) => state.fetching.fetching);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
-  const [fetching, setFetching] = useState(true);
-  let scrollHeight = document.documentElement.scrollHeight;
-  let currentScrollPosition = document.documentElement.scrollTop;
-  let visibleArea = window.innerHeight;
+  useScroll();
 
   useEffect(() => {
     if (fetching) {
@@ -32,27 +29,11 @@ const MainScreen: React.FC = () => {
         .then(response => response.json())
         .then(json => {
           dispatch(postsAction.setPosts([...posts, ...json]));
-          setPage(prev => prev + 1);
+          setPage(previousPageNumber => previousPageNumber + 1);
         })
-        .finally(() => setFetching(false));
+        .finally(() => dispatch(fetchingAction.setFetching()));
     }
   }, [fetching]);
-
-  const render = () => {
-    if (scrollHeight - (currentScrollPosition + visibleArea) < 300) {
-      setFetching(true);
-    }
-  };
-
-  const time = 1000;
-  const delay = _.debounce(render, time);
-  window.addEventListener("scroll", delay);
-
-  useEffect(() => {
-    return () => {
-      window.removeEventListener("scroll", delay);
-    };
-  }, []);
 
   const results = !searchTerm
     ? posts
