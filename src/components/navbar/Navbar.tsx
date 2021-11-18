@@ -6,7 +6,7 @@ import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 import API from "../../app/api/index";
 import { authSelector } from "../../app/store/auth/selectors";
 import HideOnScroll from "../hideOnScroll";
-import logoPng from "./assets/logo.png";
+import logoPng from "./assets/test2-logo.png";
 import { useStyles } from "./styles";
 
 const Navbar: React.FC = props => {
