@@ -1,11 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-
-import postsSlice from "./postsSlice";
-import authSlice from "./auth/authSlice";
+import postsSlice from "../store/postsSlice";
+import fetchingSlice from "../store/fetchingSlice"
 
 export const store = configureStore({
   reducer: {
     posts: postsSlice.reducer,
+    fetching: fetchingSlice.reducer,
     auth: authSlice.reducer,
   },
   middleware: getDefaultMiddleware => [...getDefaultMiddleware()],

@@ -16,3 +16,9 @@ export interface StatePosts {
     posts: [];
   };
 }
+
+export interface Fetch {
+  fetching: {
+    fetching: boolean;
+  }
+}
