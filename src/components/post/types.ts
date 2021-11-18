@@ -20,5 +20,5 @@ export interface StatePosts {
 export interface Fetch {
   fetching: {
     fetching: boolean;
-  }
+  };
 }
