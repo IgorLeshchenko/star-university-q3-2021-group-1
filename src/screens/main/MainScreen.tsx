@@ -50,9 +50,9 @@ const MainScreen: React.FC = () => {
         dispatch(postsAction.setPosts(json));
         setIsLoading(false);
       });
-  }, []);
+  }, [searchResults]);
 
-
+  
 
   const sortedPosts = (srtdPosts: []) => {
     dispatch(postsAction.setPosts(srtdPosts));

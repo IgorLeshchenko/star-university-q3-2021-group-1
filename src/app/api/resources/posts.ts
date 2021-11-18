@@ -50,6 +50,7 @@ export const upvotePost = (id: string) => {
 export const downvotePost = (id: string) => {
   try {
     const response = axiosClient.post(`/posts/${id}/downvote`);
+    console.log('from api')
     return response;
   } catch (error) {
     console.log(error);
