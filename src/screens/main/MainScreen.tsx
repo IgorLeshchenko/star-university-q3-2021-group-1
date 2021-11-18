@@ -26,8 +26,34 @@ const MainScreen: React.FC = () => {
   const [page, setPage] = useState(1);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
+  const [fetching, setFetching] = useState(true);
+  let scrollHeight = document.documentElement.scrollHeight;
+  let currentScrollPosition = document.documentElement.scrollTop;
+  let visibleArea = window.innerHeight;
 
   const debouncedSearchTerm = useDebounce(searchTerm, 600);
+  useEffect(() => {
+    if(fetching) {
+      fetch(`https://starforum.herokuapp.com/api/v1/posts?page=${page}&number=5`)
+          .then(response => response.json())
+          .then((json) => {
+            dispatch(postsAction.setPosts([...posts, ...json]))
+            setPage(prev => prev + 1)
+          }).finally(() => setFetching(false));
+    }
+
+  }, [fetching]);
+
+  const render = () => {
+    if(scrollHeight - (currentScrollPosition + visibleArea) < 300) {
+      setFetching(true);
+    }
+  };
+
+  const time = 1000;
+  const delay = _.debounce(render, time);
+  window.addEventListener("scroll", delay);
 
   useEffect(() => {
     const results = !debouncedSearchTerm
@@ -41,17 +67,6 @@ const MainScreen: React.FC = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    fetch("https://starforum.herokuapp.com/api/v1/posts")
-      .then(response => response.json())
-      .then(json => {
-        dispatch(postsAction.setPosts(json));
-        setIsLoading(false);
-      });
-  }, []);
 
   const sortedPosts = (srtdPosts: []) => {
     dispatch(postsAction.setPosts(srtdPosts));
@@ -97,7 +112,7 @@ const MainScreen: React.FC = () => {
 
           {!isLoading && !searchResults.length && <NotFoundMessage searcTerm={searchTerm} />}
         </div>
-        <div className={pagination}>
+        <div>
           <Button variant="outlined" className={button} onClick={backHandler}>
             Back
           </Button>
