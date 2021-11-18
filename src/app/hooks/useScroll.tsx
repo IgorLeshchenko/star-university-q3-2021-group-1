@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchingAction } from "../../app/store/fetchingSlice";
-
 import _ from "lodash";
 
 const useScroll = () => {
