@@ -18,7 +18,7 @@ const SortByTopButton: React.FC<Props> = ({ sortedPosts }) => {
   useScroll();
 
   useEffect(() => {
-  API.PostsRequest.getPosts().then(json => dispatch(postsAction.setPosts(json)));
+    API.PostsRequest.getPosts().then(json => dispatch(postsAction.setPosts(json)));
   }, []);
 
   const sortByTop = () => {
