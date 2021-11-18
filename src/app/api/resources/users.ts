@@ -50,7 +50,7 @@ export const getUserByUsernameReaction = async (username: string) => {
   }
 };
 
-export const getUserByUsername = async (username: string) => {
+export const getUserByUsername = async (username: string | null) => {
   try {
     const response = await axiosClient.get(`/users/${username}`);
     return response.data;
@@ -59,7 +59,7 @@ export const getUserByUsername = async (username: string) => {
   }
 };
 
-export const addUserIcon = (username: string) => {
+export const addUserIcon = (username: string | null) => {
   try {
     axiosClient.post(
       `/users/${username}/icon`,
