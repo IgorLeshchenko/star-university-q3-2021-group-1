@@ -68,12 +68,12 @@ jobs:
 workflows:
   test_approve_deploy:
     jobs:
-    - test:
+      - test:
           filters:
             branches:
               ignore: gh-pages
             
-    - deploy:
+      - deploy:
           filters:
             branches:
               only: main
