@@ -22,13 +22,12 @@ const Post: React.FC<Props> = ({ post }) => {
           API.PostsRequest.upvotePost(post._id)
     }
 
-  
     function downVote(){
         API.PostsRequest.downvotePost(post._id)
     }
 
   return (
-    <Card className={classes.post} onClick={()=> console.log(post)}>
+    <Card className={classes.post} >
       <CardContent>
         <div className={classes.post__Top}>
           <div className={classes.post__User}>
