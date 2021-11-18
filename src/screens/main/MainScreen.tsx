@@ -7,16 +7,16 @@ import _ from "lodash";
 
 import Layout from "../../components/layout";
 import { IPost, StatePosts } from "../../components/post/types";
-import Post from "../../components/post";
-
-import { useStyles } from "./style";
-
+import { authSelector } from "../../app/store/auth/selectors";
 import SortByTopButton from "./components/SortByTopButton";
+import Post from "../../components/post";
+import { useStyles } from "./style";
 
 const MainScreen: React.FC = () => {
   const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
   const history = useHistory();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
+  const { user } = useSelector(authSelector);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
@@ -87,20 +87,22 @@ const MainScreen: React.FC = () => {
               onChange={handleChange}
             />
           </div>
-          <div className={searchAndNewPost}>
-            <Button
-              variant="contained"
-              className={button}
-              onClick={() => history.push("/star-university-q3-2021-group-1/addpost")}>
-              Add new post
-            </Button>
-          </div>
+          {user && (
+            <div className={searchAndNewPost}>
+              <Button
+                variant="contained"
+                className={button}
+                onClick={() => history.push("/star-university-q3-2021-group-1/addpost")}>
+                Add new post
+              </Button>
+            </div>
+          )}
         </div>
         <div className={post}>
           {results
             .filter((post: IPost) => post.title !== "Comment")
             .map((post: IPost) => (
-              <Post post={post} key={post._id} upvotes={post.upvotes} />
+              <Post post={post} key={post._id} />
             ))}
           {!results.length && <Typography variant="h1">No Results Found!!</Typography>}
         </div>

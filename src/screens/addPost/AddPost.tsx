@@ -1,14 +1,19 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Box, Button, Card, TextareaAutosize, TextField, Typography } from "@material-ui/core";
-
 import { useStyles } from "./styles";
+import API from "../../app/api/index";
 
 const AddPost: React.FC = () => {
   const { form, card, text, textfield, textarea, button } = useStyles();
   const history = useHistory();
 
-  const handleSubmit = () => history.push("/star-university-q3-2021-group-1");
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    // @ts-ignore
+    API.PostsRequest.addNewPost({ title: e.target[0].value, body: e.target[2].value });
+
+    history.push("/star-university-q3-2021-group-1");
+  };
 
   return (
     <form className={form} onSubmit={handleSubmit} data-testid="form-add">
@@ -29,6 +34,8 @@ const AddPost: React.FC = () => {
             required
             variant="outlined"
             label="Title"
+            role="textbox"
+            name="title"
             data-testid="title"
           />
 

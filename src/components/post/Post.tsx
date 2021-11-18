@@ -8,10 +8,9 @@ import formatDistance from "date-fns/formatDistance";
 
 type Props = {
   post: IPost;
-  upvotes: number;
 };
 
-const Post: React.FC<Props> = ({ post, upvotes }) => {
+const Post: React.FC<Props> = ({ post }) => {
   const classes = usePostStyles();
 
   const dateOfPostsFromNow = formatDistance(new Date(post.date).getTime() - 7200000, new Date(), {
@@ -37,7 +36,7 @@ const Post: React.FC<Props> = ({ post, upvotes }) => {
             <p>
               <ArrowUpward className={classes.arrowUp} />
             </p>
-            <div>{upvotes}</div>
+            <div>{post.upvotes}</div>
             <p>
               <ArrowDownward className={classes.arrowDown} />
             </p>
