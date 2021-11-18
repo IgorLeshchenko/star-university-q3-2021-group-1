@@ -27,7 +27,7 @@ const Post: React.FC<Props> = ({ post }) => {
               alt="User img"
               src="https://www.kino-teatr.ru/movie/kadr/137719/pv_878912.jpg"
             />
-            <span data-testid="user-name">User Name</span>
+            <span data-testid="user-name">{post.author}</span>
           </div>
           <div className={classes.post__Date}>{dateOfPostsFromNow}</div>
         </div>

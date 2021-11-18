@@ -94,7 +94,7 @@ const MainScreen: React.FC = () => {
                 onClick={sortByNew}>
                 New
               </Button>
-              <Button variant="outlined" onClick={sortByTop}>
+              <Button variant="outlined" onClick={sortByTop} className={button}>
                 Top
               </Button>
             </div>
