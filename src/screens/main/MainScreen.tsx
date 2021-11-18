@@ -13,7 +13,18 @@ import { useStyles } from "./style";
 import SortByTopButton from "./components/SortByTopButton";
 
 const MainScreen: React.FC = () => {
-  const { button, sort, sortText, topNav, searchAndNewPost, post, search } = useStyles();
+  const {
+    button,
+    sort,
+    sortText,
+    topNav,
+    searchAndNewPost,
+    post,
+    search,
+    sortNewButton,
+    sortWrapper,
+    addPostButton,
+  } = useStyles();
   const history = useHistory();
   const posts = useSelector((state: StatePosts) => state.posts.posts);
 
@@ -46,22 +57,29 @@ const MainScreen: React.FC = () => {
       <Box py={10}>
         <div className={topNav}>
           <div className={sort}>
-            <span className={sortText}>Sort by:</span>
-            <Button variant="outlined" className={button}>
-              New
-            </Button>
-            <SortByTopButton sortedPosts={sortedPosts} />
-            <TextField
-              id="standard-basic"
-              label="Search"
-              variant="standard"
-              className={search}
-              value={searchTerm}
-              onChange={handleChange}
-            />
+            <div className={sortWrapper}>
+              <span className={sortText}>Sort by:</span>
+              <Button variant="outlined" className={`${button} ${sortNewButton}`}>
+                New
+              </Button>
+              <SortByTopButton sortedPosts={sortedPosts} />
+            </div>
+            <div>
+              <TextField
+                id="standard-basic"
+                label="Search"
+                variant="standard"
+                className={search}
+                value={searchTerm}
+                onChange={handleChange}
+              />
+            </div>
           </div>
           <div className={searchAndNewPost}>
-            <Button variant="contained" className={button} onClick={() => history.push("/addpost")}>
+            <Button
+              variant="contained"
+              className={`${button} ${addPostButton}`}
+              onClick={() => history.push("/addpost")}>
               Add new post
             </Button>
           </div>

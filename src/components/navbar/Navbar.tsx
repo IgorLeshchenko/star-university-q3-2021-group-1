@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 import HideOnScroll from "../hideOnScroll";
-import logoPng from "./assets/logo.png";
+import logoPng from "./assets/test2-logo.png";
 import { useStyles } from "./style";
 
 const Navbar: React.FC = props => {

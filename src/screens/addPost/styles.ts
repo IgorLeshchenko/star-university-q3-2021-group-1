@@ -2,14 +2,15 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(() => ({
   text: {
-    color: "#42a5f5",
-    fontFamily: "#42a5f5",
+    color: "#7870a8",
     fontSize: "1.6rem",
+    marginBottom: "1rem",
   },
 
   button: {
-    backgroundColor: "#42a5f5",
+    backgroundColor: "#7870a8",
     color: "#fff",
+    fontWeight: "bold",
 
     "&:hover": {
       backgroundColor: "#1976d2",
@@ -27,9 +28,10 @@ const useStyles = makeStyles(() => ({
   },
 
   card: {
-    maxWidth: 500,
+    maxWidth: 1280,
     margin: "auto",
     transition: "0.3s",
+    borderRadius: "25px",
     boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
     "&:hover": {
       boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)",
@@ -38,18 +40,41 @@ const useStyles = makeStyles(() => ({
 
   form: {
     padding: "5rem",
-    width: "50%",
     margin: "auto",
+    background: "rgb(229, 234, 248)",
+    fontFamily: "Roboto, sans-serif",
+    "@media (max-width: 515px)": {
+      padding: "2rem",
+    },
   },
 
   textarea: {
-    width: "380",
-    height: "180",
+    width: "100%",
     marginBottom: "2em",
+    fontFamily: "Roboto, sans-serif",
+    padding: "18.5px",
+    boxSizing: "border-box",
+    border: "1px solid #ccc",
+    outlineColor: "#4052B3",
+    borderRadius: "4px",
   },
 
   textfield: {
     marginBottom: "2em",
+    width: "100%",
+  },
+  postCreationWrapper: {
+    top: "0",
+    left: "0",
+    width: "100vw",
+    height: "100vh",
+    position: "fixed",
+    backgroundColor: "rgb(229, 234, 248);",
+  },
+  formInnerWrapper: {
+    "@media (max-width: 730px)": {
+      margin: "0",
+    },
   },
 }));
 

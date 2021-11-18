@@ -21,7 +21,7 @@ const Layout: React.FC = ({ children }) => {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-        <Paper style={{ minHeight: "100vh" }}>
+        <Paper style={{ minHeight: "100vh", background: "#e5eaf8" }}>
           <Container>
             <Navbar />
             {children}
