@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
-import { useDispatch } from "react-redux";
 import API from "../../app/api/index";
 import { authSelector } from "../../app/store/auth/selectors";
 import HideOnScroll from "../hideOnScroll";
@@ -13,7 +12,6 @@ const Navbar: React.FC = props => {
   const { root, logoBtn, logo, homeButton, loginButton } = useStyles();
   const { user } = useSelector(authSelector);
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const handleLogout = () => {
     API.UserRequest.logoutUser();
