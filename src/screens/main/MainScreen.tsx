@@ -41,6 +41,7 @@ const MainScreen: React.FC = () => {
   const [typeOfSort, setTypeOfSort] = useState("default");
   const debouncedSearchTerm = useDebounce(searchTerm, 600);
 
+
   useEffect(() => {
     if (fetching) {
       API.PostsRequest.getPostsByPageSorted(page, typeOfSort)
@@ -49,12 +50,16 @@ const MainScreen: React.FC = () => {
           setPage(previousPageNumber => previousPageNumber + 1);
           setIsLoading(false);
         })
-        .finally(() => dispatch(fetchingAction.setFetching()));
+        .finally(() => {
+          dispatch(fetchingAction.setFetching());
+        });
     }
   }, [fetching]);
 
   useEffect(() => {
-    dispatch(fetchingAction.setFetching());
+    if(fetching === false){
+      dispatch(fetchingAction.setFetching());
+    }
     const results = !debouncedSearchTerm
       ? posts
       : posts.filter((post: IPost) => {
