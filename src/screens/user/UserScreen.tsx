@@ -10,7 +10,8 @@ const UserScreen: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <Layout>
+    //@ts-ignore
+    <Layout className={classes.container}>
       <div className={classes.container}>
         <UserProfileSettings />
         <UserProfile />

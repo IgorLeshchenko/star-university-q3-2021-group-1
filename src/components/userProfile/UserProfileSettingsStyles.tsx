@@ -26,11 +26,11 @@ export const useStyles = makeStyles({
     appearance: "none",
     border: "none",
     cursor: "pointer",
-    color: "#625d5d",
+    color: "#7871aab8",
     transition: "1s",
     "&:hover": {
-      color: "#0c0c0c",
-      transition: "1s",
+      color: "#7871aa",
+      transition: "0.5s",
     },
   },
 });

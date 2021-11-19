@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
@@ -48,6 +48,7 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
     signUpButtonHelper,
     toAllPostsButton,
     textBlock,
+    test,
   } = useStyles();
 
   const signInHandler = () => show(true);
@@ -143,6 +144,7 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
               value={enteredPassword}
               required
             />
+
             {passwordInputHasError && (
               <div className={errorMessage}>Password must be at least 8 characters</div>
             )}

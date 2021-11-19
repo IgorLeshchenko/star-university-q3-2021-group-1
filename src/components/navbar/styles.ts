@@ -8,37 +8,51 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#fff",
   },
 
+  headerMainWrapper: {
+    backgroundColor: "#fff",
+  },
+
   homeButton: {
     marginRight: theme.spacing(2),
-    backgroundColor: "#F48023",
+    backgroundColor: "#dbad81",
     color: "#FFF",
+    "& .MuiButton-label": {
+      color: "#fff",
+      fontWeight: "bold",
 
-    "&:hover": {
-      backgroundColor: "#b45100",
-      borderColor: "#b45100",
-      boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-      backgroundColor: "#b45100",
-      borderColor: "#b45100",
-    },
-    "&:focus": {
-      boxShadow: "0 0 0 0.2rem #b451008f",
+      "& .MuiTypography-button": {
+        fontWeight: "bold",
+      },
+
+      "&:hover": {
+        boxShadow: "none",
+      },
+      "&:active": {
+        boxShadow: "none",
+        backgroundColor: "#b45100",
+        borderColor: "#b45100",
+      },
+      "&:focus": {
+        boxShadow: "0 0 0 0.2rem #b451008f",
+      },
     },
   },
 
   loginButton: {
-    backgroundColor: "#EAEAEA",
-    color: "#1682FD",
+    backgroundColor: "#7871aa",
+    color: "#fff",
+    fontWeight: "bold",
 
     "& .MuiButton-label": {
-      color: "#1682FD",
+      color: "#fff",
+      fontWeight: "bold",
+
+      "& .MuiTypography-button": {
+        fontWeight: "bold",
+      },
     },
 
     "&:hover": {
-      backgroundColor: "#cbe3ff",
-      borderColor: "#cbe3ff",
       boxShadow: "none",
     },
     "&:active": {
@@ -57,6 +71,11 @@ const useStyles = makeStyles(theme => ({
 
   logoBtn: {
     padding: 0,
+  },
+  headerWrapper: {
+    maxWidth: "1280px",
+    width: "100%",
+    margin: "0 auto",
   },
 }));
 

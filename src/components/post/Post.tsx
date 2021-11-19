@@ -24,8 +24,8 @@ const Post: React.FC<Props> = ({ post }) => {
         <div className={classes.post__Top}>
           <div className={classes.post__User}>
             <Avatar
-              alt="User img"
-              src="https://www.kino-teatr.ru/movie/kadr/137719/pv_878912.jpg"
+              alt="user avatar"
+              src={`https://starforum.herokuapp.com/api/v1/users/${post.author}/icon`}
             />
             <span data-testid="user-name">{post.author}</span>
           </div>
