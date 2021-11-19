@@ -9,4 +9,10 @@ const postUser = createAsyncThunk("auth/postUser", async ({ username, password }
   return username as string;
 });
 
-export { postUser };
+const addUser = createAsyncThunk("auth/addUser", async ({ username, password }: UserLogin) => {
+  await API.UserRequest.addUser(username, password);
+
+  return username as string;
+});
+
+export { postUser, addUser };

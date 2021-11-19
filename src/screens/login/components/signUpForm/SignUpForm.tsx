@@ -1,9 +1,11 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-
+import { useDispatch } from "react-redux";
 import { useStyles } from "../../style";
 import logo from "../../pictures/logo.png";
 import useInput from "../../../../app/hooks/useInput";
+import { addUser, postUser } from "../../../../app/store/auth/thunks";
+import { useHistory } from "react-router-dom";
 
 interface Props {
   show(change: boolean): void;
@@ -11,6 +13,8 @@ interface Props {
 }
 
 const SignUpForm: React.FC<Props> = ({ show, onSubmit }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const {
     formWrapperFormInput,
     formWrapper,
@@ -78,6 +82,12 @@ const SignUpForm: React.FC<Props> = ({ show, onSubmit }) => {
     if (!enteredUserNameIsValid && !enteredPassword) {
       return;
     }
+
+    dispatch(
+        // @ts-ignore
+        addUser({ username: event.target[0].value, password: event.target[1].value }),
+    );
+    history.push("/star-university-q3-2021-group-1");
 
     resetUserNameInput();
     resetPasswordInput();
