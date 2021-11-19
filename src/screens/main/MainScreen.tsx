@@ -71,11 +71,16 @@ const MainScreen: React.FC = () => {
           setPage(previousPageNumber => previousPageNumber + 1);
           setIsLoading(false);
         })
-        .finally(() => dispatch(fetchingAction.setFetching()));
+        .finally(() => {
+          dispatch(fetchingAction.setFetching());
+        });
     }
   }, [fetching]);
 
   useEffect(() => {
+    if (fetching === false) {
+      dispatch(fetchingAction.setFetching());
+    }
     const results = !debouncedSearchTerm
       ? posts
       : posts.filter((post: IPost) => {

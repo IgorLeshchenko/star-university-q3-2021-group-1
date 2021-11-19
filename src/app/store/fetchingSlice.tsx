@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const fetchingSlice = createSlice({
   name: "fetching",
   initialState: {
-    fetching: true,
+    fetching: false,
   },
   reducers: {
     setFetching(state) {
