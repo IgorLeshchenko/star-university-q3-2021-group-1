@@ -1,5 +1,5 @@
 import React from "react";
-import {HashRouter as BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter as BrowserRouter, Route, Switch } from "react-router-dom";
 
 import LoginScreen from "./screens/login";
 import MainScreen from "./screens/main";
