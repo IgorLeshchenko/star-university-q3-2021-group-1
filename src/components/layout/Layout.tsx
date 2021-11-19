@@ -28,11 +28,11 @@ const Layout: React.FC = ({ children }) => {
       {loading && <Loader />}
       {error && (
         <Box py={10}>
-          <Alert severity="error">{error}</Alert>
+          <Alert severity="error">{error?.message}</Alert>
         </Box>
       )}
 
-      <Paper style={{ minHeight: "100vh" }}>
+      <Paper style={{ minHeight: "100vh", background: "rgb(229, 234, 248" }}>
         <Container>
           <Navbar />
           {children}

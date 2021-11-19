@@ -1,0 +1,24 @@
+@keyframes levitate {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, -50px);
+  }
+}
+
+@keyframes posts-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.test_post {
+  animation: posts-appear 1s ease-out forwards;
+}
