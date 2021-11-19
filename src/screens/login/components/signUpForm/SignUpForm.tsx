@@ -83,10 +83,10 @@ const SignUpForm: React.FC<Props> = ({ show, onSubmit }) => {
     }
 
     dispatch(
-        // @ts-ignore
-        addUser({ username: event.target[0].value, password: event.target[1].value }),
+      // @ts-ignore
+      addUser({ username: event.target[0].value, password: event.target[1].value }),
     );
-    history.push("/star-university-q3-2021-group-1");
+    history.push("/");
 
     resetUserNameInput();
     resetPasswordInput();

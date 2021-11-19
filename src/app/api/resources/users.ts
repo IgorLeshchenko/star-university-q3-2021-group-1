@@ -1,6 +1,5 @@
 import axiosClient from "./axiosConfig";
 
-
 export const loginUser = async (username: string, password: string) => {
   try {
     const response = await axiosClient.post("/login", { username, password });
@@ -20,7 +19,10 @@ export const loginUser = async (username: string, password: string) => {
 export const addUser = (username: string, password: string) => {
   try {
     //@ts-ignore
-    const response = axiosClient.post("/users", { username, password }).then(loginUser(username, password));
+    const response = axiosClient
+      .post("/users", { username, password })
+        //@ts-ignore
+      .then(loginUser(username, password));
     return response;
   } catch (error: any) {
     throw Error(error?.message);
