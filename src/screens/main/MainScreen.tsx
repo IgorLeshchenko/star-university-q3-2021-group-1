@@ -54,6 +54,7 @@ const MainScreen: React.FC = () => {
   }, [fetching]);
 
   useEffect(() => {
+    dispatch(fetchingAction.setFetching());
     const results = !debouncedSearchTerm
       ? posts
       : posts.filter((post: IPost) => {

@@ -6,7 +6,6 @@ import { useStyles } from "../../style";
 import logo from "../../pictures/logo.png";
 import useInput from "../../../../app/hooks/useInput";
 import { postUser } from "../../../../app/store/auth/thunks";
-import { fetchingAction } from "../../../../app/store/fetchingSlice";
 
 interface Props {
   show(change: boolean): void;
@@ -88,7 +87,6 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
       // @ts-ignore
       postUser({ username: event.target[0].value, password: event.target[1].value }),
     );
-    dispatch(fetchingAction.setFetching());
     history.push("/star-university-q3-2021-group-1");
 
     resetUserNameInput();
