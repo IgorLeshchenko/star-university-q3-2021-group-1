@@ -63,7 +63,6 @@ const MainScreen: React.FC = () => {
     getAndSort("most-upvotes");
   };
 
-
   useEffect(() => {
     if (fetching) {
       API.PostsRequest.getPostsByPageSorted(page, typeOfSort)
@@ -79,7 +78,7 @@ const MainScreen: React.FC = () => {
   }, [fetching]);
 
   useEffect(() => {
-    if(fetching === false){
+    if (fetching === false) {
       dispatch(fetchingAction.setFetching());
     }
     const results = !debouncedSearchTerm

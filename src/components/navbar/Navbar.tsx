@@ -20,7 +20,6 @@ const Navbar: React.FC = props => {
     history.push("/login");
   };
 
-
   return (
     <HideOnScroll {...props} data-testid="custom-navbar">
       <AppBar color="transparent">
