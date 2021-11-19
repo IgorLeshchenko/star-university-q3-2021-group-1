@@ -1,16 +1,27 @@
 import React from "react";
-import { render, screen, fireEvent, within, RenderResult } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
+import { render, screen, fireEvent, within } from "@testing-library/react";
+
+import { store } from "../../app/store/store";
 import AddPost from "./AddPost";
+import Layout from "../../components/layout";
 
 describe("Add post", () => {
   const onSubmit = jest.fn();
 
   beforeEach(() => {
+    const history = createMemoryHistory();
+
     render(
-      <BrowserRouter>
-        <AddPost />
-      </BrowserRouter>,
+      <Provider store={store}>
+        <Router history={history}>
+          <Layout>
+            <AddPost />
+          </Layout>
+        </Router>
+      </Provider>,
     );
 
     const title = screen.getByTestId("title");

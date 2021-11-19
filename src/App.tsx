@@ -11,10 +11,10 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/star-university-q3-2021-group-1" exact component={MainScreen} />
-        <Route path="/star-university-q3-2021-group-1/login" component={LoginScreen} />
-        <Route path="/star-university-q3-2021-group-1/addpost" component={AddPost} />
-        <Route path="/star-university-q3-2021-group-1/user" component={UserScreen} />
+        <Route path="/" exact component={MainScreen} />
+        <Route path="/login" component={LoginScreen} />
+        <Route path="/addpost" component={AddPost} />
+        <Route path="/user" component={UserScreen} />
 
         <Route component={NotFound} />
       </Switch>
