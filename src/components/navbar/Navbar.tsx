@@ -2,27 +2,34 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
-
+import { useDispatch } from "react-redux";
 import API from "../../app/api/index";
 import { authSelector } from "../../app/store/auth/selectors";
 import HideOnScroll from "../hideOnScroll";
 import logoPng from "./assets/test2-logo.png";
 import { useStyles } from "./styles";
+import { fetchingAction } from '../../app/store/fetchingSlice'
 
 const Navbar: React.FC = props => {
   const { root, logoBtn, logo, homeButton, loginButton } = useStyles();
   const { user } = useSelector(authSelector);
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
     API.UserRequest.logoutUser();
     history.push("/star-university-q3-2021-group-1/login");
   };
 
+  const logoHandler = () => {
+    dispatch(fetchingAction.setFetching());
+  }
+
   return (
     <HideOnScroll {...props} data-testid="custom-navbar">
       <AppBar color="transparent">
         <Toolbar className={root}>
-          <Button className={logoBtn} component={Link} to="/star-university-q3-2021-group-1">
+          <Button className={logoBtn} component={Link} to="/star-university-q3-2021-group-1" onClick={logoHandler}>
             <img src={logoPng} className={logo} alt="Reditlone logo" loading="lazy" />
           </Button>
           {user ? (
