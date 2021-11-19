@@ -62,6 +62,7 @@ const MainScreen: React.FC = () => {
   const sortByTop = () => {
     getAndSort("most-upvotes");
   };
+  
 
   useEffect(() => {
     if (fetching) {
@@ -77,6 +78,7 @@ const MainScreen: React.FC = () => {
     }
   }, [fetching]);
 
+  
   useEffect(() => {
     if (fetching === false) {
       dispatch(fetchingAction.setFetching());
@@ -88,6 +90,7 @@ const MainScreen: React.FC = () => {
         });
     setSearchResults(results);
   }, [posts, debouncedSearchTerm]);
+
 
   return (
     <Layout>
