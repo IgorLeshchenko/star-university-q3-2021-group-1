@@ -56,7 +56,7 @@ export const useStyles = makeStyles({
   change_settings_form_btns: {
     width: "190px",
     padding: "12px 30px",
-    // background: 'orange',
+    background: "#7871aacf",
     border: "none",
     borderRadius: "10px",
     cursor: "pointer",
@@ -64,5 +64,6 @@ export const useStyles = makeStyles({
 
   cancel_btn: {
     marginLeft: "15px",
+    background: "#a1758b",
   },
 });

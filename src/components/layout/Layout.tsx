@@ -32,7 +32,12 @@ const Layout: React.FC = ({ children }) => {
         </Box>
       )}
 
-      <Paper style={{ minHeight: "100vh", background: "rgb(229, 234, 248" }}>
+      <Paper
+        style={{
+          minHeight: "100vh",
+          background: "rgb(229, 234, 248",
+          borderTop: "1px solid transparent",
+        }}>
         <Container>
           <Navbar />
           {children}

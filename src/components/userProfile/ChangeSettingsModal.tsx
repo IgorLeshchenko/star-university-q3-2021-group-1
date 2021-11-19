@@ -29,13 +29,8 @@ const ChangeSettingsModal: React.FC<Props> = (props: Props) => {
             Сhoose new avatar
             <input type="file" hidden />
           </Button>
-
           <div>
-            <Button
-              color="secondary"
-              className={classes.change_settings_form_btns}
-              type="submit"
-              variant="contained">
+            <Button className={classes.change_settings_form_btns} type="submit" variant="contained">
               Change avatar
             </Button>
 

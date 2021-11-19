@@ -5,6 +5,7 @@ import API from "../../app/api/index";
 
 const UserProfile = () => {
   const [userReputation, setUserReputation] = useState("");
+  const [userNumberOfPosts, setUserNumberOfPosts] = useState("");
 
   const currentUser = getCookie("username");
   API.UserRequest.getUserByUsername(currentUser).then(response => {
@@ -12,21 +13,34 @@ const UserProfile = () => {
     return response.reputation;
   });
 
+  API.UserRequest.getUserByUsername(currentUser).then(response => {
+    setUserNumberOfPosts(response.numberOfPosts);
+    return response.numberOfPosts;
+  });
+
   const classes = useStyles();
 
   return (
-    <div className={classes.user_info_wrap}>
-      <div>
-        <img
-          src={`https://starforum.herokuapp.com/api/v1/users/${currentUser}/icon`}
-          alt="user-avatar"
-          width="200px"
-          height="200px"
-        />
-      </div>
-      <div className={classes.user_name_wrap}>{currentUser}</div>
-      <div className={classes.reputation_wrap}>
-        Reputation: <span className={classes.reputation_score}>{userReputation}</span>
+    <div>
+      <div className={classes.user_info_wrap}>
+        <div>
+          <img
+            className={classes.user_avatar}
+            src={`https://starforum.herokuapp.com/api/v1/users/${currentUser}/icon`}
+            alt="user-avatar"
+            width="200px"
+            height="200px"
+          />
+        </div>
+        <div className={classes.user_name_wrap}>{currentUser}</div>
+        <div className={classes.user_posts_number}>
+          <span> Number of posts:</span>
+          <span className={classes.reputation_score}>{userNumberOfPosts}</span>
+        </div>
+        <div className={classes.reputation_wrap}>
+          <span>Reputation:</span>
+          <span className={classes.reputation_score}>{userReputation}</span>
+        </div>
       </div>
     </div>
   );
