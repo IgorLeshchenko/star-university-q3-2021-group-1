@@ -1,4 +1,5 @@
 import { SyntheticEvent, useState } from "react";
+
 //@ts-ignore
 const useInput = validateValue => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -11,15 +12,12 @@ const useInput = validateValue => {
     setEnteredValue(event.target.value);
   };
 
-  const inputBlurHandler = (event: SyntheticEvent) => {
-    setIsTouched(true);
-  };
+  const inputBlurHandler = () => setIsTouched(true);
 
   const reset = () => {
     setEnteredValue("");
     setIsTouched(false);
   };
-  console.log(valueIsValid);
 
   return {
     value: enteredValue,

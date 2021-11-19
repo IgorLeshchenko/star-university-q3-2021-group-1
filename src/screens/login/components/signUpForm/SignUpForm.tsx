@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { useStyles } from "../../style";
-import logo from "../../pictures/logo.png";
 import useInput from "../../../../app/hooks/useInput";
+import logo from "../../pictures/logo.png";
+import { useStyles } from "../../style";
 import { addUser, postUser } from "../../../../app/store/auth/thunks";
 import { useHistory } from "react-router-dom";
 
@@ -57,8 +58,7 @@ const SignUpForm: React.FC<Props> = ({ show, onSubmit }) => {
     valueChangeHandler: userNameChangedHandler,
     inputBlurHandler: userNameBlurHandler,
     reset: resetUserNameInput,
-    //@ts-ignore
-  } = useInput<boolean>(value => value.trim().length > 1);
+  } = useInput((value: string) => value.trim().length > 1);
 
   const {
     value: enteredPassword,
@@ -67,8 +67,7 @@ const SignUpForm: React.FC<Props> = ({ show, onSubmit }) => {
     valueChangeHandler: passwordChangeHandler,
     inputBlurHandler: passwordBlurHandler,
     reset: resetPasswordInput,
-    //@ts-ignore
-  } = useInput(value => value.trim().length > 7);
+  } = useInput((value: string) => value.trim().length > 7);
 
   let formIsValid = false;
 
@@ -148,7 +147,6 @@ const SignUpForm: React.FC<Props> = ({ show, onSubmit }) => {
             )}
           </div>
           <Button
-            // color="secondary"
             variant="contained"
             className={formWrapperFormButton}
             type="submit"
@@ -162,7 +160,6 @@ const SignUpForm: React.FC<Props> = ({ show, onSubmit }) => {
           </div>
           <div className={signUpButtonsWrapper}>
             <Button
-              // color="secondary"
               variant="contained"
               className={`${signUpButton} ${signUpButtonHelper}`}
               onClick={logInHandler}>
@@ -170,8 +167,9 @@ const SignUpForm: React.FC<Props> = ({ show, onSubmit }) => {
             </Button>
             <div className={textBlock}>OR</div>
             <Button
-              // color="secondary"
               variant="contained"
+              component={Link}
+              to="/"
               className={`${signUpButton} ${toAllPostsButton}`}>
               Go back to all posts
             </Button>
