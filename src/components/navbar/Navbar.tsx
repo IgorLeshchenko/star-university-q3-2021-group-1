@@ -15,23 +15,19 @@ const Navbar: React.FC = props => {
   const history = useHistory();
   const handleLogout = () => {
     API.UserRequest.logoutUser();
-    history.push("/star-university-q3-2021-group-1/login");
+    history.push("/login");
   };
 
   return (
     <HideOnScroll {...props} data-testid="custom-navbar">
       <AppBar color="transparent">
         <Toolbar className={root}>
-          <Button className={logoBtn} component={Link} to="/star-university-q3-2021-group-1">
+          <Button className={logoBtn} component={Link} to="/">
             <img src={logoPng} className={logo} alt="Reditlone logo" loading="lazy" />
           </Button>
           {user ? (
             <div>
-              <Button
-                variant="contained"
-                className={homeButton}
-                component={Link}
-                to="/star-university-q3-2021-group-1/user">
+              <Button variant="contained" className={homeButton} component={Link} to="/user">
                 <Typography variant="button">{user}</Typography>
               </Button>
 
@@ -45,7 +41,7 @@ const Navbar: React.FC = props => {
               className={loginButton}
               component={Link}
               data-testid="login-route"
-              to="/star-university-q3-2021-group-1/login">
+              to="/login">
               <Typography variant="button">Login</Typography>
             </Button>
           )}

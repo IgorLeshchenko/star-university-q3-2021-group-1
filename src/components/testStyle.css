@@ -22,5 +22,3 @@
 .test_post {
   animation: posts-appear 1s ease-out forwards;
 }
-
-/* animation: posts-appear 1s alternate ease-in-out; */

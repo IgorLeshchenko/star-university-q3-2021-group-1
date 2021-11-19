@@ -1,5 +1,6 @@
 import { Box, Card, Typography } from "@material-ui/core";
 import { BiMessageSquareError } from "react-icons/bi";
+
 const NotFoundMessage: React.FC<{ searcTerm: string }> = props => {
   return (
     <Card>
