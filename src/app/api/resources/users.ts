@@ -16,12 +16,12 @@ export const loginUser = async (username: string, password: string) => {
   }
 };
 
-export const addUser = (username: string, password: string) => {
+export const addUser = async (username: string, password: string) =>  {
   try {
     //@ts-ignore
-    const response = axiosClient
+    const response = await axiosClient
       .post("/users", { username, password })
-        //@ts-ignore
+      //@ts-ignore
       .then(loginUser(username, password));
     return response;
   } catch (error: any) {
