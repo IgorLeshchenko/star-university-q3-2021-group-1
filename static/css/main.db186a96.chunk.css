@@ -1,0 +1,2 @@
+@keyframes levitate{0%{transform:translate(0)}to{transform:translateY(-50px)}}@keyframes posts-appear{0%{opacity:0;transform:translateY(3rem)}to{opacity:1;transform:translateY(0)}}.test_post{animation:posts-appear 1s ease-out forwards}
+/*# sourceMappingURL=main.db186a96.chunk.css.map */
