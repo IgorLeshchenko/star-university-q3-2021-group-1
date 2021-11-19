@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { useStyles } from "../../style";
-import logo from "../../pictures/logo.png";
+import { Link, useHistory } from "react-router-dom";
+
 import useInput from "../../../../app/hooks/useInput";
 import { postUser } from "../../../../app/store/auth/thunks";
+
+import logo from "../../pictures/logo.png";
+import { useStyles } from "../../style";
 
 interface Props {
   show(change: boolean): void;
@@ -58,8 +60,7 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
     valueChangeHandler: userNameChangedHandler,
     inputBlurHandler: userNameBlurHandler,
     reset: resetUserNameInput,
-    //@ts-ignore
-  } = useInput(value => value.trim().length > 1);
+  } = useInput((value: string) => value.trim().length > 1);
 
   const {
     value: enteredPassword,
@@ -68,7 +69,6 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
     valueChangeHandler: passwordChangeHandler,
     inputBlurHandler: passwordBlurHandler,
     reset: resetPasswordInput,
-    //@ts-ignore
   } = useInput((value: string) => value.trim().length > 7);
 
   let formIsValid = false;
@@ -88,7 +88,7 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
       // @ts-ignore
       postUser({ username: event.target[0].value, password: event.target[1].value }),
     );
-    history.push("/star-university-q3-2021-group-1");
+    history.push("/");
 
     resetUserNameInput();
     resetPasswordInput();
@@ -150,7 +150,6 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
             )}
           </div>
           <Button
-            // color="secondary"
             variant="contained"
             className={formWrapperFormButton}
             type="submit"
@@ -164,7 +163,6 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
           </div>
           <div className={signUpButtonsWrapper}>
             <Button
-              // color="secondary"
               variant="contained"
               className={`${signUpButton} ${signUpButtonHelper}`}
               onClick={signInHandler}>
@@ -172,8 +170,9 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
             </Button>
             <div className={textBlock}>OR</div>
             <Button
-              // color="secondary"
               variant="contained"
+              component={Link}
+              to="/"
               className={`${signUpButton} ${toAllPostsButton}`}>
               Go back to all posts
             </Button>

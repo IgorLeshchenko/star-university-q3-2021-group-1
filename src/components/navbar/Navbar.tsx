@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
-
+import { useDispatch } from "react-redux";
 import API from "../../app/api/index";
 import { authSelector } from "../../app/store/auth/selectors";
 import HideOnScroll from "../hideOnScroll";
@@ -14,9 +14,11 @@ const Navbar: React.FC = props => {
     useStyles();
   const { user } = useSelector(authSelector);
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
     API.UserRequest.logoutUser();
-    history.push("/star-university-q3-2021-group-1/login");
+    history.push("/login");
   };
 
   return (
@@ -24,16 +26,12 @@ const Navbar: React.FC = props => {
       <AppBar className={headerMainWrapper}>
         <div className={headerWrapper}>
           <Toolbar className={root}>
-            <Button className={logoBtn} component={Link} to="/star-university-q3-2021-group-1">
+            <Button className={logoBtn} component={Link} to="/">
               <img src={logoPng} className={logo} alt="Reditlone logo" loading="lazy" />
             </Button>
             {user ? (
               <div>
-                <Button
-                  variant="contained"
-                  className={homeButton}
-                  component={Link}
-                  to="/star-university-q3-2021-group-1/user">
+                <Button variant="contained" className={homeButton} component={Link} to="/user">
                   <Typography variant="button">{user}</Typography>
                 </Button>
 
@@ -47,7 +45,7 @@ const Navbar: React.FC = props => {
                 className={loginButton}
                 component={Link}
                 data-testid="login-route"
-                to="/star-university-q3-2021-group-1/login">
+                to="/login">
                 <Typography variant="button">Login</Typography>
               </Button>
             )}

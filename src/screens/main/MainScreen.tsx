@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
-import useDebounce from "../../app/hooks/useDebounce";
 import { useHistory } from "react-router-dom";
-import { Box, Button, TextField } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
+import { Box, Button, TextField } from "@material-ui/core";
+
+import API from "../../app/api";
+import useDebounce from "../../app/hooks/useDebounce";
 import { postsAction } from "../../app/store/postsSlice";
 import { fetchingAction } from "../../app/store/fetchingSlice";
+import { authSelector } from "../../app/store/auth/selectors";
 import useScroll from "../../app/hooks/useScroll";
+
 import Layout from "../../components/layout";
 import { IPost, StatePosts, Fetch } from "../../components/post/types";
-import { authSelector } from "../../app/store/auth/selectors";
 import Post from "../../components/post";
-import { useStyles } from "./style";
 import NotFoundMessage from "./components/NotFoundMessage";
 import Spinner from "./Spinner";
-import API from "../../app/api/index";
+
+import { useStyles } from "./style";
 
 const MainScreen: React.FC = () => {
   const {
@@ -28,18 +31,37 @@ const MainScreen: React.FC = () => {
     sortWrapper,
     addPostButton,
   } = useStyles();
+  const dispatch = useDispatch();
   const history = useHistory();
+  useScroll();
+
   const posts = useSelector((state: StatePosts) => state.posts.posts);
   const fetching = useSelector((state: Fetch) => state.fetching.fetching);
   const { user } = useSelector(authSelector);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const dispatch = useDispatch();
-  useScroll();
   const [typeOfSort, setTypeOfSort] = useState("default");
   const debouncedSearchTerm = useDebounce(searchTerm, 600);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setSearchTerm(event.target.value);
+
+  const getAndSort = (type: string) => {
+    dispatch(postsAction.setPosts([]));
+    setIsLoading(true);
+    setPage(1);
+    setTypeOfSort(type);
+    dispatch(fetchingAction.setFetching());
+  };
+
+  const sortByNew = () => getAndSort("recent");
+
+  const sortByTop = () => {
+    getAndSort("most-upvotes");
+  };
 
   useEffect(() => {
     if (fetching) {
@@ -49,11 +71,16 @@ const MainScreen: React.FC = () => {
           setPage(previousPageNumber => previousPageNumber + 1);
           setIsLoading(false);
         })
-        .finally(() => dispatch(fetchingAction.setFetching()));
+        .finally(() => {
+          dispatch(fetchingAction.setFetching());
+        });
     }
   }, [fetching]);
 
   useEffect(() => {
+    if (fetching === false) {
+      dispatch(fetchingAction.setFetching());
+    }
     const results = !debouncedSearchTerm
       ? posts
       : posts.filter((post: IPost) => {
@@ -61,25 +88,6 @@ const MainScreen: React.FC = () => {
         });
     setSearchResults(results);
   }, [posts, debouncedSearchTerm]);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const initialState = (type: string) => {
-    dispatch(postsAction.setPosts([]));
-    setPage(1);
-    setTypeOfSort(type);
-    dispatch(fetchingAction.setFetching());
-  };
-
-  const sortByNew = () => {
-    initialState("recent");
-  };
-
-  const sortByTop = () => {
-    initialState("most-upvotes");
-  };
 
   return (
     <Layout>
@@ -113,7 +121,7 @@ const MainScreen: React.FC = () => {
               <Button
                 variant="contained"
                 className={`${button} ${addPostButton}`}
-                onClick={() => history.push("/star-university-q3-2021-group-1/addpost")}>
+                onClick={() => history.push("/addpost")}>
                 Add new post
               </Button>
             </div>
