@@ -87,7 +87,7 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
       // @ts-ignore
       postUser({ username: event.target[0].value, password: event.target[1].value }),
     );
-    history.push("/star-university-q3-2021-group-1");
+    history.push("/");
 
     resetUserNameInput();
     resetPasswordInput();
@@ -170,7 +170,7 @@ const LoginForm: React.FC<Props> = ({ show, onSubmit }) => {
             <Button
               variant="contained"
               component={Link}
-              to="/star-university-q3-2021-group-1"
+              to="/"
               className={`${signUpButton} ${toAllPostsButton}`}>
               Go back to all posts
             </Button>

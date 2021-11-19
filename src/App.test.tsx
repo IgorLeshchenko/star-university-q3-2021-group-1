@@ -29,8 +29,8 @@ describe("App", () => {
 
   it("Rendering a page login", () => {
     const history = createMemoryHistory();
-    history.push("/star-university-q3-2021-group-1/login");
+    history.push("/login");
 
-    expect(history.location.pathname).toBe("/star-university-q3-2021-group-1/login");
+    expect(history.location.pathname).toBe("/login");
   });
 });

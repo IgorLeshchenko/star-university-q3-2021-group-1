@@ -160,7 +160,7 @@ const SignUpForm: React.FC<Props> = ({ show, onSubmit }) => {
             <Button
               variant="contained"
               component={Link}
-              to="/star-university-q3-2021-group-1"
+              to="/"
               className={`${signUpButton} ${toAllPostsButton}`}>
               Go back to all posts
             </Button>

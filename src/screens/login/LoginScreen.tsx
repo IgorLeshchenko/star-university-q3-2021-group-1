@@ -32,7 +32,7 @@ const LoginScreen: React.FC = () => {
       postUser({ username: e.target[0].value, password: e.target[2].value }),
     );
 
-    history.push("/star-university-q3-2021-group-1");
+    history.push("/");
   };
 
   return (

@@ -15,7 +15,7 @@ const AddPost: React.FC = () => {
     // @ts-ignore
     API.PostsRequest.addNewPost({ title: e.target[0]?.value, body: e.target[2]?.value });
 
-    history.push("/star-university-q3-2021-group-1");
+    history.push("/");
   };
 
   return (
