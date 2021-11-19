@@ -2,14 +2,17 @@ import React from "react";
 import { Card, CardContent, Avatar } from "@material-ui/core";
 import { ArrowUpward, ArrowDownward, Comment } from "@material-ui/icons";
 
+
 import { IPost } from "./types";
 import { usePostStyles } from "./style";
 import formatDistance from "date-fns/formatDistance";
 import "../testStyle.css";
+import API from "../../app/api";
 
 type Props = {
   post: IPost;
 };
+
 
 const Post: React.FC<Props> = ({ post }) => {
   const classes = usePostStyles();
@@ -35,11 +38,11 @@ const Post: React.FC<Props> = ({ post }) => {
         <div className={classes.post__BodyAndVote}>
           <div className={classes.post__Raiting}>
             <p>
-              <ArrowUpward className={classes.arrowUp} />
+              <ArrowUpward className={classes.arrowUp} onClick={()=> API.PostsRequest.upvotePost(post._id)}/>
             </p>
             <div>{post.upvotes}</div>
             <p>
-              <ArrowDownward className={classes.arrowDown} />
+              <ArrowDownward className={classes.arrowDown} onClick={()=> API.PostsRequest.downvotePost(post._id)}/>
             </p>
           </div>
           <div>
